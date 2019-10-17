@@ -1,0 +1,52 @@
+Step One Add font Awesome Icons
+npm i -S @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-solid-svg-icons @fortawesome/vue-fontawesome
+
+Step 2
+ npm i -D @babel/plugin-syntax-dynamic-import @babel/preset-env cross-env laravel-mix laravel-mix-versionhash resolve-url-loader sass sass-loader webpack-bundle-analyzer
+
+
+ // "ajv": "^6.10.2",
+// "babel-runtime": "^6.26.0",
+// "postcss-rtl": "^1.4.0",
+// "v-mask": "^1.3.4",
+// "vue-awesome-swiper": "^3.0.6",
+// "vue-images-loaded": "^1.1.2",
+// "vue-infinite-loading": "^2.4.3",
+        "vue-snotify": "^3.2.1",
+
+
+-- Create New Password Grant Client
+ php artisan passport:client --password
+
+ What should we name the password grant client? [TimeClock Password Grant Client]:
+ >
+
+Password grant client created successfully.
+Client ID: 3
+Client secret: lHef9ty2asIHrkx16Zz0f4c7fxDM31J0piJaBa6D
+
+
+$http = new GuzzleHttp\Client;
+
+$response = $http->post('http://your-app.com/oauth/token', [
+    'form_params' => [
+        'grant_type' => 'password',
+        'client_id' => '3',
+        'client_secret' => 'lHef9ty2asIHrkx16Zz0f4c7fxDM31J0piJaBa6D',
+        'username' => $request->username,
+        'password' => $request->password,
+        'scope' => '',
+    ],
+]);
+
+return json_decode((string) $response->getBody(), true);
+
+
+
+
+// "plugins": [
+//   "@babel/plugin-syntax-dynamic-import"
+// ]
+
+For Vue table2 Props Issue
+If you using vee-validate plugin you can init it like this - Vue.use(VeeValidate, {fieldsBagName: 'formFields'})

@@ -1,0 +1,26 @@
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | French Language Words
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used by the French language library to build
+    | the simple french language words. You are free to change them to anything
+    | you want to customize your views to better match your application.
+    |
+    */
+    // header variables
+
+//Bookings
+    'appointment' => 'Appointment',
+    'search' => 'Search',
+    'targets' => 'Targets',
+    'positions' => 'Positions',
+    'all'=>'All',
+    'location' => 'Location',
+    'prev' => 'Prev',
+    'next' => 'Next',
+];

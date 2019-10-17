@@ -1,0 +1,696 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.6deb5
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Oct 17, 2019 at 11:59 AM
+-- Server version: 5.7.27-0ubuntu0.18.04.1
+-- PHP Version: 7.3.8-1+ubuntu18.04.1+deb.sury.org+1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `spa`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `eebiotbl`
+--
+
+CREATE TABLE `eebiotbl` (
+  `weeid` int(11) NOT NULL,
+  `eeid` int(11) DEFAULT NULL,
+  `loginID` varchar(255) DEFAULT NULL,
+  `EEFN` varchar(50) DEFAULT NULL,
+  `EEMI` varchar(50) DEFAULT NULL,
+  `EELN` varchar(50) DEFAULT NULL,
+  `eeName` varchar(50) DEFAULT NULL,
+  `SSN` varchar(11) DEFAULT NULL,
+  `Add1` varchar(50) DEFAULT NULL,
+  `Add2` varchar(50) DEFAULT NULL,
+  `City` varchar(30) DEFAULT NULL,
+  `AddState` varchar(2) DEFAULT NULL,
+  `Zip` varchar(30) DEFAULT NULL,
+  `Phone1` varchar(14) DEFAULT NULL,
+  `Phone2` varchar(14) DEFAULT NULL,
+  `DOB` datetime DEFAULT NULL,
+  `OpenFileDate` datetime DEFAULT NULL,
+  `EndOfServiceDate` datetime DEFAULT NULL,
+  `ReasonForRemoval` longtext,
+  `EligibleForRehire` tinyint(1) DEFAULT NULL,
+  `FedStatus` varchar(50) DEFAULT NULL,
+  `FedAllow` int(11) NOT NULL DEFAULT '0',
+  `EFWT` decimal(19,4) DEFAULT '0.0000',
+  `EFW_PER` double DEFAULT NULL,
+  `EFW` decimal(19,4) DEFAULT '0.0000',
+  `StStatus` varchar(50) DEFAULT NULL,
+  `StAllow` int(11) NOT NULL DEFAULT '0',
+  `ESWT` decimal(19,4) DEFAULT '0.0000',
+  `SpecialComments` longtext,
+  `email1` varchar(50) DEFAULT NULL,
+  `LocalTaxYN` tinyint(1) DEFAULT NULL,
+  `Jurisdiction` varchar(50) DEFAULT NULL,
+  `EmergencyContact` varchar(50) DEFAULT NULL,
+  `ECPhone` varchar(50) DEFAULT NULL,
+  `DateEligible` datetime DEFAULT NULL,
+  `SpecialLocalCalc` varchar(50) DEFAULT NULL,
+  `FICAExempt` tinyint(1) DEFAULT NULL,
+  `MedExempt` tinyint(1) DEFAULT NULL,
+  `TaxState` varchar(2) DEFAULT NULL,
+  `LOA` tinyint(1) DEFAULT '0',
+  `LOAReasonCode` varchar(4) DEFAULT NULL,
+  `LOAExpectedReturn` datetime DEFAULT NULL,
+  `401KEligDate` datetime DEFAULT NULL,
+  `401kMarital` varchar(1) DEFAULT NULL,
+  `401kBenif` varchar(255) DEFAULT NULL,
+  `401kDateSent` datetime DEFAULT NULL,
+  `401kDateRecd` datetime DEFAULT NULL,
+  `EWRP` decimal(19,4) DEFAULT NULL,
+  `W4` tinyint(1) DEFAULT '0',
+  `I9` tinyint(1) DEFAULT '0',
+  `App` tinyint(1) DEFAULT '0',
+  `Gender` varchar(1) DEFAULT NULL,
+  `WorkPermit` tinyint(1) DEFAULT '0',
+  `WorkAuthExpir` datetime DEFAULT NULL,
+  `401kMatchExclude` tinyint(1) DEFAULT '0',
+  `online` tinyint(1) DEFAULT '0',
+  `checkless` tinyint(1) DEFAULT '0',
+  `w2less` tinyint(1) DEFAULT '0',
+  `webEmail` tinyint(1) DEFAULT '0',
+  `webEmailSendDate` datetime DEFAULT NULL,
+  `WebEmaIlSender` varchar(50) DEFAULT NULL,
+  `OnlineDate` datetime DEFAULT NULL,
+  `isMinor` tinyint(1) DEFAULT '0',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `eebiotbl`
+--
+
+INSERT INTO `eebiotbl` (`weeid`, `eeid`, `loginID`, `EEFN`, `EEMI`, `EELN`, `eeName`, `SSN`, `Add1`, `Add2`, `City`, `AddState`, `Zip`, `Phone1`, `Phone2`, `DOB`, `OpenFileDate`, `EndOfServiceDate`, `ReasonForRemoval`, `EligibleForRehire`, `FedStatus`, `FedAllow`, `EFWT`, `EFW_PER`, `EFW`, `StStatus`, `StAllow`, `ESWT`, `SpecialComments`, `email1`, `LocalTaxYN`, `Jurisdiction`, `EmergencyContact`, `ECPhone`, `DateEligible`, `SpecialLocalCalc`, `FICAExempt`, `MedExempt`, `TaxState`, `LOA`, `LOAReasonCode`, `LOAExpectedReturn`, `401KEligDate`, `401kMarital`, `401kBenif`, `401kDateSent`, `401kDateRecd`, `EWRP`, `W4`, `I9`, `App`, `Gender`, `WorkPermit`, `WorkAuthExpir`, `401kMatchExclude`, `online`, `checkless`, `w2less`, `webEmail`, `webEmailSendDate`, `WebEmaIlSender`, `OnlineDate`, `isMinor`, `created_at`, `updated_at`, `user_id`) VALUES
+(1272, 1, 'SMITH', 'SUSAN', 'E', 'SMITH', 'SUSAN E SMITH', '000010000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1984-04-01 00:00:00', NULL, NULL, NULL, 0, NULL, 0, '0.0000', NULL, NULL, NULL, 0, '0.0000', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, 'NH', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, NULL, 0),
+(1273, 2, 'COOPER', 'SHELDON', NULL, 'COOPER', 'SHELDON COOPER', '000020000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2004-09-15 00:00:00', NULL, NULL, NULL, 0, NULL, 0, '0.0000', NULL, NULL, NULL, 0, '0.0000', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, NULL, 0),
+(1274, 3, 'RED', 'RAYMOND', NULL, 'RED', 'RAYMOND RED', '000030000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2003-06-02 00:00:00', NULL, NULL, NULL, 0, NULL, 0, '0.0000', NULL, NULL, NULL, 0, '0.0000', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, NULL, 0),
+(1275, 4, 'RAPP', 'MITCH', NULL, 'RAPP', 'MITCH RAPP', '000040000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2002-10-25 00:00:00', NULL, NULL, NULL, 0, NULL, 0, '0.0000', NULL, '0.0000', NULL, 0, '0.0000', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, NULL, 0),
+(1276, 5, 'DOUGLASS', 'TRACY', NULL, 'DOUGLASS', 'TRACY DOUGLASS', '000223333', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, '0.0000', NULL, '0.0000', NULL, 0, '0.0000', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, NULL, 0),
+(1277, 6, 'REACHER', 'JACK', NULL, 'REACHER', 'JACK REACHER', '000223344', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2001-06-30 00:00:00', NULL, NULL, NULL, 0, NULL, 0, '0.0000', NULL, '0.0000', NULL, 0, '0.0000', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, NULL, 0),
+(1280, NULL, NULL, 'John', NULL, 'Brawe', 'John  Braweio', '12321213123', 'Address 2,', 'sasa', 'Cartersville', 'GA', '30121', '3096831174', NULL, '2019-07-17 00:00:00', '2019-07-24 00:00:00', '2019-07-17 20:17:28', NULL, NULL, 'asas', 21, '121.0000', 11, '211.0000', '1', 1, '21.0000', NULL, 'jgerald@nethomefx.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, 0, NULL, NULL, NULL, 0, '2019-07-17 15:19:47', '2019-07-29 14:42:42', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(98, '2014_10_12_000000_create_users_table', 1),
+(99, '2014_10_12_100000_create_password_resets_table', 1),
+(100, '2016_06_01_000001_create_oauth_auth_codes_table', 1),
+(101, '2016_06_01_000002_create_oauth_access_tokens_table', 1),
+(102, '2016_06_01_000003_create_oauth_refresh_tokens_table', 1),
+(103, '2016_06_01_000004_create_oauth_clients_table', 1),
+(104, '2016_06_01_000005_create_oauth_personal_access_clients_table', 1),
+(121, '2019_07_09_135648_create_permission_tables', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_permissions`
+--
+
+CREATE TABLE `model_has_permissions` (
+  `permission_id` int(10) UNSIGNED NOT NULL,
+  `model_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_roles`
+--
+
+CREATE TABLE `model_has_roles` (
+  `role_id` int(10) UNSIGNED NOT NULL,
+  `model_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `model_has_roles`
+--
+
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(1, 'App\\User', 1),
+(2, 'App\\User', 1),
+(8, 'App\\User', 4),
+(3, 'App\\User', 5),
+(8, 'App\\User', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_access_tokens`
+--
+
+CREATE TABLE `oauth_access_tokens` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `client_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scopes` text COLLATE utf8mb4_unicode_ci,
+  `revoked` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `expires_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_access_tokens`
+--
+
+INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
+('0213ecdf044117739d204bdeb7c284beb4259dd72282e085ed753c8d8f13526132923b093633a39a', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-15 05:00:28', '2019-07-15 05:00:28', '2020-07-15 10:00:28'),
+('02ad6591da6d44c64d93a845c0fd027a0604945d72d067d98c80a68271f14ab293ac75b0f74915b9', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:17:52', '2019-07-24 08:17:52', '2020-07-24 13:17:52'),
+('08592b54b9b5d873caa4d2582fae2ac72a5397eac977c62b6b5c9a67a2c850bc473ae393f97aaab3', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-09-01 03:25:30', '2019-09-01 03:25:30', '2020-08-31 20:25:30'),
+('0aa18b8d277b4bc9013b091a560d576c2e6109c79a0a8c42245049062a299ea6e2b87990a69688f4', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-15 04:16:07', '2019-07-15 04:16:07', '2020-07-15 09:16:07'),
+('0af1af99a8a6fbbbf60f4ea9a7a3d20e8bea3c17aa610e260bb8430e39b834e5b5b008929572de9a', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-06-25 07:26:04', '2019-06-25 07:26:04', '2020-06-25 12:26:04'),
+('0cf1d2d8fdf325d6b8416eb4b00fe038b68fc08bcaf122d26c6d1065e2cdd1aec202fe13145629ac', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-08-28 04:20:30', '2019-08-28 04:20:30', '2020-08-27 21:20:30'),
+('102eb78191846cb5d65be1475869237124c248a642dbf16fb37730264355723ec2a3f6e1bc34f7a5', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-09-01 21:25:50', '2019-09-01 21:25:50', '2020-09-01 14:25:50'),
+('111e5d0cdeb58f5c865636231165056c4886ce382be927badcb412454f4db8aaf7b5c35c84008335', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-06-27 13:20:40', '2019-06-27 13:20:40', '2020-06-27 18:20:40'),
+('17a1edb17ce399b7b02e2c328f810ceb9e631412f61a409094a9d5d3b2dc7829bd51f3ab8aaf8017', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-16 06:55:38', '2019-07-16 06:55:38', '2020-07-16 11:55:38'),
+('17e8711ae3ca0d23ebfcfc4a37e98db908e1e7d35f115214edbeb04447fc1ef7e411925c7438c2bc', 1, 3, NULL, '[]', 0, '2019-09-13 14:06:48', '2019-09-13 14:06:48', '2020-09-13 07:06:48'),
+('1c98e5d38c1ec06a0bf50915eb0eadf51697e3cea826945cb373e42c49cb685ad9b13ae41b087e0d', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-15 05:29:36', '2019-07-15 05:29:36', '2020-07-15 10:29:36'),
+('23604b02217a8ddee9a52b7ab1f2b73134bc9e8ac3f203416595ce3c52adf64d5ae9c858712e21ed', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-09-01 00:45:38', '2019-09-01 00:45:38', '2020-08-31 17:45:38'),
+('26ad29dcf2c4222c7cb81f51d6d90c419171eeaac35384f371612bda977b316822e56e406afcdb78', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-11 12:27:42', '2019-07-11 12:27:42', '2020-07-11 17:27:42'),
+('287851941255b63c5631a51603562abf079da53d1cd837032d99baf4c3fbe2d6d7e1441bf0b6595c', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-09-01 01:58:43', '2019-09-01 01:58:43', '2020-08-31 18:58:43'),
+('2bc617c3beed6184457b965cdcce8c48805d434a423e056771af0b65e50c50682bad7ef624d1ac78', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-06-15 11:26:44', '2019-06-15 11:26:44', '2020-06-15 16:26:44'),
+('2dafdfee63cf24f685f9db07270baeb6cd894d3e2dcd5c3482b29be322f83630a381e41d0e89f69b', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:30:58', '2019-07-24 08:30:58', '2020-07-24 13:30:58'),
+('2e1a5dc748c839b7fa6be3ba1d126aa7df1d8e596abc7b3725d8f94939778b981c8576024f581e13', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-06-18 04:09:16', '2019-06-18 04:09:16', '2020-06-18 09:09:16'),
+('2fea4bd966a5da26cc3ddc23f83b34fe387c449d17c12155ba91ef5dc79fd4bd779d0895bd5b67fe', 1, 3, NULL, '[]', 0, '2019-09-03 13:01:33', '2019-09-03 13:01:33', '2020-09-03 06:01:33'),
+('33ccce258633757480e7c6833ab80c3bc2aa4536f28c8da22cbe4fc7b677c51e75794cb7e052b676', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:19:05', '2019-07-24 08:19:05', '2020-07-24 13:19:05'),
+('36d1492901e0b9889178b2eba4bde780b4448d7a601a462dfa72ad7359a7adf0eb38f5daa52b3c75', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-06-21 08:48:41', '2019-06-21 08:48:41', '2020-06-21 13:48:41'),
+('55e62012eda41e2bf05824837050479227d4f300c4e650bbfbdbfcaa162c3add94176ca7ecf0ba68', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-06-26 06:20:08', '2019-06-26 06:20:08', '2020-06-26 11:20:08'),
+('6b54fa6f68d9061d03b3b9adc9bd774a50d0c0f7b39c27069aadba0d44422a06b59a788e65c40892', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-08-27 14:43:58', '2019-08-27 14:43:58', '2020-08-27 07:43:58'),
+('6df3ed0effa3df0f44c82d942f6f8459d7ff2aa3fda12ee1ff4e10b42eb99bb0cb07a1b6ee017f32', 1, 3, NULL, '[]', 0, '2019-09-03 12:52:10', '2019-09-03 12:52:10', '2020-09-03 05:52:10'),
+('74f02ebe28bc7f6933d889fce9b53cfffa307b53e8a9b76bab44abbe5153d48740f2722de5c1eaec', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-17 07:01:58', '2019-07-17 07:01:58', '2020-07-17 12:01:58'),
+('7f37db7a29e93ca079ee573f8a86fa6f933a31fa55e62903c0d3918c5856887467f264c8da0a804f', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-12 08:38:49', '2019-07-12 08:38:49', '2020-07-12 13:38:49'),
+('828d6d8c1e07a385a510e6a62e72c4ccbb3efb7c86fe9e3fee7d92b547781695bb7d370be87f4934', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-06-27 13:20:46', '2019-06-27 13:20:46', '2020-06-27 18:20:46'),
+('83faf3057edf53281bc747617810c8fe8147bfe6a69679a882b532c176bb7e918c35f7d773da6e5a', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-13 09:56:30', '2019-07-13 09:56:30', '2020-07-13 14:56:30'),
+('8c45f1bc7419fa7142c70e631b04869968d3f429639cf154d1d2244f10e7c2a83ec1221fe24f72c3', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-29 09:42:00', '2019-07-29 09:42:00', '2020-07-29 14:42:00'),
+('8cfd6c812c89dbe811c31343ffe68bde62421a450e8a258f37219570db6d36d019674467eba96847', 5, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-26 07:17:09', '2019-07-26 07:17:09', '2020-07-26 12:17:09'),
+('8fc23e6cb75a2220b5c0cd7e90acae6a9b75b65e5c71fdb2931a279cca4a94d83325ea95bd178dd7', 1, 3, NULL, '[]', 0, '2019-09-04 03:39:27', '2019-09-04 03:39:27', '2020-09-03 20:39:27'),
+('90392af65189649a5da593c1c1e549c7d2c52768e22febeea0dfcbf940d397e7b9165a2f9dec2bc9', 1, 3, NULL, '[]', 0, '2019-09-18 04:59:28', '2019-09-18 04:59:28', '2020-09-17 21:59:28'),
+('99d3cc51c0a925de17956ed13acf8b2b80b49e8933cfcd84803e9433ae637ec99d50f869ca538732', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-09-01 04:18:54', '2019-09-01 04:18:54', '2020-08-31 21:18:54'),
+('9b331dcd5868aad6989f52489764aced079942a55d48806fbc759c825f098e549c07ad56b52b86b7', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:30:06', '2019-07-24 08:30:06', '2020-07-24 13:30:06'),
+('a9d067ae0e0c4a3b121c851342ea0ab5357e868ba6d1574773ded696329322f22874d89ff99738bc', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-08-28 04:22:12', '2019-08-28 04:22:12', '2020-08-27 21:22:12'),
+('aad7378ef493a8be2347b7980c6af10359fdac8f4c67fd1eb835473c5d0d29f86616aa1360ed16d5', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:32:15', '2019-07-24 08:32:15', '2020-07-24 13:32:15'),
+('ad8d04e982bf95f153dbc9faa941b00ad1c01c0b599300841000d4479945de9e2de8966cd1a4348d', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-08-09 14:59:23', '2019-08-09 14:59:23', '2020-08-09 07:59:23'),
+('af0bef8d23eb8a039220e72e6415c04918ae61c4b7cd62a2b4402ef02be4b2dc37cd23b42359e40a', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 05:26:35', '2019-07-24 05:26:35', '2020-07-24 10:26:35'),
+('b4d53fb1e8f078988c3af3372c61b87a5fdfb3d28b26f86253f064fc29596b4f5fb61be735d6ee34', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-15 05:44:37', '2019-07-15 05:44:37', '2020-07-15 10:44:37'),
+('b83937515ab71c0ebb3ea01e833561aa6b85e61138eef2ef4f835bade070029ee318e852be94314e', 1, 3, NULL, '[]', 0, '2019-09-17 12:40:11', '2019-09-17 12:40:11', '2020-09-17 05:40:11'),
+('b9cd2e99abfe615536d4562a6ac08cc24dd60363ac70234cce393583ecea8b1fc384b0d294ea644e', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-16 09:01:06', '2019-07-16 09:01:06', '2020-07-16 14:01:06'),
+('bc494718a104327369fe4a4da809b4705a82672e987bfec9f50d9e6bb9294c655a0f549c618b74cd', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-09-01 00:46:25', '2019-09-01 00:46:25', '2020-08-31 17:46:25'),
+('cbf04b28950049faca3dbf822e07525568e009f3307ae3f6ebcb8dff44d9530934e94d1588b0cdbb', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:29:44', '2019-07-24 08:29:44', '2020-07-24 13:29:44'),
+('cc6000876600a223f8a01505b83cec97b435a9012061e4b705985ba05e222384c55a66a186841bdb', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-09-01 04:00:27', '2019-09-01 04:00:27', '2020-08-31 21:00:27'),
+('d35caf4499010f9e37f02ae793197dcd6b6108130711ce46ed2b7c61ed453521865998354b006fe5', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:19:15', '2019-07-24 08:19:15', '2020-07-24 13:19:15'),
+('d61173f29bc22da2c7228cebcbb9c4cdbd962d899d6f07519b3d36121b30e55e14f49cbd2200c168', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-09-01 04:13:18', '2019-09-01 04:13:18', '2020-08-31 21:13:18'),
+('d841fc6a2f450c97f92e567ea8be4e4f3ba0c5814104fc7de123b829039be0efc35878ee8db33e02', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:22:59', '2019-07-24 08:22:59', '2020-07-24 13:22:59'),
+('df2527fbfe9a2ccec174ab820d4d6cebb7a02d74a8504d6b9c0a4c6e1064a3690c293d3179feede1', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:32:46', '2019-07-24 08:32:46', '2020-07-24 13:32:46'),
+('edf9fc7146de39f68fe092aaa2333506637f4e71ecef1512ccc72d8be46330fc8c59fb052688aa17', 1, 3, NULL, '[]', 0, '2019-09-17 13:37:08', '2019-09-17 13:37:08', '2020-09-17 06:37:08'),
+('edff4af5e27ae2a13c8a743cb9daf9413ee9384cb6b9a9872777b6088ac7ae428a1a49e1ac70f1c0', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:20:50', '2019-07-24 08:20:50', '2020-07-24 13:20:50'),
+('ee6d7e77f5061f1e3ea648793e3a082fb1303ed54168899d0baa54115f0c915afbd4e10a609b0c1b', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:28:03', '2019-07-24 08:28:03', '2020-07-24 13:28:03'),
+('fc90e1929655dadb0f70dad75b262e61ce24760276c4cfcdff6dd64ab277ea90f6bf878e6d752f1f', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-15 05:44:42', '2019-07-15 05:44:42', '2020-07-15 10:44:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_auth_codes`
+--
+
+CREATE TABLE `oauth_auth_codes` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `client_id` int(10) UNSIGNED NOT NULL,
+  `scopes` text COLLATE utf8mb4_unicode_ci,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_clients`
+--
+
+CREATE TABLE `oauth_clients` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `secret` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `redirect` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `personal_access_client` tinyint(1) NOT NULL,
+  `password_client` tinyint(1) NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_clients`
+--
+
+INSERT INTO `oauth_clients` (`id`, `user_id`, `name`, `secret`, `redirect`, `personal_access_client`, `password_client`, `revoked`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'Laravel Personal Access Client', 'F0VkFJfsTNH8e6eU9xAbgKjnuNoQgxS4DcU7mn4K', 'http://localhost', 1, 0, 0, '2019-03-11 00:54:07', '2019-03-11 00:54:07'),
+(2, NULL, 'Laravel Password Grant Client', '1gTbomOfr05z2BJqp3mcebcqtBjcEbrQ1DmWsjL7', 'http://localhost', 0, 1, 0, '2019-03-11 00:54:07', '2019-03-11 00:54:07'),
+(3, NULL, 'TimeClock Password Grant Client', 'lHef9ty2asIHrkx16Zz0f4c7fxDM31J0piJaBa6D', 'http://localhost', 0, 1, 0, '2019-09-03 11:54:25', '2019-09-03 11:54:25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_personal_access_clients`
+--
+
+CREATE TABLE `oauth_personal_access_clients` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `client_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_personal_access_clients`
+--
+
+INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `updated_at`) VALUES
+(1, 1, '2019-03-11 00:54:07', '2019-03-11 00:54:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_refresh_tokens`
+--
+
+CREATE TABLE `oauth_refresh_tokens` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `access_token_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_refresh_tokens`
+--
+
+INSERT INTO `oauth_refresh_tokens` (`id`, `access_token_id`, `revoked`, `expires_at`) VALUES
+('04053ffa4e5ae79d1934986f1d81a129bd3e09d3d0dbaec70af8113e9ee551e43839d0267da97b11', '90392af65189649a5da593c1c1e549c7d2c52768e22febeea0dfcbf940d397e7b9165a2f9dec2bc9', 0, '2020-09-17 21:59:28'),
+('2d45b2f7f142b672f804ec3c8c45234754eff9b935b6e9b1189ab0abeb5eb1aa3b56174bac4954c3', 'a69aa50c01db4eb3347203761b1c4df17d0b5e43546b203250c59e005a8717756bd6fe5cdf9ebace', 0, '2020-09-17 20:39:11'),
+('40177767ca9315887c152491eed66cbfbd97854f64f82de649cdb8c84e54e909245bc31e9b15d9d1', '2319681e2110e52665f39c32e7de39ae4b79a736ed31c3db78c090d6837cea1f02f08818336beab4', 0, '2020-09-17 04:41:00'),
+('41d249712aeab6a87b1bb61256ad2e89d573746d6379c345640179d02bd639dd90a60fef9fcc2174', 'a9300690e20fc1e701ec2c95e14157ca8e207d9fc33c1fd247830f36bd058eb87f631afdc8a9720a', 0, '2020-09-17 05:37:34'),
+('464ef8126f2e9eceb29309672fd4798ba09a8d258e25228137338dcc122cb65b60dbd62082eddf9e', 'edf9fc7146de39f68fe092aaa2333506637f4e71ecef1512ccc72d8be46330fc8c59fb052688aa17', 0, '2020-09-17 06:37:08'),
+('5d98fbd27484fd5571f621aa927ae8c64e0791891bf432124df680717954515a90b09af525a66a39', '6df3ed0effa3df0f44c82d942f6f8459d7ff2aa3fda12ee1ff4e10b42eb99bb0cb07a1b6ee017f32', 0, '2020-09-03 05:52:10'),
+('65af6acbd8f1e70c1a96a5b3172250a134102e74e9fd47d83182bf3062d42c5d6716314b5ab616c3', '57872654356bb36e73df9559c8b5c00c6773e5f964682a567ba79cfea8e93e30937d62de50a44897', 0, '2020-09-03 05:02:40'),
+('823f58b256e7df731f03101ac51501ffc972b1de38f327c615f5da8c8025537b9effd45494059c03', '187775a9e3770424cc9793c71e62e0038df1108baa6e473b7533f5f88fb03c7c5e18acf2a27dfd0e', 0, '2020-09-17 20:44:38'),
+('8cc1290c84c6a54514fdc1a2d917c5d9c66e65c70e14265cc7c0a74c24ed06054c0af98ea17ef7ce', '30c268f59a9c0911090263e2212da13e575c3c94ddf0f8f50201b0a667b24c9dda15d474d498aa23', 0, '2020-09-17 06:41:25'),
+('8f8b5da86f0e3abb991d986c09a6d6b652820538b26bc6175207262bcd0eb3dc6a3ec83c577a4c9d', 'b83937515ab71c0ebb3ea01e833561aa6b85e61138eef2ef4f835bade070029ee318e852be94314e', 0, '2020-09-17 05:40:11'),
+('93b8fc2976839aaddc89b45265437405c7398421541b69ed2aeb92f872d1fb54f6c1347490671185', '47561d62dab0513cc2c0ddf53799d554453c16170ae67f44c5782080cd78fa28e1d9af11e5ebf71f', 0, '2020-09-17 05:34:26'),
+('9543cb0ba3bbc9b97bb6898cc4998ef899f9dac86952659228a3bde91b284feb7f1736e278b0dc1c', '39e808bba26169493fa577adf4d256cc1a221f5c9ca385444da3213361efddd12e9f92c45f1bfcd0', 0, '2020-09-17 20:36:58'),
+('9cc1cb3fd7764d1ab41de3470687fe4d50b90937a97b61899967d38271a98c97f5a26fea8e9afa5b', '17e8711ae3ca0d23ebfcfc4a37e98db908e1e7d35f115214edbeb04447fc1ef7e411925c7438c2bc', 0, '2020-09-13 07:06:48'),
+('9d7fd7d42f56f9342a7d1dae3bf97aa751a4900ce023cb1ffe0015ac68587fe49496d0a1bf0de7f1', '2fea4bd966a5da26cc3ddc23f83b34fe387c449d17c12155ba91ef5dc79fd4bd779d0895bd5b67fe', 0, '2020-09-03 06:01:33'),
+('bf5cf4aa6d056a7e5348b497b3bc4b118b8f5fcaf04afc251f7eaaff8adb3d11efc6232fb3607fb4', '72073e6ec04eb00d9cd5146ddcbccf671e2dbcf781082a6be9d56203b4a8eca1acda8ef3a06eaaac', 0, '2020-09-17 20:45:03'),
+('cc91b987e09fe8985d4f3cb395fd3aeed4ba505adb07e838b445539b47b15a2ef99acf0a2bdc6e34', '8fc23e6cb75a2220b5c0cd7e90acae6a9b75b65e5c71fdb2931a279cca4a94d83325ea95bd178dd7', 0, '2020-09-03 20:39:28'),
+('e68433e62d719dff69a68c421edbedf007eda0142c7053b78ad7b02b6aa680e396acf89353924ad1', '8ea39fc7b0229681892b41d406e62ac4b3657baaec0f19baf334c90637a549e0734d064dbdd75884', 0, '2020-09-17 20:10:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`, `key`, `type`) VALUES
+(1, 'dashboard', 'web', '2019-07-12 12:36:51', NULL, 'Dashboard', 'Dashboard'),
+(2, 'clients', 'web', '2019-07-12 12:36:51', NULL, 'Clients Module', 'Clients'),
+(3, 'clients_all', 'web', '2019-07-12 12:36:51', NULL, 'All Clients', 'clients'),
+(4, 'clients_add', 'web', '2019-07-12 12:36:51', NULL, 'Add Client', 'clients'),
+(5, 'clients_edit', 'web', '2019-07-12 12:36:51', NULL, 'Edit Client', 'clients'),
+(6, 'clients_delete', 'web', '2019-07-12 12:36:51', NULL, 'Delete Client', 'clients'),
+(7, 'corporations', 'web', '2019-07-12 12:36:51', NULL, 'Corporation Module', 'Corporations'),
+(8, 'corporations_all', 'web', '2019-07-12 12:36:51', NULL, 'All Corporstions', 'Corporations'),
+(9, 'corporations_add', 'web', '2019-07-12 12:36:51', NULL, 'Add Corporation', 'Corporations'),
+(10, 'corporations_edit', 'web', '2019-07-12 12:36:51', NULL, 'Edit Corporation', 'Corporations'),
+(11, 'corporations_delete', 'web', '2019-07-12 12:36:51', NULL, 'Delete Corporation', 'Corporations'),
+(12, 'departments', 'web', '2019-07-12 12:36:51', NULL, 'Departments Module', 'Departments'),
+(13, 'departments_all', 'web', '2019-07-12 12:36:51', NULL, 'All Departments', 'Departments'),
+(14, 'departments_add', 'web', '2019-07-12 12:36:51', NULL, 'Add Department', 'Departments'),
+(15, 'departments_edit', 'web', '2019-07-12 12:36:51', NULL, 'Edit Department', 'Departments'),
+(16, 'departments_delete', 'web', '2019-07-12 12:36:51', NULL, 'Delete Department', 'Departments'),
+(17, 'role_and_permissions', 'web', '2019-07-12 12:36:51', NULL, 'Roles & Permissions', 'Roles And Permissions'),
+(18, 'roles', 'web', '2019-07-12 12:36:51', NULL, 'Roles Index', 'Roles And Permissions'),
+(19, 'roles_add', 'web', '2019-07-12 12:36:51', NULL, 'Add Role', 'Roles And Permissions'),
+(20, 'roles_edit', 'web', '2019-07-12 12:36:51', NULL, 'Update Role', 'Roles And Permissions'),
+(21, 'roles_delete', 'web', '2019-07-12 12:36:51', NULL, 'Delete Role', 'Roles And Permissions'),
+(22, 'permissions_assign', 'web', '2019-07-12 12:36:51', NULL, 'Assign Permissions', 'Roles And Permissions'),
+(23, 'table', 'web', '2019-09-17 06:43:29', NULL, 'DataTable', 'Datatable');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `role_descrip` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rolename` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`, `role_descrip`, `rolename`) VALUES
+(1, 'SUP', 'web', '2019-07-09 17:34:10', '2019-07-29 09:40:07', 'Complete Access to the Application', 'SuperVisor'),
+(2, 'COMAN', 'web', '2019-07-09 17:34:10', '2019-07-12 06:57:10', 'COMAN', 'COMAN'),
+(3, 'EE', 'web', '2019-07-09 17:34:10', '2019-07-12 07:06:08', 'Employee', 'Employee'),
+(4, 'COCLERK', 'web', '2019-07-09 17:34:10', '2019-07-12 07:19:03', 'COMAN', 'Clerck Role'),
+(5, 'PAYMAN', 'web', '2019-07-09 17:34:10', '2019-07-12 12:26:44', 'Less Permissions', 'Payment Role'),
+(6, 'PAYCLERK', 'web', '2019-07-09 17:34:10', NULL, NULL, NULL),
+(7, 'SUPER', 'web', '2019-07-12 06:27:09', '2019-07-12 06:27:09', NULL, 'asda'),
+(8, 'CLIENT', 'web', '2019-07-16 11:41:54', NULL, 'Client', 'Client'),
+(9, 'New T', 'web', '2019-07-29 09:40:30', '2019-07-29 09:40:30', NULL, 'asda'),
+(10, 'NEWROLE', 'web', '2019-09-17 12:56:09', '2019-09-17 12:58:18', 'sqw', 'ROLE DISPLAY NAME');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_has_permissions`
+--
+
+CREATE TABLE `role_has_permissions` (
+  `permission_id` int(10) UNSIGNED NOT NULL,
+  `role_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1),
+(13, 1),
+(14, 1),
+(15, 1),
+(16, 1),
+(17, 1),
+(18, 1),
+(19, 1),
+(20, 1),
+(21, 1),
+(22, 1),
+(23, 1),
+(1, 2),
+(1, 3),
+(1, 7),
+(1, 9),
+(2, 9),
+(3, 9),
+(4, 9),
+(5, 9),
+(6, 9),
+(7, 9),
+(8, 9),
+(9, 9),
+(10, 9),
+(11, 9),
+(12, 9),
+(13, 9),
+(14, 9),
+(15, 9),
+(16, 9),
+(17, 9),
+(18, 9),
+(19, 9),
+(20, 9),
+(21, 9),
+(22, 9);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `first_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone_no` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_admin` tinyint(4) NOT NULL DEFAULT '0',
+  `is_active` tinyint(4) NOT NULL DEFAULT '0',
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `clocked_in` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `first_name`, `last_name`, `email`, `phone_no`, `password`, `is_admin`, `is_active`, `remember_token`, `image`, `created_at`, `updated_at`, `clocked_in`) VALUES
+(1, NULL, 'Admin', NULL, 'admin@test.com', NULL, '$2y$10$DpoUX9yNGXXTiF6Fg18sZ.WFbg096Hx17tA00I4oYA4YQ5Xta/V6m', 1, 1, NULL, NULL, '2019-07-22 19:00:00', NULL, 0),
+(2, NULL, 'Joe', NULL, 'joe@test.com', NULL, '$2y$10$DpoUX9yNGXXTiF6Fg18sZ.WFbg096Hx17tA00I4oYA4YQ5Xta/V6m', 1, 1, NULL, NULL, '2019-07-22 19:00:00', NULL, 0),
+(4, 'BULL DOG', NULL, NULL, 'thebull@gmail.com', NULL, '$2y$10$oYVZ7ZJ9cSpFevGir5SHFu6FzdflGOKRyZfrmYHGsXTyS6iyvbf7i', 0, 0, NULL, NULL, '2019-07-22 19:00:00', '2019-07-16 06:54:46', 0),
+(5, 'John', 'Peck', 'Malik', 'jgerald@nethomefx.com', '90078601', '$2y$10$DpoUX9yNGXXTiF6Fg18sZ.WFbg096Hx17tA00I4oYA4YQ5Xta/V6m', 0, 0, NULL, NULL, '2019-07-22 19:00:00', '2019-07-29 09:41:39', 1),
+(6, 'John Brawo', NULL, NULL, 'john@example.com', NULL, '$2y$10$emSle6LCoEp4R7v7vLEL7OcRvrlYQYlKyNA0E41xyQTDPjcnY.QP2', 0, 0, NULL, NULL, '2019-07-29 09:38:43', '2019-07-29 09:38:43', 0);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `eebiotbl`
+--
+ALTER TABLE `eebiotbl`
+  ADD PRIMARY KEY (`weeid`),
+  ADD UNIQUE KEY `eeid` (`eeid`),
+  ADD KEY `LOAReasonCode` (`LOAReasonCode`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indexes for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indexes for table `oauth_access_tokens`
+--
+ALTER TABLE `oauth_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_access_tokens_user_id_index` (`user_id`);
+
+--
+-- Indexes for table `oauth_auth_codes`
+--
+ALTER TABLE `oauth_auth_codes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oauth_clients`
+--
+ALTER TABLE `oauth_clients`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_clients_user_id_index` (`user_id`);
+
+--
+-- Indexes for table `oauth_personal_access_clients`
+--
+ALTER TABLE `oauth_personal_access_clients`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_personal_access_clients_client_id_index` (`client_id`);
+
+--
+-- Indexes for table `oauth_refresh_tokens`
+--
+ALTER TABLE `oauth_refresh_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_refresh_tokens_access_token_id_index` (`access_token_id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`role_id`),
+  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `eebiotbl`
+--
+ALTER TABLE `eebiotbl`
+  MODIFY `weeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1281;
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+--
+-- AUTO_INCREMENT for table `oauth_clients`
+--
+ALTER TABLE `oauth_clients`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `oauth_personal_access_clients`
+--
+ALTER TABLE `oauth_personal_access_clients`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD CONSTRAINT `model_has_roles_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
