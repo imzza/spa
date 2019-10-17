@@ -1,1 +1,1 @@
-# lumberjaxe
+# Laravel Vuejs SPA
