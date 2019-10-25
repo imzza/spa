@@ -109,7 +109,7 @@ class UserController extends Controller {
 
 
     public function index(){
-            return response()->json(User::all());
+       return response()->json(User::all());
 
     }
 
@@ -125,7 +125,7 @@ class UserController extends Controller {
 
         $http = new GuzzleHttp\Client;
 
-        $response = $http->post('http://spa.test/oauth/token', [
+        $response = $http->post(url('/oauth/token'), [
             'form_params' => [
                 'grant_type' => 'password',
                 'client_id' => '3',

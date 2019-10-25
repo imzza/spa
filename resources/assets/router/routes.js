@@ -24,9 +24,6 @@ export default  [
                     isLoggedIn: true,
                 }
             },
-        
-
-
             //Employees Routes
             {
                 path: 'employees_all/:cid?',
@@ -65,8 +62,6 @@ export default  [
                     isLoggedIn: true,
                 }
             },
-
-
             // Roles and Permissions Route
             {
                 path: 'roles_all',
@@ -126,7 +121,6 @@ export default  [
             forSite: true,
         }
     },
-    
     {
         path: '/no_access',
         component: resolve => require(['pages/403'], resolve),
