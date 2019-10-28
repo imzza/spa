@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\Admin;
+namespace App\Http\Controllers;
 
 use App\Models\Role as CustomRole;
 use Illuminate\Http\Request;

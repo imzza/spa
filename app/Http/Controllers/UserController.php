@@ -1,21 +1,12 @@
 <?php
-namespace App\Http\Controllers\API;
-use App\Helpers\CheckSite;
+namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Client;
-use App\Models\Admin\Department;
-use App\Models\Admin\Shift;
-use App\Models\Admin\Employee;
 use App\User;
-use App\Models\Admin\TimeCard;
 use Carbon\Carbon;
 use App\Http\Resources\UserResource;
 
 // use GuzzleHttp\Client;
-use App\Models\Admin\Client as Clients;
-
-use App\Models\Admin\Corporation;
-
 use DB;
 use File;
 use Illuminate\Http\Request;
@@ -97,15 +88,8 @@ class UserController extends Controller {
         }
 
         $data->save();
-        return response()->json($data, 200);
-
-            
+        return response()->json($data, 200);       
     }
-
-
-
-
-
 
 
     public function index(){

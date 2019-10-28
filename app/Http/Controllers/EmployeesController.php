@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\API\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeeResource;
 use App\Mail\EmployeeActivation;
-use App\Models\Admin\Assign;
-use App\Models\Admin\Employee;
-use App\Models\Admin\TimeCard;
-use App\Models\Admin\TimeStatus;
+
 use App\User;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
