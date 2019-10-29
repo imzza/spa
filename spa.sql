@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 5.0.0-alpha1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 17, 2019 at 11:59 AM
+-- Generation Time: Oct 30, 2019 at 03:44 AM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.3.8-1+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,94 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `spa`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `eebiotbl`
---
-
-CREATE TABLE `eebiotbl` (
-  `weeid` int(11) NOT NULL,
-  `eeid` int(11) DEFAULT NULL,
-  `loginID` varchar(255) DEFAULT NULL,
-  `EEFN` varchar(50) DEFAULT NULL,
-  `EEMI` varchar(50) DEFAULT NULL,
-  `EELN` varchar(50) DEFAULT NULL,
-  `eeName` varchar(50) DEFAULT NULL,
-  `SSN` varchar(11) DEFAULT NULL,
-  `Add1` varchar(50) DEFAULT NULL,
-  `Add2` varchar(50) DEFAULT NULL,
-  `City` varchar(30) DEFAULT NULL,
-  `AddState` varchar(2) DEFAULT NULL,
-  `Zip` varchar(30) DEFAULT NULL,
-  `Phone1` varchar(14) DEFAULT NULL,
-  `Phone2` varchar(14) DEFAULT NULL,
-  `DOB` datetime DEFAULT NULL,
-  `OpenFileDate` datetime DEFAULT NULL,
-  `EndOfServiceDate` datetime DEFAULT NULL,
-  `ReasonForRemoval` longtext,
-  `EligibleForRehire` tinyint(1) DEFAULT NULL,
-  `FedStatus` varchar(50) DEFAULT NULL,
-  `FedAllow` int(11) NOT NULL DEFAULT '0',
-  `EFWT` decimal(19,4) DEFAULT '0.0000',
-  `EFW_PER` double DEFAULT NULL,
-  `EFW` decimal(19,4) DEFAULT '0.0000',
-  `StStatus` varchar(50) DEFAULT NULL,
-  `StAllow` int(11) NOT NULL DEFAULT '0',
-  `ESWT` decimal(19,4) DEFAULT '0.0000',
-  `SpecialComments` longtext,
-  `email1` varchar(50) DEFAULT NULL,
-  `LocalTaxYN` tinyint(1) DEFAULT NULL,
-  `Jurisdiction` varchar(50) DEFAULT NULL,
-  `EmergencyContact` varchar(50) DEFAULT NULL,
-  `ECPhone` varchar(50) DEFAULT NULL,
-  `DateEligible` datetime DEFAULT NULL,
-  `SpecialLocalCalc` varchar(50) DEFAULT NULL,
-  `FICAExempt` tinyint(1) DEFAULT NULL,
-  `MedExempt` tinyint(1) DEFAULT NULL,
-  `TaxState` varchar(2) DEFAULT NULL,
-  `LOA` tinyint(1) DEFAULT '0',
-  `LOAReasonCode` varchar(4) DEFAULT NULL,
-  `LOAExpectedReturn` datetime DEFAULT NULL,
-  `401KEligDate` datetime DEFAULT NULL,
-  `401kMarital` varchar(1) DEFAULT NULL,
-  `401kBenif` varchar(255) DEFAULT NULL,
-  `401kDateSent` datetime DEFAULT NULL,
-  `401kDateRecd` datetime DEFAULT NULL,
-  `EWRP` decimal(19,4) DEFAULT NULL,
-  `W4` tinyint(1) DEFAULT '0',
-  `I9` tinyint(1) DEFAULT '0',
-  `App` tinyint(1) DEFAULT '0',
-  `Gender` varchar(1) DEFAULT NULL,
-  `WorkPermit` tinyint(1) DEFAULT '0',
-  `WorkAuthExpir` datetime DEFAULT NULL,
-  `401kMatchExclude` tinyint(1) DEFAULT '0',
-  `online` tinyint(1) DEFAULT '0',
-  `checkless` tinyint(1) DEFAULT '0',
-  `w2less` tinyint(1) DEFAULT '0',
-  `webEmail` tinyint(1) DEFAULT '0',
-  `webEmailSendDate` datetime DEFAULT NULL,
-  `WebEmaIlSender` varchar(50) DEFAULT NULL,
-  `OnlineDate` datetime DEFAULT NULL,
-  `isMinor` tinyint(1) DEFAULT '0',
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `eebiotbl`
---
-
-INSERT INTO `eebiotbl` (`weeid`, `eeid`, `loginID`, `EEFN`, `EEMI`, `EELN`, `eeName`, `SSN`, `Add1`, `Add2`, `City`, `AddState`, `Zip`, `Phone1`, `Phone2`, `DOB`, `OpenFileDate`, `EndOfServiceDate`, `ReasonForRemoval`, `EligibleForRehire`, `FedStatus`, `FedAllow`, `EFWT`, `EFW_PER`, `EFW`, `StStatus`, `StAllow`, `ESWT`, `SpecialComments`, `email1`, `LocalTaxYN`, `Jurisdiction`, `EmergencyContact`, `ECPhone`, `DateEligible`, `SpecialLocalCalc`, `FICAExempt`, `MedExempt`, `TaxState`, `LOA`, `LOAReasonCode`, `LOAExpectedReturn`, `401KEligDate`, `401kMarital`, `401kBenif`, `401kDateSent`, `401kDateRecd`, `EWRP`, `W4`, `I9`, `App`, `Gender`, `WorkPermit`, `WorkAuthExpir`, `401kMatchExclude`, `online`, `checkless`, `w2less`, `webEmail`, `webEmailSendDate`, `WebEmaIlSender`, `OnlineDate`, `isMinor`, `created_at`, `updated_at`, `user_id`) VALUES
-(1272, 1, 'SMITH', 'SUSAN', 'E', 'SMITH', 'SUSAN E SMITH', '000010000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1984-04-01 00:00:00', NULL, NULL, NULL, 0, NULL, 0, '0.0000', NULL, NULL, NULL, 0, '0.0000', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, 'NH', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, NULL, 0),
-(1273, 2, 'COOPER', 'SHELDON', NULL, 'COOPER', 'SHELDON COOPER', '000020000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2004-09-15 00:00:00', NULL, NULL, NULL, 0, NULL, 0, '0.0000', NULL, NULL, NULL, 0, '0.0000', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, NULL, 0),
-(1274, 3, 'RED', 'RAYMOND', NULL, 'RED', 'RAYMOND RED', '000030000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2003-06-02 00:00:00', NULL, NULL, NULL, 0, NULL, 0, '0.0000', NULL, NULL, NULL, 0, '0.0000', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, NULL, 0),
-(1275, 4, 'RAPP', 'MITCH', NULL, 'RAPP', 'MITCH RAPP', '000040000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2002-10-25 00:00:00', NULL, NULL, NULL, 0, NULL, 0, '0.0000', NULL, '0.0000', NULL, 0, '0.0000', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, NULL, 0),
-(1276, 5, 'DOUGLASS', 'TRACY', NULL, 'DOUGLASS', 'TRACY DOUGLASS', '000223333', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, '0.0000', NULL, '0.0000', NULL, 0, '0.0000', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, NULL, 0),
-(1277, 6, 'REACHER', 'JACK', NULL, 'REACHER', 'JACK REACHER', '000223344', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2001-06-30 00:00:00', NULL, NULL, NULL, 0, NULL, 0, '0.0000', NULL, '0.0000', NULL, 0, '0.0000', NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, NULL, 0),
-(1280, NULL, NULL, 'John', NULL, 'Brawe', 'John  Braweio', '12321213123', 'Address 2,', 'sasa', 'Cartersville', 'GA', '30121', '3096831174', NULL, '2019-07-17 00:00:00', '2019-07-24 00:00:00', '2019-07-17 20:17:28', NULL, NULL, 'asas', 21, '121.0000', 11, '211.0000', '1', 1, '21.0000', NULL, 'jgerald@nethomefx.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, NULL, 0, NULL, 0, 0, 0, 0, 0, NULL, NULL, NULL, 0, '2019-07-17 15:19:47', '2019-07-29 14:42:42', 5);
 
 -- --------------------------------------------------------
 
@@ -204,12 +118,14 @@ INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes
 ('17e8711ae3ca0d23ebfcfc4a37e98db908e1e7d35f115214edbeb04447fc1ef7e411925c7438c2bc', 1, 3, NULL, '[]', 0, '2019-09-13 14:06:48', '2019-09-13 14:06:48', '2020-09-13 07:06:48'),
 ('1c98e5d38c1ec06a0bf50915eb0eadf51697e3cea826945cb373e42c49cb685ad9b13ae41b087e0d', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-15 05:29:36', '2019-07-15 05:29:36', '2020-07-15 10:29:36'),
 ('23604b02217a8ddee9a52b7ab1f2b73134bc9e8ac3f203416595ce3c52adf64d5ae9c858712e21ed', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-09-01 00:45:38', '2019-09-01 00:45:38', '2020-08-31 17:45:38'),
+('24faeaa1c91bdd6e8db502d6cf9422f1990d1abed9061c69f2ee62ca7f526743d5ee0db232466bf2', 1, 3, NULL, '[]', 0, '2019-10-30 03:41:28', '2019-10-30 03:41:28', '2020-10-29 20:41:28'),
 ('26ad29dcf2c4222c7cb81f51d6d90c419171eeaac35384f371612bda977b316822e56e406afcdb78', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-11 12:27:42', '2019-07-11 12:27:42', '2020-07-11 17:27:42'),
 ('287851941255b63c5631a51603562abf079da53d1cd837032d99baf4c3fbe2d6d7e1441bf0b6595c', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-09-01 01:58:43', '2019-09-01 01:58:43', '2020-08-31 18:58:43'),
 ('2bc617c3beed6184457b965cdcce8c48805d434a423e056771af0b65e50c50682bad7ef624d1ac78', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-06-15 11:26:44', '2019-06-15 11:26:44', '2020-06-15 16:26:44'),
 ('2dafdfee63cf24f685f9db07270baeb6cd894d3e2dcd5c3482b29be322f83630a381e41d0e89f69b', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:30:58', '2019-07-24 08:30:58', '2020-07-24 13:30:58'),
 ('2e1a5dc748c839b7fa6be3ba1d126aa7df1d8e596abc7b3725d8f94939778b981c8576024f581e13', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-06-18 04:09:16', '2019-06-18 04:09:16', '2020-06-18 09:09:16'),
 ('2fea4bd966a5da26cc3ddc23f83b34fe387c449d17c12155ba91ef5dc79fd4bd779d0895bd5b67fe', 1, 3, NULL, '[]', 0, '2019-09-03 13:01:33', '2019-09-03 13:01:33', '2020-09-03 06:01:33'),
+('32ec5060297cd98aaef84849b107b8f665eb3d3035831417231e297036bb203efa052625a9516059', 1, 3, NULL, '[]', 0, '2019-10-23 05:04:46', '2019-10-23 05:04:46', '2020-10-22 22:04:46'),
 ('33ccce258633757480e7c6833ab80c3bc2aa4536f28c8da22cbe4fc7b677c51e75794cb7e052b676', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:19:05', '2019-07-24 08:19:05', '2020-07-24 13:19:05'),
 ('36d1492901e0b9889178b2eba4bde780b4448d7a601a462dfa72ad7359a7adf0eb38f5daa52b3c75', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-06-21 08:48:41', '2019-06-21 08:48:41', '2020-06-21 13:48:41'),
 ('55e62012eda41e2bf05824837050479227d4f300c4e650bbfbdbfcaa162c3add94176ca7ecf0ba68', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-06-26 06:20:08', '2019-06-26 06:20:08', '2020-06-26 11:20:08'),
@@ -235,6 +151,7 @@ INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes
 ('bc494718a104327369fe4a4da809b4705a82672e987bfec9f50d9e6bb9294c655a0f549c618b74cd', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-09-01 00:46:25', '2019-09-01 00:46:25', '2020-08-31 17:46:25'),
 ('cbf04b28950049faca3dbf822e07525568e009f3307ae3f6ebcb8dff44d9530934e94d1588b0cdbb', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:29:44', '2019-07-24 08:29:44', '2020-07-24 13:29:44'),
 ('cc6000876600a223f8a01505b83cec97b435a9012061e4b705985ba05e222384c55a66a186841bdb', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-09-01 04:00:27', '2019-09-01 04:00:27', '2020-08-31 21:00:27'),
+('d308196919eca229e5e518ca2fa736d39c6000a5cdd8c17258434cb2317bb353dc9e7bc2e1e75231', 1, 3, NULL, '[]', 0, '2019-10-17 14:12:19', '2019-10-17 14:12:19', '2020-10-17 07:12:19'),
 ('d35caf4499010f9e37f02ae793197dcd6b6108130711ce46ed2b7c61ed453521865998354b006fe5', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:19:15', '2019-07-24 08:19:15', '2020-07-24 13:19:15'),
 ('d61173f29bc22da2c7228cebcbb9c4cdbd962d899d6f07519b3d36121b30e55e14f49cbd2200c168', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-09-01 04:13:18', '2019-09-01 04:13:18', '2020-08-31 21:13:18'),
 ('d841fc6a2f450c97f92e567ea8be4e4f3ba0c5814104fc7de123b829039be0efc35878ee8db33e02', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:22:59', '2019-07-24 08:22:59', '2020-07-24 13:22:59'),
@@ -242,6 +159,7 @@ INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes
 ('edf9fc7146de39f68fe092aaa2333506637f4e71ecef1512ccc72d8be46330fc8c59fb052688aa17', 1, 3, NULL, '[]', 0, '2019-09-17 13:37:08', '2019-09-17 13:37:08', '2020-09-17 06:37:08'),
 ('edff4af5e27ae2a13c8a743cb9daf9413ee9384cb6b9a9872777b6088ac7ae428a1a49e1ac70f1c0', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:20:50', '2019-07-24 08:20:50', '2020-07-24 13:20:50'),
 ('ee6d7e77f5061f1e3ea648793e3a082fb1303ed54168899d0baa54115f0c915afbd4e10a609b0c1b', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-24 08:28:03', '2019-07-24 08:28:03', '2020-07-24 13:28:03'),
+('f06d5a3a78f67a13754710ac000b2960ec95b0c6756c4edd3246e14462001dd3f8d78899c352feb9', 1, 3, NULL, '[]', 0, '2019-10-29 04:36:53', '2019-10-29 04:36:53', '2020-10-28 21:36:53'),
 ('fc90e1929655dadb0f70dad75b262e61ce24760276c4cfcdff6dd64ab277ea90f6bf878e6d752f1f', 1, 1, 'Laravel Password Grant Client', '[]', 0, '2019-07-15 05:44:42', '2019-07-15 05:44:42', '2020-07-15 10:44:42');
 
 -- --------------------------------------------------------
@@ -330,8 +248,11 @@ INSERT INTO `oauth_refresh_tokens` (`id`, `access_token_id`, `revoked`, `expires
 ('40177767ca9315887c152491eed66cbfbd97854f64f82de649cdb8c84e54e909245bc31e9b15d9d1', '2319681e2110e52665f39c32e7de39ae4b79a736ed31c3db78c090d6837cea1f02f08818336beab4', 0, '2020-09-17 04:41:00'),
 ('41d249712aeab6a87b1bb61256ad2e89d573746d6379c345640179d02bd639dd90a60fef9fcc2174', 'a9300690e20fc1e701ec2c95e14157ca8e207d9fc33c1fd247830f36bd058eb87f631afdc8a9720a', 0, '2020-09-17 05:37:34'),
 ('464ef8126f2e9eceb29309672fd4798ba09a8d258e25228137338dcc122cb65b60dbd62082eddf9e', 'edf9fc7146de39f68fe092aaa2333506637f4e71ecef1512ccc72d8be46330fc8c59fb052688aa17', 0, '2020-09-17 06:37:08'),
+('4ce980db438ae98d437fd0febe3154b5b724650d0618261d42a1692b8b162b3a05d74f73ab6ba6b4', 'f06d5a3a78f67a13754710ac000b2960ec95b0c6756c4edd3246e14462001dd3f8d78899c352feb9', 0, '2020-10-28 21:36:54'),
 ('5d98fbd27484fd5571f621aa927ae8c64e0791891bf432124df680717954515a90b09af525a66a39', '6df3ed0effa3df0f44c82d942f6f8459d7ff2aa3fda12ee1ff4e10b42eb99bb0cb07a1b6ee017f32', 0, '2020-09-03 05:52:10'),
+('61e0b7e7a3065909b44247199c0cb0043a89f81171541350fe0fcb4a905c75b00abf83110dade33a', 'd308196919eca229e5e518ca2fa736d39c6000a5cdd8c17258434cb2317bb353dc9e7bc2e1e75231', 0, '2020-10-17 07:12:19'),
 ('65af6acbd8f1e70c1a96a5b3172250a134102e74e9fd47d83182bf3062d42c5d6716314b5ab616c3', '57872654356bb36e73df9559c8b5c00c6773e5f964682a567ba79cfea8e93e30937d62de50a44897', 0, '2020-09-03 05:02:40'),
+('79540ed530b265274f16903c1b30ab0933f2e7fbff851e3ebbcc2e3843fd61ea65820e1e5d3b39ec', '32ec5060297cd98aaef84849b107b8f665eb3d3035831417231e297036bb203efa052625a9516059', 0, '2020-10-22 22:04:47'),
 ('823f58b256e7df731f03101ac51501ffc972b1de38f327c615f5da8c8025537b9effd45494059c03', '187775a9e3770424cc9793c71e62e0038df1108baa6e473b7533f5f88fb03c7c5e18acf2a27dfd0e', 0, '2020-09-17 20:44:38'),
 ('8cc1290c84c6a54514fdc1a2d917c5d9c66e65c70e14265cc7c0a74c24ed06054c0af98ea17ef7ce', '30c268f59a9c0911090263e2212da13e575c3c94ddf0f8f50201b0a667b24c9dda15d474d498aa23', 0, '2020-09-17 06:41:25'),
 ('8f8b5da86f0e3abb991d986c09a6d6b652820538b26bc6175207262bcd0eb3dc6a3ec83c577a4c9d', 'b83937515ab71c0ebb3ea01e833561aa6b85e61138eef2ef4f835bade070029ee318e852be94314e', 0, '2020-09-17 05:40:11'),
@@ -339,6 +260,7 @@ INSERT INTO `oauth_refresh_tokens` (`id`, `access_token_id`, `revoked`, `expires
 ('9543cb0ba3bbc9b97bb6898cc4998ef899f9dac86952659228a3bde91b284feb7f1736e278b0dc1c', '39e808bba26169493fa577adf4d256cc1a221f5c9ca385444da3213361efddd12e9f92c45f1bfcd0', 0, '2020-09-17 20:36:58'),
 ('9cc1cb3fd7764d1ab41de3470687fe4d50b90937a97b61899967d38271a98c97f5a26fea8e9afa5b', '17e8711ae3ca0d23ebfcfc4a37e98db908e1e7d35f115214edbeb04447fc1ef7e411925c7438c2bc', 0, '2020-09-13 07:06:48'),
 ('9d7fd7d42f56f9342a7d1dae3bf97aa751a4900ce023cb1ffe0015ac68587fe49496d0a1bf0de7f1', '2fea4bd966a5da26cc3ddc23f83b34fe387c449d17c12155ba91ef5dc79fd4bd779d0895bd5b67fe', 0, '2020-09-03 06:01:33'),
+('b9e2f8230b54367c8efb1fa6a1724263242b1317abfad49556edf395e1fd94c50eb241cba3625646', '24faeaa1c91bdd6e8db502d6cf9422f1990d1abed9061c69f2ee62ca7f526743d5ee0db232466bf2', 0, '2020-10-29 20:41:28'),
 ('bf5cf4aa6d056a7e5348b497b3bc4b118b8f5fcaf04afc251f7eaaff8adb3d11efc6232fb3607fb4', '72073e6ec04eb00d9cd5146ddcbccf671e2dbcf781082a6be9d56203b4a8eca1acda8ef3a06eaaac', 0, '2020-09-17 20:45:03'),
 ('cc91b987e09fe8985d4f3cb395fd3aeed4ba505adb07e838b445539b47b15a2ef99acf0a2bdc6e34', '8fc23e6cb75a2220b5c0cd7e90acae6a9b75b65e5c71fdb2931a279cca4a94d83325ea95bd178dd7', 0, '2020-09-03 20:39:28'),
 ('e68433e62d719dff69a68c421edbedf007eda0142c7053b78ad7b02b6aa680e396acf89353924ad1', '8ea39fc7b0229681892b41d406e62ac4b3657baaec0f19baf334c90637a549e0734d064dbdd75884', 0, '2020-09-17 20:10:26');
@@ -430,7 +352,9 @@ INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`, `ro
 (7, 'SUPER', 'web', '2019-07-12 06:27:09', '2019-07-12 06:27:09', NULL, 'asda'),
 (8, 'CLIENT', 'web', '2019-07-16 11:41:54', NULL, 'Client', 'Client'),
 (9, 'New T', 'web', '2019-07-29 09:40:30', '2019-07-29 09:40:30', NULL, 'asda'),
-(10, 'NEWROLE', 'web', '2019-09-17 12:56:09', '2019-09-17 12:58:18', 'sqw', 'ROLE DISPLAY NAME');
+(10, 'NEWROLE', 'web', '2019-09-17 12:56:09', '2019-09-17 12:58:18', 'sqw', 'ROLE DISPLAY NAME'),
+(11, 'imzza', 'web', '2019-10-30 03:41:50', '2019-10-30 03:42:00', '321312312', 'qwqwqw'),
+(12, 'imzzasa', 'web', '2019-10-30 03:51:51', '2019-10-30 03:51:51', NULL, 'qwqwqw');
 
 -- --------------------------------------------------------
 
@@ -468,8 +392,6 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (18, 1),
 (19, 1),
 (20, 1),
-(21, 1),
-(22, 1),
 (23, 1),
 (1, 2),
 (1, 3),
@@ -496,6 +418,38 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (20, 9),
 (21, 9),
 (22, 9);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `about` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address2` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `first_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `state` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `zip` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `offers` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `about`, `address`, `address2`, `city`, `email`, `first_name`, `gender`, `image`, `last_name`, `password`, `state`, `zip`, `offers`, `created_at`, `updated_at`) VALUES
+(1, 'qwqwqwqwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwqwqwqqwqwqwqwqwqwqwqwqwq', 'qwqwqww', 'qwqwqwqw', 'qwqwqw', 'irfanullah73@gmail.com', 'qwqwq', 'male', '1571780681.jpeg', 'qwqwq', 'qwqwqw', 'LA', '54000', 1, '2019-10-23 11:44:41', '2019-10-23 11:44:41');
 
 -- --------------------------------------------------------
 
@@ -534,14 +488,6 @@ INSERT INTO `users` (`id`, `name`, `first_name`, `last_name`, `email`, `phone_no
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `eebiotbl`
---
-ALTER TABLE `eebiotbl`
-  ADD PRIMARY KEY (`weeid`),
-  ADD UNIQUE KEY `eeid` (`eeid`),
-  ADD KEY `LOAReasonCode` (`LOAReasonCode`);
 
 --
 -- Indexes for table `migrations`
@@ -623,6 +569,12 @@ ALTER TABLE `role_has_permissions`
   ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -634,40 +586,47 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `eebiotbl`
---
-ALTER TABLE `eebiotbl`
-  MODIFY `weeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1281;
---
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+
 --
 -- AUTO_INCREMENT for table `oauth_clients`
 --
 ALTER TABLE `oauth_clients`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `oauth_personal_access_clients`
 --
 ALTER TABLE `oauth_personal_access_clients`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- Constraints for dumped tables
 --
@@ -690,7 +649,9 @@ ALTER TABLE `model_has_roles`
 ALTER TABLE `role_has_permissions`
   ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
