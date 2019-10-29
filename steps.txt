@@ -50,3 +50,21 @@ return json_decode((string) $response->getBody(), true);
 
 For Vue table2 Props Issue
 If you using vee-validate plugin you can init it like this - Vue.use(VeeValidate, {fieldsBagName: 'formFields'})
+
+
+
+For Running without virtual Host
+change the folowing files.
+1. webpack.mix.js
+Add pubicPath: '/spa'in webpack config
+
+2. Store/indesx.js
+add base option 
+base: '/base/',
+
+3. Change Baseurl in the following files: baseUrl
+Store/store.js 
+main.js
+
+
+

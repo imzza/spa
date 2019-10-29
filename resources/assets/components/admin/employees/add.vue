@@ -1,412 +1,106 @@
 <template>
     <div>
-        <!-- Content Header (Page header) -->
-        <section class="content-header mb-4">
-            <b-card tag="article" class="mb-2">
-                <div class="row justify-content-center">
-                    <div class="col-9 ">
-                        <div class="row justify-content-center">
-                            <h4>Add Employee</h4>
-                        </div>
-                        <form @submit.prevent="addEmployee">
-                            <div class="form-group row">
-                                <label for="EEFN"class="col-sm-2 form-control-label">First Name</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="EEFN"
-                                        name="EEFN"
-                                        v-model="model.EEFN"
-                                        v-validate="'required'"
-                                    />
-                                    <span v-show="errors.has('EEFN')" class="help is-danger">{{ errors.first('EEFN') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="EEMI"class="col-sm-2 form-control-label">Middle Name</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="EEMI"
-                                        name="EEMI"
-                                        v-model="model.EEMI"
-                                    />
-                                    <span v-show="errors.has('EEMI')" class="help is-danger">{{ errors.first('EEMI') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="EELN"class="col-sm-2 form-control-label">Last Name</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="EELN"
-                                        name="EELN"
-                                        v-model="model.EELN"
-                                        v-validate="'required'"
-                                    />
-                                    <span v-show="errors.has('EELN')" class="help is-danger">{{ errors.first('EELN') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="eeName"class="col-sm-2 form-control-label">Full Name</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="eeName"
-                                        name="eeName"
-                                        v-model="model.eeName"
-                                        v-validate="'required'"
-                                    />
-                                    <span v-show="errors.has('eeName')" class="help is-danger">{{ errors.first('eeName') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="SSN"class="col-sm-2 form-control-label">SSN</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="SSN"
-                                        name="SSN"
-                                        v-model="model.SSN"
-                                        v-validate="'required'"
-                                    />
-                                    <span v-show="errors.has('SSN')" class="help is-danger">{{ errors.first('SSN') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="Add1"class="col-sm-2 form-control-label">Adddress1</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="Add1"
-                                        name="Add1"
-                                        v-model="model.Add1"
-                                        v-validate="'required'"
-                                    />
-                                    <span v-show="errors.has('Add1')" class="help is-danger">{{ errors.first('Add1') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="Add2"class="col-sm-2 form-control-label">Adddress2</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="Add2"
-                                        name="Add2"
-                                        v-model="model.Add2"
-                                    />
-                                    <span v-show="errors.has('Add2')" class="help is-danger">{{ errors.first('Add2') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="City"class="col-sm-2 form-control-label">City</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="City"
-                                        name="City"
-                                        v-model="model.City"
-                                    />
-                                    <span v-show="errors.has('City')" class="help is-danger">{{ errors.first('City') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="AddState"class="col-sm-2 form-control-label">State</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="AddState"
-                                        name="AddState"
-                                        v-model="model.AddState"
-                                    />
-                                    <span v-show="errors.has('AddState')" class="help is-danger">{{ errors.first('AddState') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="Zip"class="col-sm-2 form-control-label">Zip</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="Zip"
-                                        name="Zip"
-                                        v-model="model.Zip"
-                                    />
-                                    <span v-show="errors.has('Zip')" class="help is-danger">{{ errors.first('Zip') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="Phone1"class="col-sm-2 form-control-label">Phone1</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="Phone1"
-                                        name="Phone1"
-                                        v-model="model.Phone1"
-                                    />
-                                    <span v-show="errors.has('Phone1')" class="help is-danger">{{ errors.first('Phone1') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="Phone2"class="col-sm-2 form-control-label">Phone2</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="Phone2"
-                                        name="Phone2"
-                                        v-model="model.Phone2"
-                                    />
-                                    <span v-show="errors.has('Phone2')" class="help is-danger">{{ errors.first('Phone2') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="DOB"class="col-sm-2 form-control-label">DOB</label >
-                                <div class="col-sm-10">
-                                    <date-picker  type="date" data-vv-name="DOB" format="MM/DD/YYYY" lang="en" v-model="model.DOB" v-validate="'required'">
-                                    </date-picker>
-                                    <span v-show="errors.has('DOB')" class="help is-danger">{{ errors.first('DOB') }}</span>
-                                </div>
-                            </div>
-                            
-                            
-
-                            <div class="form-group row">
-                                <label for="OpenFileDate"class="col-sm-2 form-control-label">OpenFileDate</label >
-                                <div class="col-sm-10">
-                                    <date-picker  type="date" data-vv-name="OpenFileDate" format="MM/DD/YYYY" lang="en" v-model="model.OpenFileDate" v-validate="'required'">
-                                    </date-picker>
-                                    <span v-show="errors.has('OpenFileDate')" class="help is-danger">{{ errors.first('OpenFileDate') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="EndOfServiceDate"class="col-sm-2 form-control-label">EndOfServiceDate</label >
-                                <div class="col-sm-10">
-                                    <date-picker  type="date" data-vv-name="EndOfServiceDate" format="MM/DD/YYYY" lang="en" v-model="model.EndOfServiceDate">
-                                    </date-picker>
-                                    <span v-show="errors.has('EndOfServiceDate')" class="help is-danger">{{ errors.first('EndOfServiceDate') }}</span>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group row">
-                                <label for="email1"class="col-sm-2 form-control-label">Email1</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="email"
-                                        class="form-control"
-                                        id="email1"
-                                        name="email1"
-                                        v-model="model.email1"
-                                        v-validate="'required|email'"
-                                    />
-                                    <span v-show="errors.has('email1')" class="help is-danger">{{ errors.first('email1') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="isMinor"class="col-sm-2 form-control-label">isMinor</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="checkbox"
-                                        class="form-check"
-                                        id="isMinor"
-                                        :true-value="1"
-                                        name="isMinor"
-                                        v-model="model.isMinor"
-                                    />
-                                    <span v-show="errors.has('isMinor')" class="help is-danger">{{ errors.first('isMinor') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="FedStatus"class="col-sm-2 form-control-label">FedStatus</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="FedStatus"
-                                        name="FedStatus"
-                                        v-model="model.FedStatus"
-                                        v-validate="'required'"
-                                    />
-                                    <span v-show="errors.has('FedStatus')" class="help is-danger">{{ errors.first('FedStatus') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="FedAllow"class="col-sm-2 form-control-label">FedAllow</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="number"
-                                        step="any"
-                                        class="form-control"
-                                        id="FedAllow"
-                                        name="FedAllow"
-                                        v-model="model.FedAllow"
-                                        v-validate="'decimal:4'"
-                                    />
-                                    <span v-show="errors.has('FedAllow')" class="help is-danger">{{ errors.first('FedAllow') }}</span>
-                                </div>
-                            </div>
-
-                          
-
-                            <div class="form-group row">
-                                <label for="EFWT"class="col-sm-2 form-control-label">EFWT</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="number"
-                                        step="any"
-                                        class="form-control"
-                                        id="EFWT"
-                                        name="EFWT"
-                                        v-model="model.EFWT"
-                                        v-validate="'decimal:4'"
-                                    />
-                                    <span v-show="errors.has('EFWT')" class="help is-danger">{{ errors.first('EFWT') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="EFW_PER"class="col-sm-2 form-control-label">EFW%</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="number"
-                                        step="any"
-                                        class="form-control"
-                                        id="EFW_PER"
-                                        name="EFW_PER"
-                                        v-model="model.EFW_PER"
-                                        v-validate="'decimal:4'"
-                                    />
-                                    <span v-show="errors.has('EFW_PER')" class="help is-danger">{{ errors.first('EFW_PER') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="EFW"class="col-sm-2 form-control-label">EFW$</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="number"
-                                        step="any"
-                                        class="form-control"
-                                        id="EFW"
-                                        name="EFW"
-                                        v-model="model.EFW"
-                                        v-validate="'decimal:4'"
-                                    />
-                                    <span v-show="errors.has('EFW')" class="help is-danger">{{ errors.first('EFW') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="StStatus"class="col-sm-2 form-control-label">StStatus</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="StStatus"
-                                        name="StStatus"
-                                        v-model="model.StStatus"
-                                        v-validate="'required'"
-                                    />
-                                    <span v-show="errors.has('StStatus')" class="help is-danger">{{ errors.first('StStatus') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="StAllow"class="col-sm-2 form-control-label">StAllow</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="number"
-                                        step="any"
-                                        class="form-control"
-                                        id="StAllow"
-                                        name="StAllow"
-                                        v-model="model.StAllow"
-                                        v-validate="'decimal:4'"
-                                    />
-                                    <span v-show="errors.has('StAllow')" class="help is-danger">{{ errors.first('StAllow') }}</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="ESWT"class="col-sm-2 form-control-label">ESWT</label >
-                                <div class="col-sm-10">
-                                    <input
-                                        type="number"
-                                        step="any"
-                                        class="form-control"
-                                        id="ESWT"
-                                        name="ESWT"
-                                        v-model="model.ESWT"
-                                        v-validate="'decimal:4'"
-                                    />
-                                    <span v-show="errors.has('ESWT')" class="help is-danger">{{ errors.first('ESWT') }}</span>
-                                </div>
-                            </div>
-                            
-
-
-
-
-                          
-
-                            <!-- <div class="form-group row">
-                                <label for="corpid"class="col-sm-2 form-control-label">Client</label >
-                                <div class="col-sm-10">
-                                    <select name="corpid" id="corpid" class="form-control" v-model="model.clientid" v-validate="'required'">
-                                        <option v-for="(client, ind) in clients" :key="client.id" :value="client.id">{{ client.EEFN }}</option>
-                                            
-                                    </select>
-                                    <span v-show="errors.has('clientid')" class="help is-danger">{{ errors.first('clientid') }}</span>
-                                </div>
-                            </div> -->
-
-                         
-                           
-                            <div class="form-group row">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-secondary"
-                                    >
-                                        Add
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+        <div class="row justify-content-center bg-white">
+            <div class="col-10">
+                <div class="page-header">
+                    <h1>Add Record</h1>
                 </div>
-            </b-card>
-        </section>
+                <form @submit.prevent="onSubmit">
+                    <div class="form-group">
+                        <label for="email" class="control-label">Email:</label>
+                        <input type="text" name="email" class="form-control form-control-lg" :class="{'is-invalid': errors.has('email') }" v-model="model.email" v-validate="'required|email'">
+                        <span class="help text-danger" v-if="errors.has('email')">{{ errors.first('email') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label">Password:</label>
+                        <input type="password" name="password" id="password" class="form-control form-control-lg" v-validate="'required|min:3'" v-model="model.password" :class="{'is-invalid': errors.has('password') }">
+                        <span class="help text-danger" v-if="errors.has('password')">{{ errors.first('password') }}</span>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="first_name">First Name</label>
+                            <input type="text" class="form-control form-control-lg" data-vv-as="First Name" name="first_name" id="first_name" placeholder="First Name" v-model="model.first_name" :class="{'is-invalid': errors.has('first_name') }" v-validate="'required'">
+                            <span class="help text-danger" v-if="errors.has('first_name')">{{ errors.first('first_name') }}</span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="last_name">last Name</label>
+                            <input type="text" class="form-control form-control-lg" data-vv-as="Last Name" name="last_name" id="last_name" placeholder="Last Name" v-model="model.last_name" :class="{'is-invalid': errors.has('last_name') }" v-validate="'required'">
+                            <span class="help text-danger" v-if="errors.has('last_name')">{{ errors.first('last_name') }}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control form-control-lg" id="address" name="address" placeholder="1234 Main St" v-model="model.address" :class="{ 'is-invalid': errors.has('address') }" v-validate="'required'">
+                        <span class="help text-danger" v-if="errors.has('address')">{{ errors.first('address') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="address2">Address 2</label>
+                        <input type="text" class="form-control form-control-lg" name="address2" id="address2" placeholder="" v-model="model.address2" :class="{ 'is-invalid': errors.has('address2') }">
+                        <span class="help text-danger" v-if="errors.has('address2')">{{ errors.first('address2') }}</span>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control form-control-lg" id="city" name="city" v-model="model.city" :class="{ 'is-invalid': errors.has('city') }" v-validate="'required'">
+                            <span class="help text-danger" v-if="errors.has('city')">{{ errors.first('city') }}</span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="state">State</label>
+                            <select id="state" class="form-control form-control-lg" name="state" v-model="model.state" :class="{ 'is-invalid': errors.has('state') }" v-validate="'required'">
+                                <option v-for="(st,ind) in states" :key="st.value" :value="st.value">{{ st.name }}</option>
+                            </select>
+                            <span class="help text-danger" v-if="errors.has('state')">{{ errors.first('state') }}</span>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="zip">Zip</label>
+                            <input type="text" class="form-control form-control-lg" id="zip" name="zip" v-model="model.zip" :class="{ 'is-invalid': errors.has('zip') }" v-validate="'required'">
+                            <span class="help text-danger" v-if="errors.has('zip')">{{ errors.first('zip') }}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="chk"></label> -->
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" name="offers" id="offers" v-model="model.offers" :true-value="1">
+                            <label class="custom-control-label" for="offers">Send Me offers</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="male" name="gender" class="custom-control-input" :value="'male'" v-model="model.gender" v-validate="'required'">
+                            <label class="custom-control-label" for="male">Male</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="female" name="gender" class="custom-control-input" v-model="model.gender" v-validate="'required'" :value="'female'">
+                            <label class="custom-control-label" for="female">Female</label>
+                        </div>
+                        <span class="help text-danger" v-if="errors.has('gender')">{{ errors.first('gender') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Profile Image</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input form-control form-control-lg" id="" v-validate="'required|mimes:image/*'" name="image" data-vv-name="image" data-vv-as="image" @change="readFile($event)" :class="{ 'is-invalid': errors.has('image') }">
+                            <label class="custom-file-label" for="image">Choose file...</label>
+                            <span class="help text-danger" v-if="errors.has('image')">{{ errors.first('image') }}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="about">Example textarea</label>
+                        <textarea class="form-control form-control-lg" id="about" name="about" rows="4" v-model="model.about" :class="{ 'is-invalid': errors.has('about') }" v-validate="'required|min:100'"></textarea>
+                        <span class="help text-danger" v-if="errors.has('about')">{{ errors.first('about') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <v-button :loading="busy">
+                            Submit
+                        </v-button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </template>
 <script>
-import Vue from "vue";
+    import Vue from "vue";
 import VeeValidate from "vee-validate";
 Vue.use(VeeValidate); //,{enableAutoClasses: true }
 
@@ -415,9 +109,6 @@ import DatePicker from "vue2-datepicker";
 
 var moment = require("moment");
 
-
- // <span v-show="errors.has('confirm_password')" class="text-danger">{{ errors.first('confirm_password') }}</span>
-
 var moment = require("moment");
 // import clients from '~/api/clients.js';
 import employees from '~/api/employees.js';
@@ -425,49 +116,53 @@ import employees from '~/api/employees.js';
 export default {
     name: "corporations_add",
     components: {DatePicker},
-    data() {
-        return {
-            clients: [],
-            model:{
-            }
-        };
-    },
+    data: () => ({
+        busy: false,
+        states: [
+            { name: 'Choose...', value: '' },
+            { name: 'Los Angles', value: 'LA' },
+            { name: 'New Yark', value: 'NY' },
+            { name: 'Paris', value: 'PA' },
+        ],
+        model:{
+            image: '',
+        },
+        bimage: '',
+    }),
     mounted() {
         // this.getClients();
     },
     methods: {
-        getClients(){
-            clients.view(data => {
-                this.clients = data;
-            }, err => {
-                console.log(err.response);
-            });
+        readFile(e) {
+            let files = e.target.files || e.dataTransfer.files;
+            if (!files.length)
+                return;
+            this.createImage(files[0]);
+            this.bimage = files[0];
+        },
+        createImage(file) {
+            let reader = new FileReader();
+            let vm = this;
+            reader.onload = (e) => {
+                vm.model.image = e.target.result;
+            };
+            reader.readAsDataURL(file);
         },
 
-        addEmployee(){
-            let self = this
+        onSubmit(){
+            let self = this;
             self.$validator.validateAll().then(result => {
                 if (result) {
-                    if (self.model.EndOfServiceDate !='') {
-                        self.model.EndOfServiceDate =  moment(self.model.EndOfServiceDate).format('YYYY-MM-DD HH:mm:ss');
-                    }
-                   
-                   self.model.DOB =  moment(self.model.DOB).format('YYYY-MM-DD HH:mm:ss');
-                   self.model.OpenFileDate =  moment(self.model.OpenFileDate).format('YYYY-MM-DD HH:mm:ss');
-                    
-
-                    employees.add(self.model, data => {
-                        Notify.success('Created Successfully.');
-                        self.$router.push({path: '/admin/employees_all'});
-                        // console.log(data);
-                        self.model = {};
-                        self.errors.items = [];
-                        // self.$nextTick(() => self.$validator.reset())
-                    }, err => {
-                        self.$setErrorsFromResponse(err.response.data);
-                       Notify.error(err.response.data.message);
-                        // console.log('Rdata', err.response.data);
-                        // console.log('Data', err.data);
+                    self.busy = true;
+                    console.log(self.model);
+                    User.save(self.model, data => {
+                        self.busy = false;
+                        self.$router.push({name: 'index'});
+                        Notify.success('Oh No Scuuess ...');
+                    }, err =>{
+                        self.busy = false;
+                        console.log(err);
+                        this.$setErrorsFromResponse(err);
                     });
                 }
             });
@@ -476,5 +171,4 @@ export default {
     destroyed() {}
 };
 </script>
-
 <style type="text/css" scoped lang="scss"></style>

@@ -22,8 +22,8 @@ public/hot
 
 /.phpintel/
 js/
-vendor.js
-manifest.js
-main.js
+/vendor.js
+/manifest.js
+/main.js
 .idea
 .phpintel
