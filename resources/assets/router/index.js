@@ -9,6 +9,7 @@ const router = new VueRouter({
     routes: routes,
     linkActiveClass: "active",
     mode: 'history',
+    base: '/spa/',
     hash: false
 });
 

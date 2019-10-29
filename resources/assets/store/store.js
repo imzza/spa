@@ -3,9 +3,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
-var getUrl = window.location;
-var baseUrl = getUrl.protocol + "//" + getUrl.host; // + "/" + getUrl.pathname.split('/')[1]
-var prefix = getUrl.pathname.split('/')[2];
+var baseUrl = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname.split('/')[1];
 
 
 import Cookies from 'js-cookie'

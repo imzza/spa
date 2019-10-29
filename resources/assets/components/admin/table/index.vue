@@ -2,7 +2,7 @@
   <div>
     <filter-bar></filter-bar>
     <vuetable ref="vuetable"
-      api-url="/api/v1/employees_all"
+      :api-url="`${$store.state.baseUrl}/api/v1/employees_all`"
       :fields="flds"
       pagination-path=""
       :css="css.table"

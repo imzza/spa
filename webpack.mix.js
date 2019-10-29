@@ -58,6 +58,7 @@ mix.webpackConfig({
     },
     // https://github.com/JeffreyWay/laravel-mix/issues/936#issuecomment-331418769
     output: {
+      publicPath:'/spa/',
         // publicPath: path.resolve(__dirname, 'public'),
         chunkFilename: 'public/js/[name].[chunkhash].js',
         path: mix.config.hmr ? '/' : path.resolve(__dirname, './')
@@ -85,7 +86,7 @@ mix.options({
 // }
 
 // if (!mix.inProduction()) {
-//     mix.setResourceRoot('/time_clock/')
+    mix.setResourceRoot('/spa/')
 // }
 
 // mix.browserSync('timeclock.test');
