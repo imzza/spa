@@ -2,7 +2,7 @@
   <div>
     <filter-bar></filter-bar>
     <vuetable ref="vuetable"
-      api-url="http://vuetable.ratiw.net/api/users"
+      api-url="/api/v1/employees_all"
       :fields="flds"
       pagination-path=""
       :css="css.table"
@@ -64,45 +64,45 @@ export default {
         //   dataClass: 'text-center',
         // },
         {
-          name: 'name',
-          sortField: 'name',
+          name: 'first_name',
+          sortField: 'first_name',
         },
         {
           name: 'email',
           sortField: 'email'
         },
-        {
-          name: 'birthdate',
-          sortField: 'birthdate',
-          titleClass: 'text-center',
-          dataClass: 'text-center',
-          callback: 'formatDate|DD-MM-YYYY'
-        },
-        {
-          name: 'nickname',
-          sortField: 'nickname',
-          callback: 'allcap'
-        },
-        {
-          name: 'gender',
-          sortField: 'gender',
-          titleClass: 'text-center',
-          dataClass: 'text-center',
-          callback: 'genderLabel'
-        },
-        {
-          name: 'salary',
-          sortField: 'salary',
-          titleClass: 'text-center',
-          dataClass: 'text-right',
-          callback: 'formatNumber'
-        },
-        {
-          name: '__component:custom-actions',
-          title: 'Actions',
-          titleClass: 'text-center',
-          dataClass: 'text-center'
-        }
+        // {
+        //   name: 'birthdate',
+        //   sortField: 'birthdate',
+        //   titleClass: 'text-center',
+        //   dataClass: 'text-center',
+        //   callback: 'formatDate|DD-MM-YYYY'
+        // },
+        // {
+        //   name: 'nickname',
+        //   sortField: 'nickname',
+        //   callback: 'allcap'
+        // },
+        // {
+        //   name: 'gender',
+        //   sortField: 'gender',
+        //   titleClass: 'text-center',
+        //   dataClass: 'text-center',
+        //   callback: 'genderLabel'
+        // },
+        // {
+        //   name: 'salary',
+        //   sortField: 'salary',
+        //   titleClass: 'text-center',
+        //   dataClass: 'text-right',
+        //   callback: 'formatNumber'
+        // },
+        // {
+        //   name: '__component:custom-actions',
+        //   title: 'Actions',
+        //   titleClass: 'text-center',
+        //   dataClass: 'text-center'
+        // }
       ],
       css: {
         table: {

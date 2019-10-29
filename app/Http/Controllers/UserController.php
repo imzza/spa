@@ -19,9 +19,6 @@ use GuzzleHttp;
 
 
 class UserController extends Controller {
-    public $successStatus = 200;
-    public $unAuthorizedStatus = 401;
-    public $unprocessableStatus = 422;
 
     public function profile(Request $request){
         return response()->json(new UserResource($request->user()), 200);
@@ -124,7 +121,7 @@ class UserController extends Controller {
     }
 
     public function logout(Request $request){
-     $loggedOUt=$request->user()->token()->delete(); 
+        $loggedOUt=$request->user()->token()->delete(); 
         if($loggedOUt){
             return response()->json(['error'=>false, 'message' => 'success'], 200);
         }else{

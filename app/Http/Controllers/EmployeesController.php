@@ -42,8 +42,11 @@ class EmployeesController extends Controller
     
 
     public function employees_all(Request $request) {
-        echo '<pre>';
-        print_r($request->all());
+
+         $sortRules = $request->input('sort');
+        $limit = $request->input('per_page');
+        list($field, $dir) = explode('|', $sortRules);
+        return response()->json(User::orderBy($field, $dir)->paginate($limit), 200);
     }
 
 

@@ -91,7 +91,9 @@
 <script>
 import Vue from "vue";
 import VeeValidate from "vee-validate";
-Vue.use(VeeValidate); //events: '', , { enableAutoClasses: true }
+//Vue.use(VeeValidate); //events: '', , { enableAutoClasses: true }
+
+Vue.use(VeeValidate, {fieldsBagName: 'formFields'})
 
  // <span v-show="errors.has('confirm_password')" class="text-danger">{{ errors.first('confirm_password') }}</span>
 
