@@ -11,8 +11,7 @@ const roles = {
 				errorCb(resp.data);
 			}
 		}).catch(error =>{
-			console.log(error);
-			 errorCb(error); //.resp.data
+			errorCb(error);
 		});
 	},
 
@@ -25,8 +24,7 @@ const roles = {
 				errorCb(resp.data);
 			}
 		}).catch(error =>{
-			console.log(error);
-			 errorCb(error); //.resp.data
+			errorCb(error);
 		});
 	},
 	get_role(id, cb,errorCb){
@@ -39,8 +37,7 @@ const roles = {
 				errorCb(resp.data)
 			}
 		}).catch(error =>{
-			// console.log(error);
-			 errorCb(error); //.resp.data
+			errorCb(error);
 		});
 	},
 
@@ -54,8 +51,7 @@ const roles = {
 				errorCb(resp.data)
 			}
 		}).catch(error =>{
-			// console.log(error);
-			 errorCb(error); //.resp.data
+			errorCb(error);
 		});
 	},
 	delete_role(id,cb,errorCb){
@@ -68,8 +64,7 @@ const roles = {
 				errorCb(resp)
 			}
 		}).catch(error =>{
-			// console.log(error);
-			 errorCb(error); //.resp.data
+			errorCb(error);
 		});
 	},
 	assign_permissions(id,data, cb,errorCb){
@@ -81,8 +76,71 @@ const roles = {
 				errorCb(resp.data);
 			}
 		}).catch(error =>{
-			console.log(error);
-			 errorCb(error); //.resp.data
+			errorCb(error);
+		});
+	},
+	view_permissions(cb,errorCb){
+		axios.get(API_URL+ '/all_permissions')
+		.then(resp => {
+			if (resp.status == 200) {
+				cb(resp.data);
+			}else{
+				errorCb(resp.data);
+			}
+		}).catch(error =>{
+			errorCb(error);
+		});
+	},
+	add_permission(data, cb,errorCb){
+		axios.post(API_URL+ '/permissions', data)
+		.then(resp => {
+			if (resp.status == 201) {
+				cb(resp.data);
+			}else{
+				errorCb(resp.data);
+			}
+		}).catch(error =>{
+			errorCb(error);
+		});
+	},
+	get_permission(id, cb,errorCb){
+		axios.get(API_URL+ '/permissions/'+id)
+		.then(resp => {
+			console.log(resp);
+			if (resp.status == 200) {
+				cb(resp.data);
+			}else{
+				errorCb(resp.data)
+			}
+		}).catch(error =>{
+			errorCb(error);
+		});
+	},
+
+	update_permission(id,data, cb,errorCb){
+		axios.put(API_URL+ '/permissions/'+id, data)
+		.then(resp => {
+			console.log(resp);
+			if (resp.status == 200) {
+				cb(resp.data);
+			}else{
+				errorCb(resp.data)
+			}
+		}).catch(error =>{
+			errorCb(error);
+		});
+	},
+	delete_permission(id,cb,errorCb){
+		axios.delete(API_URL+ '/permissions/'+id)
+		.then(resp => {
+			console.log(resp);
+			if (resp.status == 204) {
+				cb(resp);
+			}else{
+				errorCb(resp)
+			}
+		}).catch(error =>{
+			errorCb(error);
 		});
 	},
 }
