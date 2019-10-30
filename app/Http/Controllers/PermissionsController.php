@@ -32,11 +32,24 @@ class PermissionsController extends Controller
     public function store(Request $request)
     {   
 
+        $request->validate([
+            'name' => 'required|unique:permissions,name',
+            'permissionkey' => 'required|unique:permissions,key',
+            'permissiontype' => 'required'
+            ],
+            [
+               'name.required' => 'Please enter a permission name',
+              'name.unique' => 'This permission already exists',
+              'permissionkey.required' => 'Please enter a permission display name',
+              'permissiontype.required' => 'Please enter a permission type'
+            ]
+        );
+
         $permission = new Permission();
         $permission->name = $request->name;
-        $permission->guard_name = $request->guard_name;
-        $permission->key = $request->key;
-        $permission->type = $request->type;
+        $permission->guard_name = $request->guard_name ? $request->guard_name : "web";
+        $permission->key = $request->permissionkey;
+        $permission->type = $request->permissiontype;
         $permission->save();
         if ($permission->id) {
             return response()->json($permission, 201);
@@ -76,8 +89,16 @@ class PermissionsController extends Controller
      */
     public function destroy(Permission $permission)
     {
-        $permission->delete();
-        return response()->json(nll, 204);
+        if ($permission) {
+            $delete = $permission->delete($permission);
+            if ($delete) {
+                return response()->json(null, 204);
+            }else{
+                return response()->json(['message' => 'Something went wrong'], 200);
+            }
+        }else{
+            return response()->json(['message' => 'Record Not Found'], 404);
+        }
     }
 
 

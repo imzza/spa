@@ -32,30 +32,23 @@ const menu_items = [
                 icon: 'fa fa-angle-double-right'
             },
             {
+                name: 'Permissions',
+                url: 'permissions_all',
+                link: admin+'/permissions_all',
+                icon: 'fa fa-angle-double-right'
+            },
+            {
+                name: 'Add Permissions',
+                url: 'permission_add',
+                link: admin+'/permission_add',
+                icon: 'fa fa-angle-double-right'
+            },
+            {
                 name: 'Assign Permissions',
                 url: 'permissions_assign',
                 link: admin+'/permissions_assign',
                 icon: 'fa fa-angle-double-right'
             },
-
-        // {
-        //     name: 'Add Permissions',
-        //     url: 'add_permissions',
-        //     link: admin+'/add_permissions',
-        //     icon: 'fa fa-angle-double-right'
-        // },
-        // {
-        //     name: 'View Permissions',
-        //     url: 'view_permissions',
-        //     link: admin+'/view_permissions',
-        //     icon: 'fa fa-angle-double-right'
-        // },
-        // {
-        //     name: 'Assign Permissions',
-        //     url: 'assign_permissions',
-        //     link: admin+'/assign_permissions',
-        //     icon: 'fa fa-angle-double-right'
-        // }
         ]
     }
 ];

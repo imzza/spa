@@ -100,6 +100,31 @@ export default  [
                     isLoggedIn: true,
                 }
             },
+            {
+                path: 'permissions_all',
+                component: resolve => require(['admin/permissions/index'], resolve),
+                meta: {
+                    title: "Permissions",
+                    isLoggedIn: true,
+                }
+            },
+            {
+                path: 'permission_add',
+                component: resolve => require(['admin/permissions/add'], resolve),
+                meta: {
+                    title: "Add Permission",
+                    isLoggedIn: true,
+                }
+            },
+            {
+                path: 'permission_edit/:id',
+                name: 'permission_edit',
+                component: resolve => require(['admin/permissions/edit'], resolve),
+                meta: {
+                    title: "Edit Permission",
+                    isLoggedIn: true,
+                }
+            },
         ]
     },
     
