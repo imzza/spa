@@ -1,27 +1,30 @@
 <template>
-  <div>
-    
-    <!-- Content Header (Page header) -->
-    <section class="page-content mb-4">
-
-      <Dashboard v-if="isEmp"></Dashboard>
-      
-      <div v-else>
-        <b-card tag="article">
-          <div class="row">
-            <div class="container">
-              <p>Not a Employee</p>
+    <div>
+        <!-- Content Header (Page header) -->
+        <section class="page-content mb-4">
+            <div v-if="isEmp">
+                <b-card tag="article">
+                    <div class="row">
+                        <div class="container">
+                            <p>Student Dashboard</p>
+                        </div>
+                    </div>
+                </b-card>
             </div>
-          </div>
-        </b-card>
-      </div>
-    </section>
-  </div>
+            <div v-else>
+                <b-card tag="article">
+                    <div class="row">
+                        <div class="container">
+                            <p>Admin Dashboard</p>
+                        </div>
+                    </div>
+                </b-card>
+            </div>
+        </section>
+    </div>
 </template>
 <script>
-
-
-// import Vue from "vue";
+    // import Vue from "vue";
 
 import Dashboard from '~/components/admin/employees/dashboard';
 
@@ -48,6 +51,5 @@ export default {
   destroyed: function() {}
 };
 </script>
-
-<style type="text/css" scoped  lang="scss">
+<style type="text/css" scoped lang="scss">
 </style>
