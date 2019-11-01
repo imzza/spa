@@ -24,7 +24,8 @@
                     <input type="checkbox" class="form-check-input">
                     <small>Remember Me</small>
                   </label>
-                  <button type="submit" class="btn btn-login float-right">Submit</button>
+                  <!-- <button type="submit" class="btn btn-login float-right">Submit</button> -->
+                  <v-button class="btn btn-login float-right" :loading="busy">Submit</v-button>
                 </div>
             </form>
           <div class="copy-text">Created with <i class="fa fa-heart"></i> by Grafreez</div>
@@ -76,12 +77,14 @@ export default {
       let self = this
       let res = await self.$validator.validateAll();
       if(res){
+        self.busy = true;
         try {
           let resp = await axios.post(this.$store.state.baseUrl+'/api/login', self.form);
           console.log(resp);
           let token = resp.data.access_token;
           self.$store.commit('SAVE_TOKEN',  {token: token, remember: false});
           this.$store.dispatch('permissions');
+          self.busy = false;
           self.$router.push({path: 'admin/dashboard'});
         } catch (e) {  console.log(e.response.data); }
       }

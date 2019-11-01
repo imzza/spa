@@ -49,5 +49,14 @@ Route::group(['middleware' => 'auth:api'], function(){
 		Route::put('permissions/{permission}', 'PermissionsController@update'); 
 		Route::delete('permissions/{permission}', 'PermissionsController@destroy');
 
+		Route::apiResource('students', 'StudentsController');
+		
+		// Route::get('api/students', 'StudentsController@index');
+		// Route::post('api/students', 'StudentsController@store');
+		// Route::get('api/students/{student}', 'StudentsController@show');
+		// Route::put('api/students/{student}', 'StudentsController@update');
+		// Route::delete('api/students/{student}', 'StudentsController@destroy');
+
+
 	});
 });
