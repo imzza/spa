@@ -12,6 +12,7 @@
         "facade/ignition": "^1.13",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",
+        "intervention/image": "^2.5",
         "laravel/framework": "^6.0",
         "laravel/helpers": "^1.1",
         "laravel/passport": "^7.2",
