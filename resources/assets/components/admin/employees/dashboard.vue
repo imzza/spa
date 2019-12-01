@@ -60,22 +60,12 @@
 
                 <div class="row">
                     <div class="col-3">
-                        <button
-                            type="button"
-                            class="btn btn-warning btn-lg btn-block h80"
-                            :disabled="$store.getters.clockInStatus != null && ['IN', 'BK'].includes($store.getters.clockInStatus) == true"
-                            @click="clockIn"
-                        >
+                        <button type="button" class="btn btn-warning btn-lg btn-block h80" :disabled="$store.getters.clockInStatus != null && ['IN', 'BK'].includes($store.getters.clockInStatus) == true" @click="clockIn">
                             Clock IN
                         </button>
                     </div>
                     <div class="col-3">
-                        <button
-                            type="button"
-                            class="btn btn-primary btn-lg btn-block h80"
-                            :disabled="$store.getters.clockInStatus == null || ['IN', 'BK'].includes($store.getters.clockInStatus) == false"
-                            @click="clockOut"
-                        >
+                        <button type="button" class="btn btn-primary btn-lg btn-block h80" :disabled="$store.getters.clockInStatus == null || ['IN', 'BK'].includes($store.getters.clockInStatus) == false" @click="clockOut">
                             Clock Out
                         </button>
                     </div>

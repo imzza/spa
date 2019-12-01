@@ -17,16 +17,7 @@
                             <div class="form-group row">
                                 <label for="rolename" class="col-sm-2 form-control-label">Role Display Name</label>
                                 <div class="col-sm-10">
-                                    <input
-                                        id="rolename"
-                                        v-model="model.rolename"
-                                        v-validate="'required'"
-                                        type="text"
-                                        class="form-control"
-                                        name="rolename"
-                                        placeholder="Role Display Name"
-                                        data-vv-as="Role display name"
-                                    />
+                                    <input id="rolename" v-model="model.rolename" v-validate="'required'" type="text" class="form-control" name="rolename" placeholder="Role Display Name" data-vv-as="Role display name" />
                                     <span v-show="errors.has('rolename')" class="help is-danger">{{ errors.first('rolename') }}</span>
                                 </div>
                             </div>
@@ -34,16 +25,7 @@
                             <div class="form-group row">
                                 <label for="role_descrip" class="col-sm-2 form-control-label">Role Description</label>
                                 <div class="col-sm-10">
-                                    <input
-                                        id="role_descrip"
-                                        v-model="model.role_descrip"
-                                        v-validate="'required'"
-                                        type="text"
-                                        class="form-control"
-                                        name="role_descrip"
-                                        placeholder="Role Description"
-                                        data-vv-as="Role description"
-                                    /><!--  data-vv-as="Role Description" -->
+                                    <input id="role_descrip" v-model="model.role_descrip" v-validate="'required'" type="text" class="form-control" name="role_descrip" placeholder="Role Description" data-vv-as="Role description" /><!--  data-vv-as="Role Description" -->
                                     <span v-show="errors.has('role_descrip')" class="help is-danger">{{ errors.first('role_descrip') }}</span>
                                 </div>
                             </div>

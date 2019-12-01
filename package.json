@@ -15,7 +15,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "lint": "eslint --ext .js,.vue resources/assets",
         "lint-fix": "eslint --fix --ext .js,.vue resources/assets",
-        "prettier": "./node_modules/.bin/prettier --write \"{,!(vendor|node_modules|public)/**/}*.{js,vue,scss,html}\" --print-width 200  --tab-width 4 --single-quote --trailing-comma es5",
+        "prettier": "./node_modules/.bin/prettier --write \"{,!(vendor|node_modules|public)/**/}*.{js,vue,scss,html}\" --print-width 1000  --tab-width 4 --single-quote --trailing-comma es5",
         "pre-php": "./node_modules/.bin/prettier --write \"{,!(vendor|node_modules|public)/**/}*.php\" --print-width 200  --tab-width 4 --single-quote --trailing-comma-php none --brace-style 1tbs --parser php"
     },
     "devDependencies": {

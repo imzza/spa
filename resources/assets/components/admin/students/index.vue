@@ -1,20 +1,7 @@
 <template>
     <div>
         <filter-bar />
-        <vuetable
-            ref="vuetable"
-            :api-url="`${ApiUrl}/students`"
-            :fields="flds"
-            pagination-path=""
-            :css="css.table"
-            :sort-order="sortOrder"
-            :multi-sort="true"
-            :http-fetch="myFetch"
-            detail-row-component="my-detail-row"
-            :append-params="moreParams"
-            @vuetable:cell-clicked="onCellClicked"
-            @vuetable:pagination-data="onPaginationData"
-        />
+        <vuetable ref="vuetable" :api-url="`${ApiUrl}/students`" :fields="flds" pagination-path="" :css="css.table" :sort-order="sortOrder" :multi-sort="true" :http-fetch="myFetch" detail-row-component="my-detail-row" :append-params="moreParams" @vuetable:cell-clicked="onCellClicked" @vuetable:pagination-data="onPaginationData" />
         <div class="vuetable-pagination">
             <vuetable-pagination-info ref="paginationInfo" info-class="pagination-info" />
             <vuetable-pagination ref="pagination" :css="css.pagination" @vuetable-pagination:change-page="onChangePage" />

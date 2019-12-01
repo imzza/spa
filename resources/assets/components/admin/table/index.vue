@@ -1,20 +1,7 @@
 <template>
     <div>
         <filter-bar />
-        <vuetable
-            ref="vuetable"
-            :api-url="`${$store.state.baseUrl}/api/v1/employees_all`"
-            :fields="flds"
-            pagination-path=""
-            :css="css.table"
-            :sort-order="sortOrder"
-            :multi-sort="true"
-            :http-fetch="myFetch"
-            detail-row-component="my-detail-row"
-            :append-params="moreParams"
-            @vuetable:cell-clicked="onCellClicked"
-            @vuetable:pagination-data="onPaginationData"
-        />
+        <vuetable ref="vuetable" :api-url="`${$store.state.baseUrl}/api/v1/employees_all`" :fields="flds" pagination-path="" :css="css.table" :sort-order="sortOrder" :multi-sort="true" :http-fetch="myFetch" detail-row-component="my-detail-row" :append-params="moreParams" @vuetable:cell-clicked="onCellClicked" @vuetable:pagination-data="onPaginationData" />
         <div class="vuetable-pagination">
             <vuetable-pagination-info ref="paginationInfo" info-class="pagination-info" />
             <vuetable-pagination ref="pagination" :css="css.pagination" @vuetable-pagination:change-page="onChangePage" />
@@ -138,9 +125,7 @@ export default {
             return value.toUpperCase();
         },
         genderLabel(value) {
-            return value === 'M'
-                ? '<span class="label label-success"><i class="glyphicon glyphicon-star"></i> Male</span>'
-                : '<span class="label label-danger"><i class="glyphicon glyphicon-heart"></i> Female</span>';
+            return value === 'M' ? '<span class="label label-success"><i class="glyphicon glyphicon-star"></i> Male</span>' : '<span class="label label-danger"><i class="glyphicon glyphicon-heart"></i> Female</span>';
         },
         formatNumber(value) {
             return value, 2;

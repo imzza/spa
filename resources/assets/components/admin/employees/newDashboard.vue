@@ -213,30 +213,12 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="validationDefault01">Department</label>
-                            <input
-                                v-for="(department, ind) in departments"
-                                v-if="details.deptid == department.deptid"
-                                type="text"
-                                id="validationDefault01"
-                                class="form-control"
-                                :value="department.deptname"
-                                placeholder="First name"
-                                required
-                            />
+                            <input v-for="(department, ind) in departments" v-if="details.deptid == department.deptid" type="text" id="validationDefault01" class="form-control" :value="department.deptname" placeholder="First name" required />
                             />
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationDefault02">Shift</label>
-                            <input
-                                type="text"
-                                id="validationDefault02"
-                                class="form-control"
-                                v-for="(shift, ind) in shifts"
-                                placeholder="Shift"
-                                v-if="details.shiftid == shift.shiftid"
-                                :value="shift.shift"
-                                required
-                            />
+                            <input type="text" id="validationDefault02" class="form-control" v-for="(shift, ind) in shifts" placeholder="Shift" v-if="details.shiftid == shift.shiftid" :value="shift.shift" required />
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="validationDefault02">Hours</label>
@@ -284,17 +266,7 @@
                             <div class="col-md-4 mb-3">
                                 <label for="validationDefault01">DATE IN</label>
                                 <!-- <input type="text" class="form-control" id="validationDefault01" v-model="details.dateIN " placeholder="First name"  required> -->
-                                <date-picker
-                                    v-model="details.dateIN"
-                                    type="date"
-                                    v-validate="'required'"
-                                    data-vv-name="inTime"
-                                    placeholder="In Time"
-                                    lang="en"
-                                    format="DD/MM/YYYY"
-                                    class="form-control"
-                                    :time-picker-options="timePickerOptions"
-                                />
+                                <date-picker v-model="details.dateIN" type="date" v-validate="'required'" data-vv-name="inTime" placeholder="In Time" lang="en" format="DD/MM/YYYY" class="form-control" :time-picker-options="timePickerOptions" />
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="validationDefault02">DAY IN</label>
@@ -304,17 +276,7 @@
                             <div class="col-md-4 mb-3">
                                 <label for="timeIN">TIME IN</label>
                                 <!-- <input type="text" class="form-control" id="validationDefault02" placeholder="Time In" v-model="details.time" required> -->
-                                <date-picker
-                                    v-model="details.datetimeIN"
-                                    type="time"
-                                    v-validate="'required'"
-                                    data-vv-name="inTime"
-                                    placeholder="In Time"
-                                    lang="en"
-                                    format="HH:mm"
-                                    class="form-control"
-                                    :time-picker-options="timePickerOptions"
-                                />
+                                <date-picker v-model="details.datetimeIN" type="time" v-validate="'required'" data-vv-name="inTime" placeholder="In Time" lang="en" format="HH:mm" class="form-control" :time-picker-options="timePickerOptions" />
                             </div>
                             <div class="col-md-4 mb-3">
                                 <button class="btn btn-sm btn-info">
@@ -333,17 +295,7 @@
                                 <label for="validationDefault01">DATE OUT</label>
                                 <!-- <input type="text" class="form-control" id="dateOUT" v-model="details.dateOUT" placeholder="First name"  required> -->
 
-                                <date-picker
-                                    v-model="details.dateOUT"
-                                    class="form-control"
-                                    type="date"
-                                    v-validate="'required'"
-                                    data-vv-name="inTime"
-                                    placeholder="Date Out"
-                                    lang="en"
-                                    format="DD/MM/YYYY"
-                                    :time-picker-options="timePickerOptions"
-                                />
+                                <date-picker v-model="details.dateOUT" class="form-control" type="date" v-validate="'required'" data-vv-name="inTime" placeholder="Date Out" lang="en" format="DD/MM/YYYY" :time-picker-options="timePickerOptions" />
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="dayOut">DAY OUT</label>
@@ -352,17 +304,7 @@
                             <div class="col-md-4 mb-3">
                                 <label for="validationDefault02">TIME OUT</label>
                                 <!-- <input type="text" class="form-control" id="timeOUT" placeholder="Time Out" v-model="details.timeout" required> -->
-                                <date-picker
-                                    v-model="details.datetimeOUT"
-                                    type="time"
-                                    v-validate="'required'"
-                                    data-vv-name="inTime"
-                                    placeholder="Out Time"
-                                    lang="en"
-                                    format="HH:mm"
-                                    class="form-control"
-                                    :time-picker-options="timePickerOptions"
-                                />
+                                <date-picker v-model="details.datetimeOUT" type="time" v-validate="'required'" data-vv-name="inTime" placeholder="Out Time" lang="en" format="HH:mm" class="form-control" :time-picker-options="timePickerOptions" />
                             </div>
                             <div class="col-md-4 mb-3">
                                 <button class="btn btn-sm btn-info">
@@ -414,33 +356,13 @@
                             <div class="col-md-4 mb-3">
                                 <label for="validationDefault01">Break IN</label>
                                 <input type="text" id="breakIn" class="form-control" v-model="details.dateIN" placeholder="Break End" disabled="" />
-                                <date-picker
-                                    v-model="details.breakIN"
-                                    type="time"
-                                    v-validate="'required'"
-                                    data-vv-name="inTime"
-                                    placeholder="In Time"
-                                    lang="en"
-                                    format="HH:mm"
-                                    class="form-control"
-                                    :time-picker-options="timePickerOptions"
-                                />
+                                <date-picker v-model="details.breakIN" type="time" v-validate="'required'" data-vv-name="inTime" placeholder="In Time" lang="en" format="HH:mm" class="form-control" :time-picker-options="timePickerOptions" />
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="validationDefault02">Break Out</label>
                                 <input type="text" id="breakOut" class="form-control" v-model="details.dateOUT" placeholder="Break End" />
-                                <date-picker
-                                    v-model="details.breakOut"
-                                    type="time"
-                                    v-validate="'required'"
-                                    data-vv-name="inTime"
-                                    placeholder="In Time"
-                                    lang="en"
-                                    format="HH:mm"
-                                    class="form-control"
-                                    :time-picker-options="timePickerOptions"
-                                />
+                                <date-picker v-model="details.breakOut" type="time" v-validate="'required'" data-vv-name="inTime" placeholder="In Time" lang="en" format="HH:mm" class="form-control" :time-picker-options="timePickerOptions" />
                             </div>
 
                             <div class="col-md-4 mb-3">

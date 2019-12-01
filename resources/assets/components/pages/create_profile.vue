@@ -17,31 +17,13 @@
 
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input
-                                        id="password"
-                                        ref="password"
-                                        v-model="model.password"
-                                        v-validate="'required|min:6'"
-                                        type="password"
-                                        class="form-control form-control-lg"
-                                        name="password"
-                                        placeholder="Password"
-                                    />
+                                    <input id="password" ref="password" v-model="model.password" v-validate="'required|min:6'" type="password" class="form-control form-control-lg" name="password" placeholder="Password" />
                                     <span v-show="errors.has('password')" class="help is-danger">{{ errors.first('password') }}</span>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="password_confirmation">Password Confirmation</label>
-                                    <input
-                                        id="password_confirmation"
-                                        v-model="model.password_confirmation"
-                                        v-validate="'required|confirmed:password'"
-                                        type="password"
-                                        class="form-control form-control-lg"
-                                        name="password_confirmation"
-                                        placeholder="Confirm Password"
-                                        data-vv-as="Confirm Password"
-                                    />
+                                    <input id="password_confirmation" v-model="model.password_confirmation" v-validate="'required|confirmed:password'" type="password" class="form-control form-control-lg" name="password_confirmation" placeholder="Confirm Password" data-vv-as="Confirm Password" />
                                     <span v-show="errors.has('password_confirmation')" class="help is-danger">{{ errors.first('password_confirmation') }}</span>
                                 </div>
 

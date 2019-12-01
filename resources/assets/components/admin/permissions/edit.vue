@@ -9,16 +9,7 @@
                             <div class="form-group row">
                                 <label for="name" class="col-sm-2 form-control-label">Permission Name</label>
                                 <div class="col-sm-10">
-                                    <input
-                                        id="name"
-                                        v-model="model.name"
-                                        v-validate="'required'"
-                                        type="text"
-                                        class="form-control"
-                                        name="name"
-                                        placeholder="Permission Name"
-                                        data-vv-as="Permission Name"
-                                    />
+                                    <input id="name" v-model="model.name" v-validate="'required'" type="text" class="form-control" name="name" placeholder="Permission Name" data-vv-as="Permission Name" />
                                     <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
                                 </div>
                             </div>
@@ -26,16 +17,7 @@
                             <div class="form-group row">
                                 <label for="key" class="col-sm-2 form-control-label">Permission Display Name</label>
                                 <div class="col-sm-10">
-                                    <input
-                                        id="key"
-                                        v-model="model.key"
-                                        v-validate="'required'"
-                                        type="text"
-                                        class="form-control"
-                                        name="key"
-                                        placeholder="Permission Display Name"
-                                        data-vv-as="Permission Display Name"
-                                    />
+                                    <input id="key" v-model="model.key" v-validate="'required'" type="text" class="form-control" name="key" placeholder="Permission Display Name" data-vv-as="Permission Display Name" />
                                     <span v-show="errors.has('key')" class="help is-danger">{{ errors.first('key') }}</span>
                                 </div>
                             </div>
@@ -43,16 +25,7 @@
                             <div class="form-group row">
                                 <label for="type" class="col-sm-2 form-control-label">Permission Type</label>
                                 <div class="col-sm-10">
-                                    <input
-                                        id="type"
-                                        v-model="model.type"
-                                        v-validate="'required'"
-                                        type="text"
-                                        class="form-control"
-                                        name="type"
-                                        placeholder="Permission Type"
-                                        data-vv-as="Permission Type"
-                                    />
+                                    <input id="type" v-model="model.type" v-validate="'required'" type="text" class="form-control" name="type" placeholder="Permission Type" data-vv-as="Permission Type" />
                                     <span v-show="errors.has('type')" class="help is-danger">{{ errors.first('type') }}</span>
                                 </div>
                             </div>

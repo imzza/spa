@@ -20,18 +20,7 @@
                                 LOADING
                             </div>
                             <!--Your Loading Message -->
-                            <vuetable
-                                ref="vuetable"
-                                api-url="/api/v1/employees"
-                                pagination-path=""
-                                :fields="fields"
-                                :css="css"
-                                :sort-order="sortOrder"
-                                :per-page="perPage"
-                                :http-fetch="myFetch"
-                                wrapper-class="vuetable-wrapper"
-                                @vuetable:pagination-data="onPaginationData"
-                            >
+                            <vuetable ref="vuetable" api-url="/api/v1/employees" pagination-path="" :fields="fields" :css="css" :sort-order="sortOrder" :per-page="perPage" :http-fetch="myFetch" wrapper-class="vuetable-wrapper" @vuetable:pagination-data="onPaginationData">
                                 <!-- slot-scoped slots https://vuejs.org/v2/guide/components.html#slot-scoped-Slots -->
                                 <template slot="actions" slot-scope="props">
                                     <div class="custom-actions">

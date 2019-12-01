@@ -63,16 +63,7 @@
                             <div class="form-group">
                                 <validate tag="div">
                                     <label for="confirm_password"> Confirm Password</label>
-                                    <input
-                                        id="confirm_password"
-                                        v-model="model.repeatPassword"
-                                        name="repeatpassword"
-                                        type="password"
-                                        required
-                                        placeholder="Confirm Password"
-                                        class="form-control"
-                                        :sameas="model.password"
-                                    />
+                                    <input id="confirm_password" v-model="model.repeatPassword" name="repeatpassword" type="password" required placeholder="Confirm Password" class="form-control" :sameas="model.password" />
                                     <field-messages name="repeatpassword" show="$invalid && $submitted" class="text-danger">
                                         <div slot="required">
                                             Password confirmatoin is required

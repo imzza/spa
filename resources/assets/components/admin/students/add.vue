@@ -11,74 +11,29 @@
                     </div>
                     <div class="form-group">
                         <label for="password" class="control-label">Password:</label>
-                        <input
-                            id="password"
-                            type="password"
-                            v-validate="'required|min:3'"
-                            name="password"
-                            v-model="model.password"
-                            class="form-control form-control-lg"
-                            :class="{ 'is-invalid': errors.has('password') }"
-                        />
+                        <input id="password" type="password" v-validate="'required|min:3'" name="password" v-model="model.password" class="form-control form-control-lg" :class="{ 'is-invalid': errors.has('password') }" />
                         <span v-if="errors.has('password')" class="help text-danger">{{ errors.first('password') }}</span>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="first_name">First Name</label>
-                            <input
-                                type="text"
-                                class="form-control form-control-lg"
-                                id="first_name"
-                                data-vv-as="First Name"
-                                v-model="model.first_name"
-                                name="first_name"
-                                v-validate="'required'"
-                                placeholder="First Name"
-                                :class="{ 'is-invalid': errors.has('first_name') }"
-                            />
+                            <input type="text" class="form-control form-control-lg" id="first_name" data-vv-as="First Name" v-model="model.first_name" name="first_name" v-validate="'required'" placeholder="First Name" :class="{ 'is-invalid': errors.has('first_name') }" />
                             <span v-if="errors.has('first_name')" class="help text-danger">{{ errors.first('first_name') }}</span>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="last_name">last Name</label>
-                            <input
-                                type="text"
-                                class="form-control form-control-lg"
-                                id="last_name"
-                                data-vv-as="Last Name"
-                                v-model="model.last_name"
-                                name="last_name"
-                                v-validate="'required'"
-                                placeholder="Last Name"
-                                :class="{ 'is-invalid': errors.has('last_name') }"
-                            />
+                            <input type="text" class="form-control form-control-lg" id="last_name" data-vv-as="Last Name" v-model="model.last_name" name="last_name" v-validate="'required'" placeholder="Last Name" :class="{ 'is-invalid': errors.has('last_name') }" />
                             <span v-if="errors.has('last_name')" class="help text-danger">{{ errors.first('last_name') }}</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="address">Address</label>
-                        <input
-                            id="address"
-                            type="text"
-                            class="form-control form-control-lg"
-                            v-model="model.address"
-                            name="address"
-                            v-validate="'required'"
-                            placeholder="1234 Main St"
-                            :class="{ 'is-invalid': errors.has('address') }"
-                        />
+                        <input id="address" type="text" class="form-control form-control-lg" v-model="model.address" name="address" v-validate="'required'" placeholder="1234 Main St" :class="{ 'is-invalid': errors.has('address') }" />
                         <span v-if="errors.has('address')" class="help text-danger">{{ errors.first('address') }}</span>
                     </div>
                     <div class="form-group">
                         <label for="address2">Address 2</label>
-                        <input
-                            type="text"
-                            id="address2"
-                            class="form-control form-control-lg"
-                            v-model="model.address2"
-                            name="address2"
-                            placeholder=""
-                            :class="{ 'is-invalid': errors.has('address2') }"
-                        />
+                        <input type="text" id="address2" class="form-control form-control-lg" v-model="model.address2" name="address2" placeholder="" :class="{ 'is-invalid': errors.has('address2') }" />
                         <span v-if="errors.has('address2')" class="help text-danger">{{ errors.first('address2') }}</span>
                     </div>
                     <div class="form-row">
@@ -126,29 +81,12 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Profile Image</label>
-                        <input
-                            v-validate="'required|mimes:image/*'"
-                            type="file"
-                            class="form-control-file form-control form-control-lg"
-                            name="image"
-                            data-vv-name="image"
-                            data-vv-as="image"
-                            :class="{ 'is-invalid': errors.has('image') }"
-                            @change="readFile($event)"
-                        />
+                        <input v-validate="'required|mimes:image/*'" type="file" class="form-control-file form-control form-control-lg" name="image" data-vv-name="image" data-vv-as="image" :class="{ 'is-invalid': errors.has('image') }" @change="readFile($event)" />
                         <span v-if="errors.has('image')" class="help text-danger">{{ errors.first('image') }}</span>
                     </div>
                     <div class="form-group">
                         <label for="about">Example textarea</label>
-                        <textarea
-                            id="about"
-                            class="form-control form-control-lg"
-                            v-model="model.about"
-                            name="about"
-                            v-validate="'required|min:100'"
-                            rows="4"
-                            :class="{ 'is-invalid': errors.has('about') }"
-                        />
+                        <textarea id="about" class="form-control form-control-lg" v-model="model.about" name="about" v-validate="'required|min:100'" rows="4" :class="{ 'is-invalid': errors.has('about') }" />
                         <span v-if="errors.has('about')" class="help text-danger">{{ errors.first('about') }}</span>
                     </div>
                     <div class="form-group">
