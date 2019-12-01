@@ -24,6 +24,7 @@ class UserController extends Controller {
         return response()->json(new UserResource($request->user()), 200);
     }
 
+
     
     public function update(Request $request) {
         $request->validate([
