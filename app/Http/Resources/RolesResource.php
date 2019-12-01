@@ -19,6 +19,5 @@ class RolesResource extends JsonResource {
             'rolename' => $this->rolename,
             'role_descrip' => $this->role_descrip
         ];
-        // , 'created_at' => Carbon::parse($this->created_at)->toDayDateTimeString(),
     }
 }

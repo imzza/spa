@@ -84,7 +84,6 @@
                             <span class="help text-danger" v-if="errors.has('image')">{{ errors.first('image') }}</span>
                         </div>
                     </div> -->
-
                     <div v-if="model.image_link != ''" class="image-preview">
                         <img :src="model.image_link" alt="prfileimage" class="img-thumbnail" height="200px" width="200px" />
                     </div>
@@ -93,7 +92,6 @@
                         <input v-validate="'mimes:image/*'" type="file" class="form-control-file form-control form-control-lg" name="image" data-vv-name="image" data-vv-as="image" :class="{ 'is-invalid': errors.has('image') }" @change="readFile($event)" />
                         <span v-if="errors.has('image')" class="help text-danger">{{ errors.first('image') }}</span>
                     </div>
-
                     <div class="form-group">
                         <label for="about">Example textarea</label>
                         <textarea id="about" class="form-control form-control-lg" v-model="model.about" name="about" v-validate="'required|min:100'" rows="4" :class="{ 'is-invalid': errors.has('about') }" />
@@ -110,93 +108,96 @@
     </div>
 </template>
 <script>
-import User from "~/api/user";
-import Vue from "vue";
-import VeeValidate from "vee-validate";
+import User from '~/api/user';
+import Vue from 'vue';
+import VeeValidate from 'vee-validate';
 // Vue.use(VeeValidate);
 
-Vue.use(VeeValidate, { fieldsBagName: "formFields" })
+Vue.use(VeeValidate, { fieldsBagName: 'formFields' });
 
 export default {
-  name: 'Add',
+    name: 'Add',
 
-  data () {
-    return {
-      busy: false,
-      states: [
-        { name: 'Choose...', value: '' },
-        { name: 'Los Angles', value: 'LA' },
-        { name: 'New Yark', value: 'NY' },
-        { name: 'Paris', value: 'PA' }
-      ],
-      model: {
-        image: ''
-      },
-      bimage: ''
-    }
-  },
-  mounted () {
-    console.log(this.$route)
-    this.getStudent();
-    // User.all(data => {
-    //     console.log(data);
-    // }, err =>{
-    //     console.log(err);
-    // });
-  },
-  methods: {
-    readFile (e) {
-      const files = e.target.files || e.dataTransfer.files
-      if (!files.length) {
-      { return; }
-      this.createImage(files[0])
-      this.bimage = files[0];
-    },
-    createImage (file) {
-      const reader = new FileReader()
-      let vm = this;
-      reader.onload = e => {
-        vm.model.image = e.target.result
-        vm.model.image_link = e.target.result;
-      }
-      reader.readAsDataURL(file)
-    },
-
-    onSubmit () {
-      const id = this.$route.params.id
-      let self = this;
-      self.$validator.validateAll().then(result => {
-        if (result) {
-          self.busy = true
-          console.log(self.model);
-          User.update(
-            id,
-            self.model,
-            data => {
-            self.busy = false
-            self.$router.push({ name: 'students_all' })
-              Notify.success("Oh Yes Scuuess ...");
+    data() {
+        return {
+            busy: false,
+            states: [
+                { name: 'Choose...', value: '' },
+                { name: 'Los Angles', value: 'LA' },
+                { name: 'New Yark', value: 'NY' },
+                { name: 'Paris', value: 'PA' },
+            ],
+            model: {
+                image: '',
             },
-            err => {
-            self.busy = false
-            console.log(err)
-              this.$setErrorsFromResponse(err);
-            }
-          );
-        }
-      })
+            bimage: '',
+        };
     },
-    getStudent () {
-      User.getSingle(
-        this.$route.params.id,
-        resp => {
-          this.model = resp
-      }, err => {
-          Notify.error('Something went wrong.');
-          this.$router.push({ path: '/students_all' })
-        })
-    }
-  }
+    mounted() {
+        console.log(this.$route);
+        this.getStudent();
+        // User.all(data => {
+        //     console.log(data);
+        // }, err =>{
+        //     console.log(err);
+        // });
+    },
+    methods: {
+        readFile(e) {
+            const files = e.target.files || e.dataTransfer.files;
+            if (!files.length) {
+                return;
+            }
+            this.createImage(files[0]);
+            this.bimage = files[0];
+        },
+        createImage(file) {
+            const reader = new FileReader();
+            let vm = this;
+            reader.onload = e => {
+                vm.model.image = e.target.result;
+                vm.model.image_link = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        },
+
+        onSubmit() {
+            const id = this.$route.params.id;
+            let self = this;
+            self.$validator.validateAll().then(result => {
+                if (result) {
+                    self.busy = true;
+                    console.log(self.model);
+                    User.update(
+                        id,
+                        self.model,
+                        data => {
+                            self.busy = false;
+                            self.$router.push({ name: 'students_all' });
+                            Notify.success('Oh Yes Scuuess ...');
+                        },
+                        err => {
+                            self.busy = false;
+                            console.log(err);
+                            this.$setErrorsFromResponse(err);
+                        }
+                    );
+                }
+            });
+        },
+        getStudent() {
+            User.getSingle(
+                this.$route.params.id,
+                resp => {
+                    this.model = resp;
+                },
+                err => {
+                    Notify.error('Something went wrong.');
+                    this.$router.push({ path: '/students_all' });
+                }
+            );
+        },
+    },
 };
 </script>
 <style lang="css" scoped></style>

@@ -100,78 +100,79 @@
     </div>
 </template>
 <script>
-import User from "~/api/user";
-import Vue from "vue";
-import VeeValidate from "vee-validate";
+import User from '~/api/user';
+import Vue from 'vue';
+import VeeValidate from 'vee-validate';
 // Vue.use(VeeValidate);
 
-Vue.use(VeeValidate, { fieldsBagName: "formFields" })
+Vue.use(VeeValidate, { fieldsBagName: 'formFields' });
 
 export default {
-  name: "Add",
+    name: 'Add',
 
-  data () {
-    return {
-      busy: false,
-      states: [
-        { name: 'Choose...', value: '' },
-        { name: 'Los Angles', value: 'LA' },
-        { name: 'New Yark', value: 'NY' },
-        { name: 'Paris', value: 'PA' }
-      ],
-      model: {
-        image: ''
-      },
-      bimage: ''
-    }
-  },
-  mounted () {
-    // User.all(data => {
-    //     console.log(data);
-    // }, err =>{
-    //     console.log(err);
-    // });
-  },
-  methods: {
-    readFile (e) {
-      const files = e.target.files || e.dataTransfer.files
-      if (!files.length) {
-      { return; }
-      this.createImage(files[0])
-      this.bimage = files[0];
-    },
-    createImage (file) {
-      const reader = new FileReader()
-      let vm = this;
-      reader.onload = e => {
-        vm.model.image = e.target.result
-      };
-      reader.readAsDataURL(file)
-    },
-
-    onSubmit () {
-      const self = this
-      self.$validator.validateAll().then(result => {
-        if (result) {
-          self.busy = true
-          console.log(self.model);
-          User.save(
-            self.model,
-            data => {
-            self.busy = false
-            self.$router.push({ name: 'students_all' })
-              Notify.success("Oh Yes Scuuess ...");
+    data() {
+        return {
+            busy: false,
+            states: [
+                { name: 'Choose...', value: '' },
+                { name: 'Los Angles', value: 'LA' },
+                { name: 'New Yark', value: 'NY' },
+                { name: 'Paris', value: 'PA' },
+            ],
+            model: {
+                image: '',
             },
-            err => {
-              self.busy = false
-            console.log(err)
-              this.$setErrorsFromResponse(err);
+            bimage: '',
+        };
+    },
+    mounted() {
+        // User.all(data => {
+        //     console.log(data);
+        // }, err =>{
+        //     console.log(err);
+        // });
+    },
+    methods: {
+        readFile(e) {
+            const files = e.target.files || e.dataTransfer.files;
+            if (!files.length) {
+                return;
             }
-          );
-        }
-      })
-    }
-  }
+            this.createImage(files[0]);
+            this.bimage = files[0];
+        },
+        createImage(file) {
+            const reader = new FileReader();
+            let vm = this;
+            reader.onload = e => {
+                vm.model.image = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        },
+
+        onSubmit() {
+            const self = this;
+            self.$validator.validateAll().then(result => {
+                if (result) {
+                    self.busy = true;
+                    console.log(self.model);
+                    User.save(
+                        self.model,
+                        data => {
+                            self.busy = false;
+                            self.$router.push({ name: 'students_all' });
+                            Notify.success('Oh Yes Scuuess ...');
+                        },
+                        err => {
+                            self.busy = false;
+                            console.log(err);
+                            this.$setErrorsFromResponse(err);
+                        }
+                    );
+                }
+            });
+        },
+    },
 };
 </script>
 <style lang="css" scoped></style>

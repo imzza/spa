@@ -107,73 +107,72 @@ import VeeValidate from 'vee-validate'; //, {enableAutoClasses: true }
 
 import DatePicker from 'vue2-datepicker';
 // import clients from '~/api/clients.js';
-import employees from "~/api/employees.js";
-Vue.use(VeeValidate)
+import employees from '~/api/employees.js';
+Vue.use(VeeValidate);
 
 var moment = require('moment');
 
 var moment = require('moment');
 
 export default {
-  name: "corporations_add",
-  components: { DatePicker },
-  data: () => ({
-    busy: false,
-    states: [
-      { name: "Choose...", value: "" },
-      { name: "Los Angles", value: "LA" },
-      { name: "New Yark", value: "NY" },
-      { name: "Paris", value: "PA" }
-    ],
-    model: {
-      image: ""
-    },
-    bimage: ""
-  }),
-  mounted() {
-    // this.getClients();
-  },
-  destroyed () {},
-  methods: {
-    readFile (e) {
-      const files = e.target.files || e.dataTransfer.files
-      if (!files.length) {
-      { return; }
-      this.createImage(files[0])
-      this.bimage = files[0];
-    },
-    createImage (file) {
-      const reader = new FileReader()
-      let vm = this;
-      reader.onload = e => {
-        vm.model.image = e.target.result
-      };
-      reader.readAsDataURL(file)
-    },
-
-    onSubmit () {
-      const self = this
-      self.$validator.validateAll().then(result => {
-        if (result) {
-          self.busy = true
-          console.log(self.model);
-          User.save(
-            self.model,
-            data => {
-            self.busy = false
-            self.$router.push({ name: 'index' })
-              Notify.success("Oh No Scuuess ...");
+    name: 'corporations_add',
+    components: { DatePicker },
+    data() {
+        return {
+            busy: false,
+            states: [
+                { name: 'Choose...', value: '' },
+                { name: 'Los Angles', value: 'LA' },
+                { name: 'New Yark', value: 'NY' },
+                { name: 'Paris', value: 'PA' },
+            ],
+            model: {
+                image: '',
             },
-            err => {
-              self.busy = false
-            console.log(err)
-              this.$setErrorsFromResponse(err);
+            bimage: '',
+        };
+    },
+    methods: {
+        readFile(e) {
+            const files = e.target.files || e.dataTransfer.files;
+            if (!files.length) {
+                return;
             }
-          );
-        }
-      })
-    }
-  }
+            this.createImage(files[0]);
+            this.bimage = files[0];
+        },
+        createImage(file) {
+            const reader = new FileReader();
+            let vm = this;
+            reader.onload = e => {
+                vm.model.image = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        },
+
+        onSubmit() {
+            const self = this;
+            self.$validator.validateAll().then(result => {
+                if (result) {
+                    self.busy = true;
+                    console.log(self.model);
+                    User.save(
+                        self.model,
+                        data => {
+                            self.busy = false;
+                            self.$router.push({ name: 'index' });
+                            Notify.success('Oh No Scuuess ...');
+                        },
+                        err => {
+                            self.busy = false;
+                            console.log(err);
+                            this.$setErrorsFromResponse(err);
+                        }
+                    );
+                }
+            });
+        },
+    },
 };
 </script>
 <style type="text/css" scoped lang="scss"></style>

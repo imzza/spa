@@ -79,233 +79,237 @@
     </div>
 </template>
 <script>
-import Vue from "vue";
+import Vue from 'vue';
 import Vuetable from 'vuetable-2/src/components/Vuetable';
 import VuetablePagination from 'vuetable-2/src/components/VuetablePagination';
 import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePaginationInfo';
 import VueTablePaginationDropdown from 'vuetable-2/src/components/VueTablePaginationDropdown';
 import BootstrapStyle from '../../bootstrap-css.js';
 
-import Multiselect from "vue-multiselect";
+import Multiselect from 'vue-multiselect';
 
 import employees from '~/api/employees.js';
-var moment = require("moment");
+var moment = require('moment');
 
 export default {
-  name: "employees",
-  components: {
-    Multiselect,
-    Vuetable,
-    VuetablePagination,
-    VuetablePaginationInfo,
-    VueTablePaginationDropdown
-  },
-  data() {
-    return {
-      msg: "",
-      employees: [],
-      roles: [],
-      emp_roles: [],
-      eid: null,
-      css: BootstrapStyle,
-      perPage: 10,
-      filterText: "",
-      paginationCss: {
-        wrapperClass: "pagination",
-        activeClass: "btn-primary",
-        disabledClass: "disabled",
-        pageClass: "btn btn-border",
-        linkClass: "btn btn-border",
-        icons: {
-          first: "",
-          prev: "",
-          next: "",
-          last: ""
-        }
-      },
+    name: 'employees',
+    components: {
+        Multiselect,
+        Vuetable,
+        VuetablePagination,
+        VuetablePaginationInfo,
+        VueTablePaginationDropdown,
+    },
+    data() {
+        return {
+            msg: '',
+            employees: [],
+            roles: [],
+            emp_roles: [],
+            eid: null,
+            css: BootstrapStyle,
+            perPage: 10,
+            filterText: '',
+            paginationCss: {
+                wrapperClass: 'pagination',
+                activeClass: 'btn-primary',
+                disabledClass: 'disabled',
+                pageClass: 'btn btn-border',
+                linkClass: 'btn btn-border',
+                icons: {
+                    first: '',
+                    prev: '',
+                    next: '',
+                    last: '',
+                },
+            },
 
-      fields: [
-        {
-          name: "__sequence",
-          title: "#",
-          titleClass: "text-center",
-          dataClass: "text-right"
+            fields: [
+                {
+                    name: '__sequence',
+                    title: '#',
+                    titleClass: 'text-center',
+                    dataClass: 'text-right',
+                },
+
+                {
+                    name: 'eeName',
+                    title: 'Full Name',
+                    titleClass: 'text-center',
+                    dataClass: 'text-left',
+                    sortField: 'eeName',
+                },
+                {
+                    name: 'email1',
+                    title: 'Email',
+                    titleClass: 'text-center',
+                    dataClass: 'text-left',
+                    sortField: 'email1',
+                },
+                // {
+                //     name: 'user.roles.name',
+                //     title: 'Roles',
+                //     dataClass: 'text-left'
+                // },
+                // {
+                //     name: 'salary',
+                //     title: 'Salary',
+                //     titleClass: 'text-center',
+                //     dataClass: 'text-right',
+                //     callback: 'formatNumber',
+                //     sortField: 'salary'
+                // },
+
+                {
+                    name: '__slot:actions',
+                    title: 'Actions',
+                    titleClass: 'text-center',
+                    dataClass: 'text-center',
+                },
+            ],
+
+            sortOrder: [
+                {
+                    field: 'eeName',
+                    sortField: 'eeName',
+                    direction: 'asc',
+                },
+            ],
+        };
+    },
+    watch: {
+        perPage: function(val, oldVal) {
+            this.moreParams.per_page = Number(event.target.value);
+            Vue.nextTick(() => this.$refs.vuetable.refresh());
+            // Vue.nextTick( () => this.$refs.vuetable.refresh())
+        },
+    },
+    mounted() {
+        // this.view();
+    },
+    destroyed() {},
+    methods: {
+        doFilter() {
+            // this.$events.fire('filter-set', this.filterText)
+        },
+        resetFilter() {
+            this.filterText = ''; // clear the text in text input
+            // this.$events.fire('filter-reset')
+        },
+        onPaginationData(paginationData) {
+            this.$refs.pagination.setPaginationData(paginationData);
+            this.$refs.paginationInfo.setPaginationData(paginationData);
         },
 
-        {
-          name: "eeName",
-          title: "Full Name",
-          titleClass: "text-center",
-          dataClass: "text-left",
-          sortField: "eeName"
+        onChangePage(page) {
+            this.$refs.vuetable.changePage(page);
         },
-        {
-          name: "email1",
-          title: "Email",
-          titleClass: "text-center",
-          dataClass: "text-left",
-          sortField: "email1"
+        myFetch(apiUrl, httpOptions) {
+            return axios.get(apiUrl, httpOptions);
         },
-        // {
-        //     name: 'user.roles.name',
-        //     title: 'Roles',
-        //     dataClass: 'text-left'
-        // },
-        // {
-        //     name: 'salary',
-        //     title: 'Salary',
-        //     titleClass: 'text-center',
-        //     dataClass: 'text-right',
-        //     callback: 'formatNumber',
-        //     sortField: 'salary'
-        // },
+        // Column formatting
+        genderLabel(value) {
+            return value.toUpperCase();
+        },
 
-        {
-          name: "__slot:actions",
-          title: "Actions",
-          titleClass: "text-center",
-          dataClass: "text-center"
-        }
-      ],
+        formatNumber(value) {
+            return value.toFixed(2);
+        },
 
-      sortOrder: [
-        {
-          field: "eeName",
-          sortField: "eeName",
-          direction: "asc"
-        }
-      ]
-    };
-  },
-  watch: {
-    perPage: function(val, oldVal) {
-      this.moreParams.per_page = Number(event.target.value)
-      Vue.nextTick(() => this.$refs.vuetable.refresh())
-      // Vue.nextTick( () => this.$refs.vuetable.refresh())
-    }
-  },
-  mounted () {
-    // this.view();
-  },
-  destroyed () {},
-  methods: {
-    doFilter () {
-      // this.$events.fire('filter-set', this.filterText)
-    },
-    resetFilter() {
-      this.filterText = ""; // clear the text in text input
-      // this.$events.fire('filter-reset')
-    },
-    onPaginationData(paginationData) {
-      this.$refs.pagination.setPaginationData(paginationData);
-      this.$refs.paginationInfo.setPaginationData(paginationData);
-    },
+        formatDate(value, fmt = 'D MMM YYYY') {
+            return value == null ? '' : moment(value, 'YYYY-MM-DD').format(fmt);
+        },
 
-    onChangePage(page) {
-      this.$refs.vuetable.changePage(page);
-    },
-    myFetch(apiUrl, httpOptions) {
-      return axios.get(apiUrl, httpOptions);
-    },
-    // Column formatting
-    genderLabel(value) {
-      return value.toUpperCase();
-    },
+        onAction(action, data, index) {
+            if (action == 'edit-item') {
+                this.$router.push({ name: 'employees_edit', params: { id: data.weeid } });
+            }
+            if (action == 'delete-item') {
+                this.deleteEmp(data);
+            }
 
-    formatNumber(value) {
-      return value.toFixed(2);
-    },
+            if (action == 'assign-roles') {
+                if (data.user_id == null) {
+                    Notify.error('Employee perofile is not created Yet');
+                    return false;
+                }
+                this.rolesMdl(data.user_id);
+            }
+        },
+        rolesMdl(id) {
+            if (id == 0) {
+                Notify.error('User profile is not created.');
+                return false;
+            }
+            this.eid = id;
+            axios
+                .get(API_URL + '/get_user_role/' + id)
+                .then(resp => {
+                    this.roles = resp.data.roles;
+                    this.emp_roles = resp.data.user_roles;
+                    this.$refs.rolesMdl.show();
+                })
+                .catch(err => {
+                    console.log(err.response);
+                    Notify.error('You made a mistake');
+                });
+        },
 
-    formatDate(value, fmt = "D MMM YYYY") {
-      return value == null ? "" : moment(value, "YYYY-MM-DD").format(fmt);
+        assignRole() {
+            if (this.emp_roles.length == 0) {
+                Notify.error('Please select atlease one role');
+            }
+            alert('This Is Called');
+            axios
+                .post(API_URL + '/assign_role/', { id: this.eid, roles: this.emp_roles })
+                .then(resp => {
+                    Notify.success('Roles assigned successfully');
+                    this.roles = [];
+                    this.emp_roles = [];
+                    this.$refs.rolesMdl.hide();
+                })
+                .catch(err => {
+                    Notify.error(err.response.data.message);
+                });
+        },
+        // End Pagination Objects
+        view() {
+            const self = this;
+            employees.view(
+                data => {
+                    self.employees = data;
+                    Notify.success('');
+                },
+                err => {
+                    Notify.error(err.response.data.message);
+                }
+            );
+        },
+        deleteEmp(emp) {
+            const self = this;
+            Notify.confirm().then(r => {
+                employees.delete(
+                    emp.weeid,
+                    data => {
+                        Notify.success('Deleted Successfully');
+                        self.$refs.vuetable.refresh();
+                        // self.employees.splice(self.employees.indexOf(emp), 1);
+                    },
+                    err => {
+                        Notify.error(err.response.data.message);
+                    }
+                );
+            });
+        },
     },
-
-    // Row button action handler
-    onAction(action, data, index) {
-      if (action == "edit-item") {
-        this.$router.push({
-          name: "employees_edit",
-          params: { id: data.weeid }
-      }
-      if (action == "delete-item") {
-        this.deleteEmp(data);
-      }
-
-      if (action == "assign-roles") {
-        if (data.user_id == null) {
-          Notify.error("Employee perofile is not created Yet");
-          return false
-        }
-        this.rolesMdl(data.user_id);
-      }
+    events: {
+        'vuetable:loading': function() {
+            console.log('load started');
+        },
+        'vuetable:load-success': function(response) {
+            console.log('load completed');
+        },
     },
-    rolesMdl(id) {
-      if (id == 0) {
-        Notify.error("User profile is not created.");
-        return false
-      }
-      this.eid = id;
-      axios.get(API_URL + '/get_user_role/' + id)
-        .then(resp => {
-          this.roles = resp.data.roles;
-          this.emp_roles = resp.data.user_roles
-          this.$refs.rolesMdl.show()
-        }).catch(err => {
-          console.log(err.response);
-          Notify.error('You made a mistake')
-        })
-    },
-
-    assignRole() {
-      if (this.emp_roles.length == 0) {
-        Notify.error("Please select atlease one role");
-      }
-      alert("This Is Called");
-      axios.post(API_URL + '/assign_role/', { id: this.eid, roles: this.emp_roles })
-        .then(resp => {
-          Notify.success("Roles assigned successfully");
-          this.roles = []
-          this.emp_roles = []
-          this.$refs.rolesMdl.hide()
-        }).catch(err => {
-          Notify.error(err.response.data.message);
-        })
-    },
-    // End Pagination Objects
-    view() {
-      const self = this;
-      employees.view(data => {
-        self.employees = data;
-        Notify.success('')
-      },
-      err => {
-          Notify.error(err.response.data.message);
-      }
-      );
-    },
-    deleteEmp(emp) {
-      const self = this;
-      Notify.confirm().then(r => {
-        employees.delete(
-          emp.weeid,
-          data => {
-            Notify.success("Deleted Successfully");
-          self.$refs.vuetable.refresh()
-            // self.employees.splice(self.employees.indexOf(emp), 1);
-        }, err => {
-          Notify.error(err.response.data.message);
-        })
-      });
-    }
-  },
-  events: {
-    "vuetable:loading": function() {
-      console.log('load started')
-    },
-    'vuetable:load-success': function(response) {
-      console.log('load completed')
-    }
-  }
 };
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

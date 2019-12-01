@@ -57,43 +57,43 @@
     </section>
 </template>
 <script>
-import Vue from "vue";
-import VeeValidate from "vee-validate"; //, {enableAutoClasses: true }
+import Vue from 'vue';
+import VeeValidate from 'vee-validate'; //, {enableAutoClasses: true }
 import preloader from '../layouts/preloader/preloader';
 Vue.use(VeeValidate);
 export default {
-  name: 'login',
-  components: { preloader: preloader },
-  data: () => ({
-    busy: false,
-    form: {
-      username: '',
-      password: ''
-    }
-  }),
-  mounted() {},
-  destroyed() {},
-  methods: {
-    async onSubmit () {
-      let self = this
-      const res = await self.$validator.validateAll()
+    name: 'login',
+    components: { preloader: preloader },
+    data: () => ({
+        busy: false,
+        form: {
+            username: '',
+            password: '',
+        },
+    }),
+    mounted() {},
+    destroyed() {},
+    methods: {
+        async onSubmit() {
+            let self = this;
+            const res = await self.$validator.validateAll();
             if (res) {
-        this.busy = true
+                this.busy = true;
                 try {
-          let resp = await axios.post(this.$store.state.baseUrl + '/api/login', self.form)
-                    console.log(resp)
-                    let token = resp.data.access_token
-                    self.$store.commit('SAVE_TOKEN', { token: token, remember: false })
-                    this.$store.dispatch('permissions')
-                    this.busy = false
-                    self.$router.push({ path: 'admin/dashboard' })
+                    let resp = await axios.post(this.$store.state.baseUrl + '/api/login', self.form);
+                    console.log(resp);
+                    let token = resp.data.access_token;
+                    self.$store.commit('SAVE_TOKEN', { token: token, remember: false });
+                    this.$store.dispatch('permissions');
+                    this.busy = false;
+                    self.$router.push({ path: 'admin/dashboard' });
                 } catch (e) {
- console.log(e.response.data)
-                    this.busy = false }
-        }
-      }
-  }
-  }
+                    console.log(e.response.data);
+                    this.busy = false;
+                }
+            }
+        },
+    },
 };
 </script>
 <style lang="scss" scoped>
