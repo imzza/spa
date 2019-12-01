@@ -109,7 +109,7 @@ export default  [
                 }
             },
             {
-                path: 'permission_add',
+                path: 'permissions_add',
                 component: resolve => require(['admin/permissions/add'], resolve),
                 meta: {
                     title: "Add Permission",
@@ -117,11 +117,37 @@ export default  [
                 }
             },
             {
-                path: 'permission_edit/:id',
-                name: 'permission_edit',
+                path: 'permissions_edit/:id',
+                name: 'permissions_edit',
                 component: resolve => require(['admin/permissions/edit'], resolve),
                 meta: {
                     title: "Edit Permission",
+                    isLoggedIn: true,
+                }
+            },
+            {
+                path: 'students_all',
+                name: 'students_all',
+                component: resolve => require(['admin/students/index'], resolve),
+                meta: {
+                    title: "Students",
+                    isLoggedIn: true,
+                }
+            },
+            {
+                path: 'students_add',
+                component: resolve => require(['admin/students/add'], resolve),
+                meta: {
+                    title: "Add Student",
+                    isLoggedIn: true,
+                }
+            },
+            {
+                path: 'students_edit/:id',
+                name: 'students_edit',
+                component: resolve => require(['admin/students/edit'], resolve),
+                meta: {
+                    title: "Edit Student",
                     isLoggedIn: true,
                 }
             },

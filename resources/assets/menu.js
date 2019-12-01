@@ -7,13 +7,41 @@ const menu_items = [
         link: '/admin/dashboard',
         icon: 'Dashboard'
     },
+    // {
+    //     name: 'Datatable',
+    //     url: 'table',
+    //     link: '/admin/table',
+    //     icon: 'User'
+    // },
+
+    // {
+    //     name: 'Students',
+    //     url: 'students_all',
+    //     link: '/admin/students_all',
+    //     icon: 'User'
+    // },
+
     {
-        name: 'Datatable',
-        url: 'table',
-        link: '/admin/table',
-        icon: 'User'
+        name: 'Students',
+        url: 'students_all',
+        icon: 'fa fa-user',
+        child: [
+            {
+                name: 'Add Student',
+                url: 'students_add',
+                link: admin+'/students_add',
+                icon: 'fa fa-plus'
+            },
+            {
+                name: 'View Students',
+                url: 'students_all',
+                link: admin+'/students_all',
+                icon: 'fa fa-user'
+            }
+            
+        ]
     },
-    
+
     {
         name: 'Roles & Permissions',
         url: 'role_and_permissions',
@@ -39,8 +67,8 @@ const menu_items = [
             },
             {
                 name: 'Add Permissions',
-                url: 'permission_add',
-                link: admin+'/permission_add',
+                url: 'permissions_add',
+                link: admin+'/permissions_add',
                 icon: 'fa fa-angle-double-right'
             },
             {
@@ -51,5 +79,8 @@ const menu_items = [
             },
         ]
     }
+
+
+
 ];
 export default menu_items;
