@@ -14,7 +14,7 @@ return [
     // header variables
     //Add Customer Popup
     'add' => 'AJOUTER',
-    'customer' => "LES CLIENTS",
+    'customer' => 'LES CLIENTS',
     'informations' => 'INFORMATIONS',
     'personal' => 'Personnel',
     'information' => 'Information',
@@ -28,8 +28,7 @@ return [
     'person' => 'La personne',
     'deposit' => 'Dépôt',
     'total' => 'Total',
-    'you_will' =>
-        'Vous recevrez un email de confirmation une fois le rendez-vous pris',
+    'you_will' => 'Vous recevrez un email de confirmation une fois le rendez-vous pris',
     'pay' => 'Payer',
     'in' => 'dans',
     'front' => 'De face',
@@ -44,6 +43,5 @@ return [
     'add_another_friend' => 'Ajouter un autre ami',
     'your_appointment_changed' => 'Votre rendez-vous a été annulé!',
     'pay_partial_payment' => 'Payer le paiement restant',
-    'your_appointment_has_booked' =>
-        'Votre rendez-vous a été réservé avec succès!'
+    'your_appointment_has_booked' => 'Votre rendez-vous a été réservé avec succès!'
 ];

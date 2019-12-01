@@ -1,16 +1,14 @@
 <template>
     <aside class="right-aside">
         <section class="content">
-            <slot></slot>
+            <slot />
         </section>
     </aside>
 </template>
 <script>
 export default {
-    name: "right-side",
-    methods: {
-
-    }
+    name: 'right-side',
+    methods: {},
 };
 </script>
 <style lang="scss" scoped>

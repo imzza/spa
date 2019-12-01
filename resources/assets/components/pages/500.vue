@@ -4,14 +4,22 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3 col-sm-8 offset-sm-2 col-xs-10 offset-xs-1 text-center error_content">
                     <div>
-                        <div class="error"><span>500</span></div>
-                        <div class="error-type"><span>INTERNAL SERVER ERROR</span></div>
+                        <div class="error">
+                            <span>500</span>
+                        </div>
+                        <div class="error-type">
+                            <span>INTERNAL SERVER ERROR</span>
+                        </div>
                         <div>
-                            <p class="error-msg">Something went wrong at our end, we are working on it. Mean while try below options. </p>
+                            <p class="error-msg">
+                                Something went wrong at our end, we are working on it. Mean while try below options.
+                            </p>
                         </div>
                     </div>
-                    <hr class="seperator">
-                    <router-link to="/" class="btn btn-primary link-home" exact>Go Home</router-link>
+                    <hr class="seperator" />
+                    <router-link to="/" class="btn btn-primary link-home" exact>
+                        Go Home
+                    </router-link>
                     <a href="/" class="btn btn-primary link-home" @click.prevent.stop="go_back">Go Back</a>
                 </div>
             </div>
@@ -20,28 +28,24 @@
 </template>
 <script>
 export default {
-    name: "err404",
-    mounted: function() {
-
-    },
-    destroyed: function() {
-
-    },
+    name: 'err404',
+    mounted: function() {},
+    destroyed: function() {},
     methods: {
         go_back() {
-            this.$router.go(-1)
-        }
-    }
-}
+            this.$router.go(-1);
+        },
+    },
+};
 </script>
 <style scoped>
 .bg-color {
-    background-color: #EEE;
+    background-color: #eee;
 }
 
 .container {
     min-height: 100vh;
-    color: #FFF;
+    color: #fff;
 }
 
 .error_content {
@@ -69,6 +73,6 @@ export default {
     border: 0;
     height: 2px;
     margin: 20px 0;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, .6), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
 }
 </style>

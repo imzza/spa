@@ -50,12 +50,100 @@ change the folowing files.
 Add pubicPath: '/spa'in webpack config
 
 2. Store/indesx.js
-add base option 
+add base option
 base: '/base/',
 
 3. Change Baseurl in the following files: baseUrl
-Store/store.js 
+Store/store.js
 main.js
 
 
+
+
+Eslint configration with eslint prettier:
+
+module.exports = {
+    root: true,
+    parserOptions: {
+        // parser: "babel-eslint",
+        ecmaVersion: 2018,
+        sourceType: "module"
+    },
+    env: {
+        browser: true
+    },
+    extends: [
+        "prettier",
+        "prettier/standard",
+        "plugin:vue/recommended",
+        "standard"
+    ],
+    plugins: ["vue", "prettier"],
+    rules: {
+        "vue/max-attributes-per-line": "off",
+        "prettier/prettier": "error"
+    }
+};
+
+
+
+.eslintrc.json
+{
+    "root": true,
+    "parserOptions": {
+        // "parser": "babel-eslint",
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "extends": ["plugin:vue/recommended", "standard"],
+    "rules": { "vue/max-attributes-per-line": "off" }
+}
+
+
+
+printWidth	80
+tabWidth	4
+useTabs	false
+singleQuote	false
+trailingCommaPHP "none"
+braceStyle	"1tbs"
+
+
+
+prettierrc file
+{
+    "useTabs": true,
+    "printWidth": 80,
+    "tabWidth": 2,
+    "singleQuote": false,
+    "trailingComma": "none"
+}
+
+
+--print-width 200  --tab-width 4 --use-tabs --single-quote --trailing-comma-php none --brace-style 1tbs --parser php
+
+
+
+0. Locally: --save-dev
+npm install -D @prettier/plugin-php eslint eslint-config-prettier eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-prettier eslint-plugin-promise eslint-plugin-standard eslint-plugin-vue prettier
+
+
+
+use with composer: in composer.json
+  "fix-cs": [
+            "prettier --write \"{,!(vendor|node_modules)/**/}*.php\" --print-width 200  --tab-width 4 --single-quote --trailing-comma-php none --brace-style 1tbs --parser php php-cs-fixer fix"
+        ]
+
+run composer fix-cs
+
+
+1. install phpcs and phpcs fixer globally
+--Locallly and Globally
+npm i -D prettier @prettier/plugin-php
+
+
+"lint": "eslint --ext .js,.vue resources/assets",
+"lint-fix": "eslint --fix --ext .js,.vue resources/assets",
+"prettier": "./node_modules/.bin/prettier --check \"{,!(vendor|node_modules|public)/**/}*.{js,vue,scss,html}\" --print-width 200  --tab-width 4 --single-quote --trailing-comma es5",
+"pre-php": "./node_modules/.bin/prettier --write \"{,!(vendor|node_modules|public)/**/}*.php\" --print-width 200  --tab-width 4 --single-quote --trailing-comma-php none --brace-style 1tbs --parser php"
 

@@ -15,15 +15,13 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
 
-class EmployeesController extends Controller
-{
+class EmployeesController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         // $roles = Spatie\Permission\Models\Role::all();
         // $users = \App\User::with('roles')->get();
 
@@ -32,7 +30,7 @@ class EmployeesController extends Controller
         list($field, $dir) = explode('|', $sortRules);
         return response()->json(
             Employee::with([
-                "user" => function ($query) {
+                'user' => function ($query) {
                     $query->with('roles');
                 }
             ])
@@ -44,15 +42,11 @@ class EmployeesController extends Controller
         // return response()->json(EmployeeResource::collection(Employee::all()), 200);
     }
 
-    public function employees_all(Request $request)
-    {
+    public function employees_all(Request $request) {
         $sortRules = $request->input('sort');
         $limit = $request->input('per_page');
         list($field, $dir) = explode('|', $sortRules);
-        return response()->json(
-            User::orderBy($field, $dir)->paginate($limit),
-            200
-        );
+        return response()->json(User::orderBy($field, $dir)->paginate($limit), 200);
     }
 
     /**
@@ -61,8 +55,7 @@ class EmployeesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         // exit;
         // return response()->json($request->all());
 
@@ -123,27 +116,20 @@ class EmployeesController extends Controller
 
         try {
             if ($employee->id) {
-                $send_mail = self::sendAccountCreationEmail(
-                    $request->emial1,
-                    $request->eeName
-                );
+                $send_mail = self::sendAccountCreationEmail($request->emial1, $request->eeName);
                 return response()->json($employee, 201);
             } else {
                 return response()->json(['message' => 'Bad Request'], 400);
             }
         } catch (\Exception $e) {
             if ($e->getCode == 2) {
-                return response()->json(
-                    ['message' => 'Mail sending Failed!'],
-                    400
-                );
+                return response()->json(['message' => 'Mail sending Failed!'], 400);
             }
             return response()->json(['message' => $e->getMessage()], 200);
         }
     }
 
-    public static function sendAccountCreationEmail($email, $name)
-    {
+    public static function sendAccountCreationEmail($email, $name) {
         // $email = encrypt($email);
         $url = url('/#/create_profile?code=' . Crypt::encryptString($email));
         // echo "</br> Decrypted email". decrypt($email);
@@ -165,17 +151,13 @@ class EmployeesController extends Controller
         }
     }
 
-    public function verify(Request $request)
-    {
+    public function verify(Request $request) {
         $validator = Validator::make($request->all(), [
             'code' => 'required|min:100'
         ]);
 
         if ($validator->fails()) {
-            return response()->json(
-                ['message' => $validator->errors()->get('code')[0]],
-                400
-            );
+            return response()->json(['message' => $validator->errors()->get('code')[0]], 400);
         }
 
         try {
@@ -191,8 +173,7 @@ class EmployeesController extends Controller
         }
     }
 
-    public function get_code_user($code)
-    {
+    public function get_code_user($code) {
         try {
             $email = Crypt::decryptString($code);
 
@@ -207,8 +188,7 @@ class EmployeesController extends Controller
         }
     }
 
-    public function create_profile(Request $request)
-    {
+    public function create_profile(Request $request) {
         $request->validate([
             'code' => 'required',
             'email' => 'required|unique:users,email',
@@ -245,8 +225,7 @@ class EmployeesController extends Controller
      * @param  \App\Models\Admin\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
-    {
+    public function show(Employee $employee) {
         return response()->json(new EmployeeResource($employee), 200);
     }
 
@@ -257,8 +236,7 @@ class EmployeesController extends Controller
      * @param  \App\Models\Admin\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
-    {
+    public function update(Request $request, Employee $employee) {
         $employee = Employee::where('weeid', $employee->weeid)->first();
         // return response()->json($employee,400);
 
@@ -330,15 +308,13 @@ class EmployeesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy($id)
-    {
+    public function destroy($id) {
         Employee::where('weeid', $id)->delete();
         // $employee->delete();
         return response()->json(null, 204);
     }
 
-    public function clock_in(Request $request)
-    {
+    public function clock_in(Request $request) {
         $val = [
             'inTime' => 'required',
             'inDate' => 'required'
@@ -359,9 +335,7 @@ class EmployeesController extends Controller
         if ($weeid) {
             $weecode = Assign::where('weeid', $weeid->weeid)->first();
             if ($weecode) {
-                $time = TimeCard::whereRaw('DATE(datetimeIN) = ?', [
-                    $request->inDate
-                ])
+                $time = TimeCard::whereRaw('DATE(datetimeIN) = ?', [$request->inDate])
                     ->whereIN('status', ['IN'])
                     ->where('weecode', $weecode->weecode)
                     ->first();
@@ -390,13 +364,7 @@ class EmployeesController extends Controller
                     }
 
                     //mmddyyyy == mdY
-                    $timecode =
-                        $weecode->weecode .
-                        $TimeCard->shiftid .
-                        $TimeCard->deptid .
-                        date('mdY', strtotime($request->inDate)) .
-                        date('hi', strtotime($request->inTime)) .
-                        'IN';
+                    $timecode = $weecode->weecode . $TimeCard->shiftid . $TimeCard->deptid . date('mdY', strtotime($request->inDate)) . date('hi', strtotime($request->inTime)) . 'IN';
 
                     // echo $timecode;
 
@@ -454,28 +422,18 @@ class EmployeesController extends Controller
                             200
                         );
                     } else {
-                        response()->json(
-                            ['message' => 'Connection Problem...'],
-                            400
-                        );
+                        response()->json(['message' => 'Connection Problem...'], 400);
                     }
                 }
             } else {
-                return response()->json(
-                    ['message' => 'Employee is not assigned to any client'],
-                    400
-                );
+                return response()->json(['message' => 'Employee is not assigned to any client'], 400);
             }
         } else {
-            return response()->json(
-                ['message' => 'Employee id is missing'],
-                400
-            );
+            return response()->json(['message' => 'Employee id is missing'], 400);
         }
     }
 
-    public function clock_out(Request $request)
-    {
+    public function clock_out(Request $request) {
         $request->validate([
             'outTime' => 'required',
             'outDate' => 'required'
@@ -507,33 +465,24 @@ class EmployeesController extends Controller
                         200
                     );
                 } else {
-                    response()->json(
-                        ['message' => 'Connection Problem...'],
-                        400
-                    );
+                    response()->json(['message' => 'Connection Problem...'], 400);
                 }
             } else {
                 return response()->json(['message' => 'Not Cloked In'], 400);
             }
         } else {
-            return response()->json(
-                ['message' => 'Employee id is missing'],
-                400
-            );
+            return response()->json(['message' => 'Employee id is missing'], 400);
         }
     }
 
     //Break In User
-    public function break_in(Request $request)
-    {
+    public function break_in(Request $request) {
         $user = $request->user();
         $weeid = Employee::where('user_id', $user->id)->first();
         if ($weeid) {
             $weecode = Assign::where('weeid', $weeid->weeid)->first();
             if ($weecode) {
-                $TimeCard = TimeCard::whereRaw('DATE(datetimeIN) = ?', [
-                    date('Y-m-d')
-                ])
+                $TimeCard = TimeCard::whereRaw('DATE(datetimeIN) = ?', [date('Y-m-d')])
                     ->where('status', 'IN')
                     ->where('weecode', $weecode->weecode)
                     ->first();
@@ -554,33 +503,20 @@ class EmployeesController extends Controller
                             200
                         );
                     } else {
-                        response()->json(
-                            ['message' => 'Connection Problem...'],
-                            400
-                        );
+                        response()->json(['message' => 'Connection Problem...'], 400);
                     }
                 } else {
-                    return response()->json(
-                        ['message' => 'Not Clocked In'],
-                        400
-                    );
+                    return response()->json(['message' => 'Not Clocked In'], 400);
                 }
             } else {
-                return response()->json(
-                    ['message' => 'Employee is not assigned to any client'],
-                    400
-                );
+                return response()->json(['message' => 'Employee is not assigned to any client'], 400);
             }
         } else {
-            return response()->json(
-                ['message' => 'Employee id is missing'],
-                400
-            );
+            return response()->json(['message' => 'Employee id is missing'], 400);
         }
     }
 
-    public function break_out(Request $request)
-    {
+    public function break_out(Request $request) {
         $user = $request->user();
         $weeid = Employee::where('user_id', $user->id)->first();
         if ($weeid) {
@@ -591,8 +527,7 @@ class EmployeesController extends Controller
 
             if ($TimeCard) {
                 $TC = new TimeCard();
-                $TC->timecode =
-                    $TimeStatus->timecode . 'BK' . $TimeStatus->bknum + 1;
+                $TC->timecode = $TimeStatus->timecode . 'BK' . $TimeStatus->bknum + 1;
                 $TC->maintimecode = $TimeCard->maintimecode;
                 $TC->eeid = $TimeStatus->eeid;
                 $TC->eecode = $TimeStatus->eecode;
@@ -607,10 +542,7 @@ class EmployeesController extends Controller
 
                 $TC->save();
                 if ($TC->ID) {
-                    $save = TimeStatus::where(
-                        'timecode',
-                        $TimeStatus->timecode
-                    )->update(['bkstatus' => 1, 'bknum' => $TC->bknum]);
+                    $save = TimeStatus::where('timecode', $TimeStatus->timecode)->update(['bkstatus' => 1, 'bknum' => $TC->bknum]);
 
                     if ($save) {
                         return response()->json(
@@ -623,38 +555,27 @@ class EmployeesController extends Controller
                             200
                         );
                     } else {
-                        response()->json(
-                            ['message' => 'Connection Problem...'],
-                            400
-                        );
+                        response()->json(['message' => 'Connection Problem...'], 400);
                     }
                 }
             } else {
                 return response()->json(['message' => 'Not Clocked In'], 400);
             }
         } else {
-            return response()->json(
-                ['message' => 'Employee id is missing'],
-                400
-            );
+            return response()->json(['message' => 'Employee id is missing'], 400);
         }
     }
 
     //assig Role
-    public function get_user_role(User $user)
-    {
+    public function get_user_role(User $user) {
         // return response()->json($user->roles,200);
         $urole = array_column($user->roles->toArray(), 'name');
         $all = array_column(Role::all()->toArray(), 'name');
 
-        return response()->json(
-            ['user_roles' => $urole, 'roles' => Role::all()],
-            200
-        );
+        return response()->json(['user_roles' => $urole, 'roles' => Role::all()], 200);
     }
 
-    public function assign_role(Request $request)
-    {
+    public function assign_role(Request $request) {
         $user = User::where('id', $request->id)->first();
         $user->syncRoles($request->roles);
         return response()->json(null, 200);

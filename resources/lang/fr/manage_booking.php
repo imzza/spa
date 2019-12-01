@@ -41,5 +41,5 @@ return [
     'pick_a_date' => 'Choisis une date',
     'cancel_the_booking' => 'Annuler la réservation',
     'pick_target_and_positions' => 'Choisissez la cible et les positions',
-    'add_customer_s_information' => "Ajouter les informations du client"
+    'add_customer_s_information' => 'Ajouter les informations du client'
 ];

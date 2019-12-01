@@ -39,7 +39,7 @@ return [
     'customer' => 'Les client',
     'new' => 'Nouveau',
     'returning' => 'Rentrant',
-    "today" => "Aujourd'hui",
+    'today' => "Aujourd'hui",
     'bookings' => 'Les réservations',
     'time' => 'Temps',
     'target' => 'Cible',
@@ -61,7 +61,7 @@ return [
     'pay_confirm_order' => 'Payer et confirmer la commande',
     'book_axe_throwing_today' => 'RÉSERVER LA HACHE EN LANCANT',
     'view_next_available_target' => "Voir la cible disponible aujourd'hui",
-    'targets_to_choose_from' => "cibles à choisir",
-    'site_configuration' => "Configuration",
-    'logout' => "Connectez - Out"
+    'targets_to_choose_from' => 'cibles à choisir',
+    'site_configuration' => 'Configuration',
+    'logout' => 'Connectez - Out'
 ];

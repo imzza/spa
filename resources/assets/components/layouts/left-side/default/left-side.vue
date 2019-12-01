@@ -13,37 +13,41 @@
                             <template v-for="item in menuitems">
                                 <li v-if="item.name && !item.child && has_permission(item.url)">
                                     <router-link :to="item.link" exact>
-                                        <i :class="item.icon"></i>
+                                        <i :class="item.icon" />
                                         {{ item.name }}
                                     </router-link>
                                 </li>
-                                <li v-if="item.child && has_permission(item.url)"
+                                <li
+                                    v-if="item.child && has_permission(item.url)"
                                     :title="item.name"
-                                    :icon="item.icon":class="{'router-link-parent-active': subIsActive(item.child ) }"> 
-                                    
-                                    <b-btn block href="#"v-b-toggle="item.name"variant="link">
-                                        <i :class="item.icon"></i>
+                                    :icon="item.icon"
+                                    :class="{
+                                        'router-link-parent-active': subIsActive(item.child),
+                                    }"
+                                >
+                                    <b-btn v-b-toggle="item.name" blockhref="#" variant="link">
+                                        <i :class="item.icon" />
                                         {{ item.name }}
                                         <span class="submenu_icon float-right">
-                                            <i class="fa fa-angle-right"></i>
+                                            <i class="fa fa-angle-right" />
                                         </span>
                                     </b-btn>
 
                                     <span v-for="child in item.child">
                                         <span v-if="has_permission(child.url) == true">
                                             <div class="with-child">
-                                                <b-collapse  :id="item.name"v-if="subIsActive(item.child) == true"accordion="my-accordion"role="tabpanel">
+                                                <b-collapse v-if="subIsActive(item.child) == true" :id="item.name" accordion="my-accordion" role="tabpanel">
                                                     <div class="inner_menue">
-                                                        <router-link :to="child.link"exact >
-                                                            <i :class="child.icon"></i>
+                                                        <router-link :to="child.link" exact>
+                                                            <i :class="child.icon" />
                                                             {{ child.name }}
                                                         </router-link>
                                                     </div>
                                                 </b-collapse>
-                                                <b-collapse :id="item.name"v-else accordion="my-accordion"role="tabpanel">
+                                                <b-collapse v-else:id="item.name" accordion="my-accordion" role="tabpanel">
                                                     <div class="inner_menue">
-                                                        <router-link :to="child.link"exact >
-                                                            <i :class="child.icon"></i>
+                                                        <router-link :to="child.link" exact>
+                                                            <i :class="child.icon" />
                                                             {{ child.name }}
                                                         </router-link>
                                                     </div>
@@ -63,67 +67,63 @@
     </aside>
 </template>
 <script>
-
-import menu_items from "../../../../menu.js";
+import menu_items from '../../../../menu.js';
 export default {
-  name: "left-side",
-  components: {
-  },
-  data() {
-    return {
-      menuitems: menu_items
-    };
-  },
-  mounted(){
+    name: 'left-side',
+    components: {},
+    data() {
+        return {
+            menuitems: menu_items,
+        };
+    },
+    computed: {
+        $collapseItems() {
+            return this.$children.filter(child => child._isCollapseItem);
+        },
+    },
+    mounted() {
         // this.has_permission('dashboard');
 
-      // if(this.$store.state.permissions.length == 0){
-      //   this.$store.dispatch('permissions');
-      // }
+        // if(this.$store.state.permissions.length == 0){
+        //   this.$store.dispatch('permissions');
+        // }
 
-       this.$on("closeall", (index) => {
+        this.$on('closeall', index => {
             this.openByIndex(index);
-      })
-  },
-  methods: {
-
-    has_permission(url) {
-        let self = this;
-        let perms = self.$store.state.permissions;
-        
-        if (perms.includes(url)) {
-            return true;
-        }else{
-            return false;
-        }
-
-        return perms.includes(url);
+        });
     },
-    subIsActive(input) {
-      const paths = Array.isArray(input) ? input : [input];
-      return paths.some(path => {
-        if ("/admin/" + path.url == this.$route.path) {
-          return true;
-          //alert(path.url +' => /admin/'+path.url);
-        }
+    methods: {
+        has_permission(url) {
+            const self = this;
+            const perms = self.$store.state.permissions;
 
-        //return this.$route.path.indexOf('/admin/'+path.url) === 0 // current path starts with this path string
-      });
-    },
-    openByIndex(index) {
+            if (perms.includes(url)) {
+                return true;
+            } else {
+                return false;
+            }
+
+            return perms.includes(url);
+        },
+        subIsActive(input) {
+            const paths = Array.isArray(input) ? input : [input];
+            return paths.some(path => {
+                if ('/admin/' + path.url == this.$route.path) {
+                    return true;
+                    // alert(path.url +' => /admin/'+path.url);
+                }
+
+                // return this.$route.path.indexOf('/admin/'+path.url) === 0 // current path starts with this path string
+            });
+        },
+        openByIndex(index) {
             this.$collapseItems.forEach((item, i) => {
                 if (i !== index) {
-                    item.isActived = false
+                    item.isActived = false;
                 }
-            })
-        }
-  },
-  computed: {
-        $collapseItems() {
-            return this.$children.filter(child => child._isCollapseItem)
-        }
+            });
+        },
     },
-
 };
 </script>
 <style scoped lang="scss">
@@ -166,8 +166,8 @@ export default {
                 background-color: #629892;
                 li {
                     .collapse.show {
-                    border-top: 1px solid #8eb4b0;
-                }
+                        border-top: 1px solid #8eb4b0;
+                    }
                 }
             }
         }

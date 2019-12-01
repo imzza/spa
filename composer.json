@@ -57,10 +57,7 @@
             "@php artisan package:discover"
         ],
         "fix-cs": [
-            "prettier './!(vendor)/**/*.php' --write"
-        ],
-        "fix-pcs": [
-            "php-cs-fixer fix"
+            "prettier --write \"{,!(vendor|node_modules)/**/}*.php\" --print-width 200  --tab-width 4 --single-quote --trailing-comma-php none --brace-style 1tbs --parser php php-cs-fixer fix"
         ]
     },
     "config": {

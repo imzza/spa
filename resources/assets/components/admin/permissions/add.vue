@@ -7,20 +7,16 @@
                     <div class="col-9 ">
                         <form @submit.prevent="addRole">
                             <div class="form-group row">
-                                <label
-                                    for="name"
-                                    class="col-sm-4 form-control-label"
-                                    >Permission Name</label
-                                >
+                                <label for="name" class="col-sm-4 form-control-label">Permission Name</label>
                                 <div class="col-sm-8">
                                     <input
+                                        id="name"
+                                        v-model="model.name"
+                                        v-validate="'required'"
                                         type="text"
                                         class="form-control"
-                                        id="name"
                                         name="name"
-                                        v-model="model.name"
                                         placeholder="Permission Name"
-                                        v-validate="'required'"
                                         data-vv-as="Permission Name"
                                     />
                                     <span v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</span>
@@ -28,20 +24,16 @@
                             </div>
 
                             <div class="form-group row">
-                                <label
-                                    for="permissionkey"
-                                    class="col-sm-4 form-control-label"
-                                    >Permission Display Name</label
-                                >
+                                <label for="permissionkey" class="col-sm-4 form-control-label">Permission Display Name</label>
                                 <div class="col-sm-8">
                                     <input
+                                        id="permissionkey"
+                                        v-model="model.permissionkey"
+                                        v-validate="'required'"
                                         type="text"
                                         class="form-control"
-                                        id="permissionkey"
                                         name="permissionkey"
-                                        v-model="model.permissionkey"
                                         placeholder="Permission Display Name"
-                                        v-validate="'required'"
                                         data-vv-as="Permission Display Name"
                                     />
                                     <span v-show="errors.has('permissionkey')" class="help is-danger">{{ errors.first('permissionkey') }}</span>
@@ -49,33 +41,25 @@
                             </div>
 
                             <div class="form-group row">
-                                <label
-                                    for="permissiontype"
-                                    class="col-sm-4 form-control-label"
-                                    >Permission Type</label
-                                >
+                                <label for="permissiontype" class="col-sm-4 form-control-label">Permission Type</label>
                                 <div class="col-sm-8">
                                     <input
+                                        id="permissiontype"
+                                        v-model="model.permissiontype"
+                                        v-validate="'required'"
                                         type="text"
                                         class="form-control"
-                                        id="permissiontype"
                                         name="permissiontype"
-                                        v-model="model.permissiontype"
                                         placeholder="Permission Type"
-                                        v-validate="'required'"
                                         data-vv-as="Permission Type"
                                     />
-                                 <span v-show="errors.has('permissiontype')" class="help is-danger">{{ errors.first('permissiontype') }}</span>
+                                    <span v-show="errors.has('permissiontype')" class="help is-danger">{{ errors.first('permissiontype') }}</span>
                                 </div>
-
                             </div>
-                           
+
                             <div class="form-group row">
                                 <div class="col-sm-12">
-                                    <button
-                                        type="submit"
-                                        class="btn btn-secondary pull-right"
-                                    >
+                                    <button type="submit" class="btn btn-secondary pull-right">
                                         Save
                                     </button>
                                 </div>
@@ -88,44 +72,48 @@
     </div>
 </template>
 <script>
-import Vue from "vue";
-import VeeValidate from "vee-validate";
-Vue.use(VeeValidate); //,{enableAutoClasses: true }
-Vue.use(VeeValidate, {fieldsBagName: 'formFields'})
+import Vue from 'vue';
+import VeeValidate from 'vee-validate';
 import roles from '~/api/roles.js';
+Vue.use(VeeValidate); //, {enableAutoClasses: true }
+Vue.use(VeeValidate, { fieldsBagName: 'formFields' });
 export default {
-    name: "role_add",
+    name: 'role_add',
     components: {},
     data() {
         return {
-            msg: "",
-            model:{
+            msg: '',
+            model: {
                 name: '',
                 permissionkey: '',
                 permissiontype: '',
-            }
+            },
         };
     },
     mounted() {},
+    destroyed() {},
     methods: {
-        addRole(){
-            let self = this
+        addRole() {
+            const self = this;
             self.$validator.validateAll().then(result => {
                 if (result) {
-                    roles.add_permission(self.model, data => {
-                        Notify.success('Created Successfully.');
-                        self.$router.push({path: '/admin/permissions_all'});
-                        self.model = {};
-                        self.errors.items = [];
-                    }, err => {
-                        self.$setErrorsFromResponse(err.response.data);
-                        Notify.error(err.response.data.message);
-                    });
+                    roles.add_permission(
+                        self.model,
+                        data => {
+                            Notify.success('Created Successfully.');
+                            self.$router.push({ path: '/admin/permissions_all' });
+                            self.model = {};
+                            self.errors.items = [];
+                        },
+                        err => {
+                            self.$setErrorsFromResponse(err.response.data);
+                            Notify.error(err.response.data.message);
+                        }
+                    );
                 }
             });
         },
     },
-    destroyed() {}
 };
 </script>
 

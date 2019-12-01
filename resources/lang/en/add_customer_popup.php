@@ -29,8 +29,7 @@ return [
     'person' => 'Person',
     'deposit' => 'Deposit',
     'total' => 'Total',
-    'you_will' =>
-        'You will receive a confirmation email once the appointment is made',
+    'you_will' => 'You will receive a confirmation email once the appointment is made',
     'pay' => 'Pay',
     'in' => 'in',
     'front' => 'Front',
@@ -45,6 +44,5 @@ return [
     'add_another_friend' => 'Add Another Friend',
     'your_appointment_changed' => 'Your appointment has been CAHNGED!',
     'pay_partial_payment' => 'Pay remaining payment',
-    'your_appointment_has_booked' =>
-        'Your appointment has been booked successfully!'
+    'your_appointment_has_booked' => 'Your appointment has been booked successfully!'
 ];

@@ -39,7 +39,7 @@ return [
     'customer' => 'Customer',
     'new' => 'New',
     'returning' => 'Returning',
-    'today' => "Todays",
+    'today' => 'Todays',
     'bookings' => 'Bookings',
     'time' => 'Time',
     'target' => 'Target',
@@ -61,7 +61,7 @@ return [
     'pay_confirm_order' => 'Pay & confirm order',
     'book_axe_throwing_today' => 'BOOK AXE THROWING TODAY',
     'view_next_available_target' => "View Today's Available Target",
-    'targets_to_choose_from' => "targets to choose from",
-    'site_configuration' => "Configuration",
-    'logout' => "Logout"
+    'targets_to_choose_from' => 'targets to choose from',
+    'site_configuration' => 'Configuration',
+    'logout' => 'Logout'
 ];

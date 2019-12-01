@@ -2,9 +2,13 @@
     <div class="filter-bar">
         <form class="form-inline">
             <div class="form-group d-flex justify-content-end w-100">
-                <input type="text" v-model="filterText" class="form-control cust-form-control" @keyup.enter="doFilter" placeholder="Type here to search ..">
-                <button class="btn btn-primary w10" @click.prevent="doFilter">Go</button>
-                <button class="btn btn-danger w10" @click.prevent="resetFilter">Reset</button>
+                <input v-model="filterText" type="text" class="form-control cust-form-control" placeholder="Type here to search .." @keyup.enter="doFilter" />
+                <button class="btn btn-primary w10" @click.prevent="doFilter">
+                    Go
+                </button>
+                <button class="btn btn-danger w10" @click.prevent="resetFilter">
+                    Reset
+                </button>
             </div>
         </form>
     </div>
@@ -13,24 +17,23 @@
 export default {
     data() {
         return {
-            filterText: ''
-        }
+            filterText: '',
+        };
     },
     methods: {
         doFilter() {
-            this.$events.fire('filter-set', this.filterText)
+            this.$events.fire('filter-set', this.filterText);
         },
         resetFilter() {
-            this.filterText = ''
-            this.$events.fire('filter-reset')
-        }
-    }
-}
-
+            this.filterText = '';
+            this.$events.fire('filter-reset');
+        },
+    },
+};
 </script>
 <style>
-.filter-bar{
-    padding-bottom : 10px;
+.filter-bar {
+    padding-bottom: 10px;
 }
 .cust-label {
     font-weight: bold;

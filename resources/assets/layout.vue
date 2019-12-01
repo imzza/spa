@@ -1,46 +1,45 @@
 <template>
     <div class="d-flex mainWrap">
-        <preloader v-show="this.$store.state.preloader"></preloader>
+        <preloader v-show="this.$store.state.preloader" />
         <div class="flex-left">
-                <left_side v-show="this.$store.state.left_open"></left_side>
+            <left_side v-show="this.$store.state.left_open" />
         </div>
         <div class="flex-right d-flex">
-            <vueadmin_header></vueadmin_header>
+            <vueadmin_header />
             <right_side>
-                <router-view></router-view>
+                <router-view />
             </right_side>
         </div>
     </div>
 </template>
 <script>
-    import Vue from "vue";
- 
-    import preloader from 'components/layouts/preloader/preloader'
-    import right_side from 'components/layouts/right-side'
-    import left_side from 'components/layouts/left-side/default/left-side'
-    import vueadmin_header from 'components/layouts/header/fixed-header'
-    import 'assets/sass/global.scss'
+import Vue from 'vue';
 
-    export default {
-        name: 'layout',
-        components: {
-            preloader,
-            vueadmin_header,
-            left_side,
-            right_side
-        },
-        data() {
-            return {
-                showtopbtn: false
-            }
-        },
-        mounted() {
-            if (window.innerWidth <= 992) {
-                this.$store.commit('left_menu', 'close')
-            }
-        },
+import preloader from 'components/layouts/preloader/preloader';
+import right_side from 'components/layouts/right-side';
+import left_side from 'components/layouts/left-side/default/left-side';
+import vueadmin_header from 'components/layouts/header/fixed-header';
+import 'assets/sass/global.scss';
 
-    }
+export default {
+    name: 'Layout',
+    components: {
+        preloader,
+        vueadmin_header,
+        left_side,
+        right_side,
+    },
+    data() {
+        return {
+            showtopbtn: false,
+        };
+    },
+    mounted() {
+        if (window.innerWidth <= 992) {
+            this.$store.commit('left_menu', 'close');
+        }
+    },
+};
 </script>
 <style lang="scss" scoped>
 .mainWrap {
@@ -52,29 +51,26 @@
     }
     .flex-left {
         width: 300px;
-        background-color:#769995;
+        background-color: #769995;
         height: 100%;
         overflow: auto;
     }
 }
 
-::-webkit-scrollbar-track
-{
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
 }
 
-::-webkit-scrollbar
-{
+::-webkit-scrollbar {
     width: 12px;
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
 }
 
-::-webkit-scrollbar-thumb
-{
+::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #555;
 }
 </style>

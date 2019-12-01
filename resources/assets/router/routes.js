@@ -1,8 +1,7 @@
-export default  [
+export default [
     {
         path: '/',
-        redirect: {path: '/login'},
-
+        redirect: { path: '/login' },
     },
     {
         path: '/admin',
@@ -12,37 +11,37 @@ export default  [
                 path: 'dashboard',
                 component: resolve => require(['admin/index'], resolve),
                 meta: {
-                    title: "Dashboard",
+                    title: 'Dashboard',
                     isLoggedIn: true,
-                }
+                },
             },
             {
                 path: 'table',
                 component: resolve => require(['admin/table/index'], resolve),
                 meta: {
-                    title: "Table",
+                    title: 'Table',
                     isLoggedIn: true,
-                }
+                },
             },
-            //Employees Routes
+            // Employees Routes
             {
                 path: 'employees_all/:cid?',
                 component: resolve => require(['admin/employees/index'], resolve),
-                props: (route) => ({ co: route.query.co },{login: route.query.login},{f: route.query.f}),
+                props: route => ({ co: route.query.co }, { login: route.query.login }, { f: route.query.f }),
                 name: 'employees_all',
                 meta: {
-                    title: "All Employees",
+                    title: 'All Employees',
                     isLoggedIn: true,
-                }
+                },
             },
             {
                 path: 'employees_add/:cid?',
                 component: resolve => require(['admin/employees/add'], resolve),
                 name: 'employees_add',
                 meta: {
-                    title: "Add Employee",
+                    title: 'Add Employee',
                     isLoggedIn: true,
-                }
+                },
             },
             {
                 path: 'employees_edit/:id/:cid?',
@@ -50,8 +49,8 @@ export default  [
                 name: 'employees_edit',
                 meta: {
                     title: 'Edit Employee',
-                    isLoggedIn: true
-                }
+                    isLoggedIn: true,
+                },
             },
 
             {
@@ -60,25 +59,25 @@ export default  [
                 meta: {
                     title: 'Profile',
                     isLoggedIn: true,
-                }
+                },
             },
             // Roles and Permissions Route
             {
                 path: 'roles_all',
                 component: resolve => require(['admin/roles/index'], resolve),
                 meta: {
-                    title: "Roles",
+                    title: 'Roles',
                     isLoggedIn: true,
-                }
+                },
             },
-            
+
             {
                 path: 'roles_add',
                 component: resolve => require(['admin/roles/add'], resolve),
                 meta: {
-                    title: "Add Role",
+                    title: 'Add Role',
                     isLoggedIn: true,
-                }
+                },
             },
 
             {
@@ -86,9 +85,9 @@ export default  [
                 name: 'role_edit',
                 component: resolve => require(['admin/roles/edit'], resolve),
                 meta: {
-                    title: "Edit Role",
+                    title: 'Edit Role',
                     isLoggedIn: true,
-                }
+                },
             },
 
             {
@@ -96,96 +95,96 @@ export default  [
                 component: resolve => require(['admin/permissions/permissions_assign'], resolve),
                 name: 'permissions_assign',
                 meta: {
-                    title: "Assign Permissions",
+                    title: 'Assign Permissions',
                     isLoggedIn: true,
-                }
+                },
             },
             {
                 path: 'permissions_all',
                 component: resolve => require(['admin/permissions/index'], resolve),
                 meta: {
-                    title: "Permissions",
+                    title: 'Permissions',
                     isLoggedIn: true,
-                }
+                },
             },
             {
                 path: 'permissions_add',
                 component: resolve => require(['admin/permissions/add'], resolve),
                 meta: {
-                    title: "Add Permission",
+                    title: 'Add Permission',
                     isLoggedIn: true,
-                }
+                },
             },
             {
                 path: 'permissions_edit/:id',
                 name: 'permissions_edit',
                 component: resolve => require(['admin/permissions/edit'], resolve),
                 meta: {
-                    title: "Edit Permission",
+                    title: 'Edit Permission',
                     isLoggedIn: true,
-                }
+                },
             },
             {
                 path: 'students_all',
                 name: 'students_all',
                 component: resolve => require(['admin/students/index'], resolve),
                 meta: {
-                    title: "Students",
+                    title: 'Students',
                     isLoggedIn: true,
-                }
+                },
             },
             {
                 path: 'students_add',
                 component: resolve => require(['admin/students/add'], resolve),
                 meta: {
-                    title: "Add Student",
+                    title: 'Add Student',
                     isLoggedIn: true,
-                }
+                },
             },
             {
                 path: 'students_edit/:id',
                 name: 'students_edit',
                 component: resolve => require(['admin/students/edit'], resolve),
                 meta: {
-                    title: "Edit Student",
+                    title: 'Edit Student',
                     isLoggedIn: true,
-                }
+                },
             },
-        ]
+        ],
     },
-    
+
     {
         path: '/login',
         component: resolve => require(['pages/login'], resolve),
         meta: {
-            title: "Login",
+            title: 'Login',
             isNotLoggedIn: true,
-        }
+        },
     },
 
     {
         path: '/create_profile',
         component: resolve => require(['pages/create_profile'], resolve),
-        props: (route) => ({ code: route.query.code }),
+        props: route => ({ code: route.query.code }),
         meta: {
-            title: "Create Profile",
+            title: 'Create Profile',
             forSite: true,
-        }
+        },
     },
     {
         path: '/no_access',
         component: resolve => require(['pages/403'], resolve),
         meta: {
-            title: "403",
+            title: '403',
             isLoggedIn: true,
-        }
+        },
     },
     {
         path: '*',
         component: resolve => require(['pages/404'], resolve),
         meta: {
-            title: "404",
+            title: '404',
             isNotLoggedIn: true,
-        }
-    }
-]
+        },
+    },
+];

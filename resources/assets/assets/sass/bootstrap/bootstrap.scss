@@ -2,12 +2,11 @@
 //Author Company: Techleadz
 //Author Name: Nabeel Akbar
 
-
-@import "~bootstrap/scss/functions";
-@import "variables";
+@import '~bootstrap/scss/functions';
+@import 'variables';
 // Core variables and mixins
-@import "~bootstrap/scss/bootstrap";
-body,#app{
-  min-height: 100vh;
+@import '~bootstrap/scss/bootstrap';
+body,
+#app {
+    min-height: 100vh;
 }
-

@@ -5,22 +5,31 @@
                 <div class="row">
                     <div class="col-sm-12 mt-4">
                         <h2 class="text-center">
-              <img src="~img/logo_black.png" alt="Logo">
-            </h2>
+                            <img src="~img/logo_black.png" alt="Logo" />
+                        </h2>
                     </div>
                     <div class="col-sm-12 mt-4">
-                        <h3 class="page-name text-center">Forgot Password</h3>
+                        <h3 class="page-name text-center">
+                            Forgot Password
+                        </h3>
                     </div>
                 </div>
                 <vue-form :state="formstate" @submit.prevent="onSubmit">
                     <div class="col-lg-12">
-                        <p class="user-message "> Please enter the email you are registered with. An email message will be sent to the email address with further instructions.</p>
+                        <p class="user-message ">
+                            Please enter the email you are registered with. An email message will be sent to the email address with further instructions.
+                        </p>
                         <div class="form-group">
                             <validate tag="div">
                                 <input v-model="model.email" name="email" type="email" required placeholder="E-mail" class="form-control" />
                                 <field-messages name="email" show="$invalid && $submitted" class="text-danger">
-                                    <div slot="required">Email is a required field</div>
-                                    <div slot="email">Email is not valid</div>
+                                    >
+                                    <div slot="required">
+                                        Email is a required field
+                                    </div>
+                                    <div slot="email">
+                                        Email is not valid
+                                    </div>
                                 </field-messages>
                             </validate>
                         </div>
@@ -36,36 +45,32 @@
     </div>
 </template>
 <script>
-import Vue from 'vue'
-import VueForm from "vue-form";
-import options from "src/validations/validations.js";
+import Vue from 'vue';
+import VueForm from 'vue-form';
+import options from 'src/validations/validations.js';
 Vue.use(VueForm, options);
 export default {
-    name: "forgetpassword",
+    name: 'forgetpassword',
     data() {
         return {
             formstate: {},
             model: {
-                email: ""
-            }
-        }
+                email: '',
+            },
+        };
     },
+    mounted: function() {},
+    destroyed: function() {},
     methods: {
         onSubmit() {
             if (this.formstate.$invalid) {
                 return;
             } else {
-                this.$router.push("/reset_password");
+                this.$router.push('/reset_password');
             }
-        }
+        },
     },
-    mounted: function() {
-
-    },
-    destroyed: function() {
-
-    }
-}
+};
 </script>
 <style scoped>
 .login-content {
@@ -82,16 +87,16 @@ export default {
     font-size: 14px;
     color: #777;
 }
-.img_backgrond{
-    background-image: url("~img/pages/Login-03-01.png");
+.img_backgrond {
+    background-image: url('~img/pages/Login-03-01.png');
     background-size: cover;
     height: 100vh;
-    width:100%;
+    width: 100%;
 }
-label{
+label {
     font-size: 14px !important;
 }
 ::-webkit-input-placeholder {
-    font-size:14px;
+    font-size: 14px;
 }
 </style>

@@ -7,8 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmployeeActivation extends Mailable
-{
+class EmployeeActivation extends Mailable {
     use Queueable, SerializesModels;
 
     /**
@@ -19,8 +18,7 @@ class EmployeeActivation extends Mailable
 
     public $data;
 
-    public function __construct($data)
-    {
+    public function __construct($data) {
         $this->data = $data;
     }
 
@@ -29,8 +27,7 @@ class EmployeeActivation extends Mailable
      *
      * @return $this
      */
-    public function build()
-    {
+    public function build() {
         return $this->from(env('MAIL_USERNAME'))
             ->view('mails.employees.employee_registration')
             ->subject('Registration Email');

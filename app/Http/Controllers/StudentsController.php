@@ -6,21 +6,19 @@ use App\Models\Admin\Student;
 use Illuminate\Http\Request;
 use App\Http\Resources\StudentResource;
 
-class StudentsController extends Controller
-{
+class StudentsController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $sortRules = $request->input('sort');
         $limit = $request->input('per_page');
         list($field, $dir) = explode('|', $sortRules);
 
         $result = Student::orderBy($field, $dir);
-        if ($request->filter != "") {
+        if ($request->filter != '') {
             $result = $result->where('first_name', 'like', $request->filter);
             $result = $result->orWhere('last_name', 'like', $request->filter);
             // $result = $result->orWhere('name', 'like', $request->filter);
@@ -39,8 +37,7 @@ class StudentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $request->validate([
             'about' => 'required|min:100',
             'address' => 'required',
@@ -55,22 +52,14 @@ class StudentsController extends Controller
             'zip' => 'required'
         ]);
 
-        $name = "";
+        $name = '';
         if ($request->get('image')) {
             $image = $request->get('image');
-            $name =
-                time() .
-                '.' .
-                explode(
-                    '/',
-                    explode(':', substr($image, 0, strpos($image, ';')))[1]
-                )[1];
+            $name = time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
             if (!file_exists(public_path('images/'))) {
                 mkdir(public_path('images/'), 666, true);
             }
-            \Image::make($request->get('image'))->save(
-                public_path('images/') . $name
-            );
+            \Image::make($request->get('image'))->save(public_path('images/') . $name);
         }
 
         $student = new Student();
@@ -105,8 +94,7 @@ class StudentsController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
-    {
+    public function show(Student $student) {
         if ($student->image != '') {
             $student->image_link = url('public/images/' . $student->image);
             $student->image = '';
@@ -121,8 +109,7 @@ class StudentsController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
-    {
+    public function update(Request $request, Student $student) {
         $request->validate([
             'about' => 'required|min:100',
             'address' => 'required',
@@ -136,25 +123,17 @@ class StudentsController extends Controller
             'zip' => 'required'
         ]);
 
-        $name = "";
+        $name = '';
 
         if ($request->get('image') && $request->image != '') {
             $image = $request->get('image');
-            $name =
-                time() .
-                '.' .
-                explode(
-                    '/',
-                    explode(':', substr($image, 0, strpos($image, ';')))[1]
-                )[1];
+            $name = time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
 
             if (!file_exists(public_path('images/'))) {
                 mkdir(public_path('images/'), 666, true);
             }
 
-            \Image::make($request->get('image'))->save(
-                public_path('images/') . $name
-            );
+            \Image::make($request->get('image'))->save(public_path('images/') . $name);
         }
 
         $student->about = $request->about;
@@ -164,7 +143,7 @@ class StudentsController extends Controller
         $student->email = $request->email;
         $student->first_name = $request->first_name;
         $student->gender = $request->gender;
-        if ($name != "") {
+        if ($name != '') {
             $student->image = $name;
         }
         $student->last_name = $request->last_name;
@@ -191,8 +170,7 @@ class StudentsController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
-    {
+    public function destroy(Student $student) {
         $student->delete();
         return response()->json(null, 204);
     }

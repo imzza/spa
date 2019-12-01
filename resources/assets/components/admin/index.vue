@@ -24,32 +24,31 @@
     </div>
 </template>
 <script>
-    // import Vue from "vue";
+// import Vue from "vue";
 
 import Dashboard from '~/components/admin/employees/dashboard';
 
 export default {
-  name: "index",
-  components: {Dashboard},
-  data() {
-    return {
-      msg: ""
-    };
-  },
-  created() {},
-  mounted() {},
-  methods: {
-    test() {
-      console.log("Test");
-    }
-  },
-  computed: {
-    isEmp(){
-      return this.$store.getters.roles.includes('EE');
-    }
-  },
-  destroyed: function() {}
+    name: 'index',
+    components: { Dashboard },
+    data() {
+        return {
+            msg: '',
+        };
+    },
+    computed: {
+        isEmp() {
+            return this.$store.getters.roles.includes('EE');
+        },
+    },
+    created() {},
+    mounted() {},
+    destroyed: function() {},
+    methods: {
+        test() {
+            console.log('Test');
+        },
+    },
 };
 </script>
-<style type="text/css" scoped lang="scss">
-</style>
+<style type="text/css" scoped lang="scss"></style>

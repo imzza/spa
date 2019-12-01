@@ -11,16 +11,14 @@ use Illuminate\Support\Facades\Validator;
 
 use Spatie\Permission\Models\Role as Role;
 
-class RolesController extends Controller
-{
+class RolesController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
 
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         // if ($request->user()->cannot('roles')) {return response()->json(null,403); }
 
         return response()->json(Role::with('permissions')->get(), 200);
@@ -32,8 +30,7 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $request->validate(
             [
                 'name' => 'required|unique:roles,name',
@@ -67,8 +64,7 @@ class RolesController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
-    {
+    public function show(Role $role) {
         // $dbrole =  Role::find($role)->first();
         $role = new RolesResource($role);
         if ($role) {
@@ -85,8 +81,7 @@ class RolesController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
-    {
+    public function update(Request $request, Role $role) {
         $request->validate(
             [
                 'name' => 'required|unique:roles,name,' . $role->id,
@@ -121,32 +116,24 @@ class RolesController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
-    {
+    public function destroy(Role $role) {
         if ($role) {
             $delete = $role->delete($role);
             if ($delete) {
                 return response()->json(null, 204);
             } else {
-                return response()->json(
-                    ['message' => 'Something went wrong'],
-                    200
-                );
+                return response()->json(['message' => 'Something went wrong'], 200);
             }
         } else {
             return response()->json(['message' => 'Record Not Found'], 404);
         }
     }
 
-    public function roles_assign_permissions(Request $request)
-    {
+    public function roles_assign_permissions(Request $request) {
         $role = Role::find($request->id);
         $assign = $role->syncPermissions($request->permissions);
         if ($assign) {
-            return response()->json(
-                ['message' => "Permissions assigned."],
-                200
-            );
+            return response()->json(['message' => 'Permissions assigned.'], 200);
         } else {
             return response()->json(['message' => 'Something went wrong'], 400);
         }
