@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | French Language Words
@@ -17,5 +16,5 @@ return [
     'notifications' => 'Notifications',
     'subject' => 'Assujettir',
     'message' => 'Message',
-    'save' => 'Enregistrer',
+    'save' => 'Enregistrer'
 ];

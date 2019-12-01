@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | French Language Words
@@ -58,12 +57,11 @@ return [
     'no_record_found' => 'No Record Found',
     'pick_a_location' => 'PICK A LOCATION',
     'pick_date' => 'Pick a date',
-    'pick_preffered_time' =>'Pick your preferred time',
-    'pay_confirm_order' =>'Pay & confirm order',
+    'pick_preffered_time' => 'Pick your preferred time',
+    'pay_confirm_order' => 'Pay & confirm order',
     'book_axe_throwing_today' => 'BOOK AXE THROWING TODAY',
     'view_next_available_target' => "View Today's Available Target",
     'targets_to_choose_from' => "targets to choose from",
     'site_configuration' => "Configuration",
-    'logout' => "Logout",
-
+    'logout' => "Logout"
 ];

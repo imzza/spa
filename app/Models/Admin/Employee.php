@@ -12,11 +12,9 @@ class Employee extends Model
     // protected $fillable = [];
 
     public function getRouteKeyName()
-	{
-	    return 'weeid';
-	}
-
-
+    {
+        return 'weeid';
+    }
 
     public function user()
     {

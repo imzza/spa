@@ -18,11 +18,12 @@ class RolesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
-    public function index(Request $request) {
+
+    public function index(Request $request)
+    {
         // if ($request->user()->cannot('roles')) {return response()->json(null,403); }
-        
-       return response()->json(Role::with('permissions')->get(), 200);
+
+        return response()->json(Role::with('permissions')->get(), 200);
     }
 
     /**
@@ -31,21 +32,22 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-        $request->validate([
-            'name' => 'required|unique:roles,name',
-            'rolename' => 'required',
-            'roledescription' => 'required'
+    public function store(Request $request)
+    {
+        $request->validate(
+            [
+                'name' => 'required|unique:roles,name',
+                'rolename' => 'required',
+                'roledescription' => 'required'
             ],
             [
-               'name.required' => 'Please enter a role name',
-              'name.unique' => 'This role already exists',
-              'rolename.required' => 'Please enter a role display name',
-              'roledescription.required' => 'Please enter a role description'
+                'name.required' => 'Please enter a role name',
+                'name.unique' => 'This role already exists',
+                'rolename.required' => 'Please enter a role display name',
+                'roledescription.required' => 'Please enter a role description'
             ]
         );
 
-        
         $role = new Role();
         $role->name = $request->name;
         $role->guard_name = 'web';
@@ -53,8 +55,8 @@ class RolesController extends Controller
         // $role->role_descrip = $request->roledescription;
         $role->save();
         if ($role->id) {
-            return response()->json($role,201);
-        }else{
+            return response()->json($role, 201);
+        } else {
             return response()->json('Something went wrong', 200);
         }
     }
@@ -70,8 +72,8 @@ class RolesController extends Controller
         // $dbrole =  Role::find($role)->first();
         $role = new RolesResource($role);
         if ($role) {
-            return response()->json($role,200);
-        }else{
+            return response()->json($role, 200);
+        } else {
             return response()->json(['message' => 'Record Not Found'], 404);
         }
     }
@@ -85,31 +87,30 @@ class RolesController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        
-        $request->validate([
-            'name' => 'required|unique:roles,name,'.$role->id,
-            'rolename' => 'required',
-            'role_descrip' => 'required'
+        $request->validate(
+            [
+                'name' => 'required|unique:roles,name,' . $role->id,
+                'rolename' => 'required',
+                'role_descrip' => 'required'
             ],
             [
-               'name.required' => 'Please enter a role name',
-              'name.unique' => 'This role already exists',
-              'rolename.required' => 'Please enter a role display name',
-              'role_descrip.required' => 'Please enter a role description'
+                'name.required' => 'Please enter a role name',
+                'name.unique' => 'This role already exists',
+                'rolename.required' => 'Please enter a role display name',
+                'role_descrip.required' => 'Please enter a role description'
             ]
         );
 
-        
         // $role = Role::findOrFail($role);
 
         $role->name = $request->name;
         $role->rolename = $request->rolename;
         $role->role_descrip = $request->role_descrip;
         $role->save();
-        
+
         if ($role->id) {
             return response()->json(new RolesResource($role), 200);
-        }else{
+        } else {
             return response()->json('Something went wrong', 400);
         }
     }
@@ -126,22 +127,28 @@ class RolesController extends Controller
             $delete = $role->delete($role);
             if ($delete) {
                 return response()->json(null, 204);
-            }else{
-                return response()->json(['message' => 'Something went wrong'], 200);
+            } else {
+                return response()->json(
+                    ['message' => 'Something went wrong'],
+                    200
+                );
             }
-        }else{
+        } else {
             return response()->json(['message' => 'Record Not Found'], 404);
         }
     }
 
-    public function roles_assign_permissions(Request $request) {
+    public function roles_assign_permissions(Request $request)
+    {
         $role = Role::find($request->id);
-        $assign  = $role->syncPermissions($request->permissions);
+        $assign = $role->syncPermissions($request->permissions);
         if ($assign) {
-            return response()->json(['message' => "Permissions assigned."],200);
+            return response()->json(
+                ['message' => "Permissions assigned."],
+                200
+            );
         } else {
             return response()->json(['message' => 'Something went wrong'], 400);
         }
-        
     }
 }

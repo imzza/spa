@@ -25,7 +25,7 @@ class StudentResource extends JsonResource
             'email' => $this->email,
             'first_name' => $this->first_name,
             'gender' => $this->gender,
-            'image' => url('public/images/'.$this->image),
+            'image' => url('public/images/' . $this->image),
             'last_name' => $this->last_name,
             'password' => $this->password,
             'state' => $this->state,

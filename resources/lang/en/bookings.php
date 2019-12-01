@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | French Language Words
@@ -14,13 +13,13 @@ return [
     */
     // header variables
 
-//Bookings
+    //Bookings
     'appointment' => 'Appointment',
     'search' => 'Search',
     'targets' => 'Targets',
     'positions' => 'Positions',
-    'all'=>'All',
+    'all' => 'All',
     'location' => 'Location',
     'prev' => 'Prev',
-    'next' => 'Next',
+    'next' => 'Next'
 ];

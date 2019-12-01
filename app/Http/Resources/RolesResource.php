@@ -12,13 +12,14 @@ class RolesResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request) {
+    public function toArray($request)
+    {
         // return parent::toArray($request);
         // For Parsing
         return [
-            'name'       => $this->name,
-            'rolename'      => $this->rolename,
-            'role_descrip'    => $this->role_descrip
+            'name' => $this->name,
+            'rolename' => $this->rolename,
+            'role_descrip' => $this->role_descrip
         ];
         // , 'created_at' => Carbon::parse($this->created_at)->toDayDateTimeString(),
     }

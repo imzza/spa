@@ -24,32 +24,36 @@ class EmployeesController extends Controller
      */
     public function index(Request $request)
     {
-
         // $roles = Spatie\Permission\Models\Role::all();
         // $users = \App\User::with('roles')->get();
-
 
         $sortRules = $request->input('sort');
         $limit = $request->input('per_page');
         list($field, $dir) = explode('|', $sortRules);
-        return response()->json(Employee::with(["user" => function($query){
-                $query->with('roles');
-        }])->orderBy($field, $dir)->paginate($limit), 200);
+        return response()->json(
+            Employee::with([
+                "user" => function ($query) {
+                    $query->with('roles');
+                }
+            ])
+                ->orderBy($field, $dir)
+                ->paginate($limit),
+            200
+        );
 
         // return response()->json(EmployeeResource::collection(Employee::all()), 200);
     }
 
-    
-
-    public function employees_all(Request $request) {
-
-         $sortRules = $request->input('sort');
+    public function employees_all(Request $request)
+    {
+        $sortRules = $request->input('sort');
         $limit = $request->input('per_page');
         list($field, $dir) = explode('|', $sortRules);
-        return response()->json(User::orderBy($field, $dir)->paginate($limit), 200);
+        return response()->json(
+            User::orderBy($field, $dir)->paginate($limit),
+            200
+        );
     }
-
-
 
     /**
      * Store a newly created resource in storage.
@@ -59,11 +63,9 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
-        
-
         // exit;
         // return response()->json($request->all());
-        
+
         $request->validate([
             'EEFN' => 'required',
             'EELN' => 'required',
@@ -76,7 +78,7 @@ class EmployeesController extends Controller
             'Phone1' => 'required',
             'DOB' => 'required',
             'OpenFileDate' => 'required',
-            'email1' => 'required',
+            'email1' => 'required'
             // 'FedStatus' => 'required',
             // 'FedAllow' => 'required',
             // 'EFWT' => 'required',
@@ -112,97 +114,101 @@ class EmployeesController extends Controller
         $employee->StStatus = $request->StStatus;
         $employee->StAllow = $request->StAllow;
         $employee->ESWT = $request->ESWT;
-        
+
         if ($request->exists('isMinor')) {
             $employee->isMinor = $request->isMinor;
         }
 
         $employee->save();
 
-
-        try{
+        try {
             if ($employee->id) {
-                $send_mail = self::sendAccountCreationEmail($request->emial1, $request->eeName);
+                $send_mail = self::sendAccountCreationEmail(
+                    $request->emial1,
+                    $request->eeName
+                );
                 return response()->json($employee, 201);
-            } else{
+            } else {
                 return response()->json(['message' => 'Bad Request'], 400);
             }
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             if ($e->getCode == 2) {
-                return response()->json(['message' => 'Mail sending Failed!'], 400);
+                return response()->json(
+                    ['message' => 'Mail sending Failed!'],
+                    400
+                );
             }
-            return response()->json(['message' => $e->getMessage()],200);
+            return response()->json(['message' => $e->getMessage()], 200);
         }
-       
     }
 
-
-
-
-
-    public static function sendAccountCreationEmail($email,$name){
+    public static function sendAccountCreationEmail($email, $name)
+    {
         // $email = encrypt($email);
-        $url = url('/#/create_profile?code='.Crypt::encryptString($email));
+        $url = url('/#/create_profile?code=' . Crypt::encryptString($email));
         // echo "</br> Decrypted email". decrypt($email);
         // return response()->json(['url' => $url, 'email' => $email, 'dc' =>  Crypt::decryptString(Crypt::encryptString($email))],200);
         // exit('Email Results');
-        
+
         $email_data = array(
             'url' => $url,
             'name' => $name,
             'email' => $email
         );
 
-        try{
+        try {
             Mail::to($email)->send(new EmployeeActivation($email_data));
             return true;
             // return response()->json('Email Sent', 200);
-        }catch(\Exception $e){
-            throw new \Exception($e->getMessage(), 2);        }
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage(), 2);
+        }
     }
 
-    public function verify(Request $request) {
+    public function verify(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'code' => 'required|min:100'
         ]);
 
         if ($validator->fails()) {
-           return response()->json(['message' => $validator->errors()->get('code')[0]], 400);
+            return response()->json(
+                ['message' => $validator->errors()->get('code')[0]],
+                400
+            );
         }
 
-        try{
+        try {
             $email = Crypt::decryptString($request->code);
-        }catch(DecryptException $e){
-            return response()->json(['message' => 'Invalid Url'],400);
+        } catch (DecryptException $e) {
+            return response()->json(['message' => 'Invalid Url'], 400);
         }
 
-        
-        
         if (Employee::where('email1', '=', $email)->exists()) {
             return response()->json($email, 200);
-        }else{
+        } else {
             return response()->json(['message' => 'Invalid Url'], 400);
         }
     }
 
-    public function get_code_user($code) {
-        
-        try{
+    public function get_code_user($code)
+    {
+        try {
             $email = Crypt::decryptString($code);
 
             $user = Employee::where('email1', $email)->first();
             if ($user) {
                 return $user;
-            }else{
+            } else {
                 return false;
             }
-        }catch(DecryptException $e){
+        } catch (DecryptException $e) {
             return false;
         }
-
     }
 
-    public function create_profile(Request $request) {
+    public function create_profile(Request $request)
+    {
         $request->validate([
             'code' => 'required',
             'email' => 'required|unique:users,email',
@@ -225,14 +231,12 @@ class EmployeesController extends Controller
                 $emp->save();
 
                 return response()->json($user, 201);
-            }else{
+            } else {
                 return response()->json(['message' => 'Bad Request'], 400);
             }
         } else {
-           return response()->json(['message' => 'Url is Invalid'], 400); 
+            return response()->json(['message' => 'Url is Invalid'], 400);
         }
-
-       
     }
 
     /**
@@ -246,7 +250,6 @@ class EmployeesController extends Controller
         return response()->json(new EmployeeResource($employee), 200);
     }
 
-
     /**
      * Update the specified resource in storage.
      *
@@ -255,8 +258,7 @@ class EmployeesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Employee $employee)
-    {   
-
+    {
         $employee = Employee::where('weeid', $employee->weeid)->first();
         // return response()->json($employee,400);
 
@@ -272,7 +274,7 @@ class EmployeesController extends Controller
             'Phone1' => 'required',
             'DOB' => 'required',
             'OpenFileDate' => 'required',
-            'email1' => 'required',
+            'email1' => 'required'
             // 'FedStatus' => 'required',
             // 'FedAllow' => 'required',
             // 'EFWT' => 'required',
@@ -307,7 +309,7 @@ class EmployeesController extends Controller
         $employee->StStatus = $request->StStatus;
         $employee->StAllow = $request->StAllow;
         $employee->ESWT = $request->ESWT;
-        
+
         if ($request->exists('isMinor')) {
             $employee->isMinor = $request->isMinor;
         }
@@ -316,7 +318,7 @@ class EmployeesController extends Controller
 
         if ($employee->save()) {
             return response()->json($employee, 200);
-        } else{
+        } else {
             return response()->json(['message' => 'Bad Request'], 400);
         }
     }
@@ -327,58 +329,78 @@ class EmployeesController extends Controller
      * @param  \App\Models\Admin\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    
+
     public function destroy($id)
-    {   
+    {
         Employee::where('weeid', $id)->delete();
         // $employee->delete();
         return response()->json(null, 204);
     }
 
-
-    public function clock_in(Request $request) {
+    public function clock_in(Request $request)
+    {
         $val = [
-             'inTime' => 'required',
-            'inDate' =>'required'
+            'inTime' => 'required',
+            'inDate' => 'required'
         ];
 
         if ($request->user()->clocked_in == 0) {
-            $val = array_merge($val, ['shift' => 'required', 'deptname' => 'required', 'client' => 'required']);
+            $val = array_merge($val, [
+                'shift' => 'required',
+                'deptname' => 'required',
+                'client' => 'required'
+            ]);
         }
 
         $request->validate($val);
-
-
 
         $user = $request->user();
         $weeid = Employee::where('user_id', $user->id)->first();
         if ($weeid) {
             $weecode = Assign::where('weeid', $weeid->weeid)->first();
             if ($weecode) {
-                $time = TimeCard::whereRaw('DATE(datetimeIN) = ?', [$request->inDate])->whereIN('status', ['IN'])->where('weecode', $weecode->weecode)->first();
+                $time = TimeCard::whereRaw('DATE(datetimeIN) = ?', [
+                    $request->inDate
+                ])
+                    ->whereIN('status', ['IN'])
+                    ->where('weecode', $weecode->weecode)
+                    ->first();
                 if ($time) {
-                    return response()->json(['clockIn' => array('status' => 'IN', 'inTime' => $time->timeIN), 'already' => 'yes'], 200);
-                }else{
-                    $tc = TimeCard::where('weecode', $weecode->weecode)->orderBy('ID', 'DESC')->first();
+                    return response()->json(
+                        [
+                            'clockIn' => array(
+                                'status' => 'IN',
+                                'inTime' => $time->timeIN
+                            ),
+                            'already' => 'yes'
+                        ],
+                        200
+                    );
+                } else {
+                    $tc = TimeCard::where('weecode', $weecode->weecode)
+                        ->orderBy('ID', 'DESC')
+                        ->first();
                     $TimeCard = new TimeCard();
                     if ($tc) {
                         $TimeCard->shiftid = $tc->shiftid;
                         $TimeCard->deptid = $tc->deptid;
-                    }else{
+                    } else {
                         $TimeCard->shiftid = $request->shift;
                         $TimeCard->deptid = $request->deptname;
                     }
 
-                    
-
-
                     //mmddyyyy == mdY
-                    $timecode = $weecode->weecode.$TimeCard->shiftid.$TimeCard->deptid.date('mdY', strtotime($request->inDate)).date('hi', strtotime($request->inTime)).'IN';
+                    $timecode =
+                        $weecode->weecode .
+                        $TimeCard->shiftid .
+                        $TimeCard->deptid .
+                        date('mdY', strtotime($request->inDate)) .
+                        date('hi', strtotime($request->inTime)) .
+                        'IN';
 
                     // echo $timecode;
 
                     // exit;
-
 
                     $TimeCard->weeid = $weeid->weeid;
                     $TimeCard->weecode = $weecode->weecode;
@@ -386,14 +408,13 @@ class EmployeesController extends Controller
                     $TimeCard->eecode = $weecode->weecode;
                     $TimeCard->timecode = $timecode;
                     $TimeCard->maintimecode = $timecode;
-                    
+
                     $TimeCard->status = 'IN';
-                    
-                    
+
                     $TimeCard->datetimeIN = $request->inTime;
                     $TimeCard->dateIN = $request->inTime;
                     $TimeCard->timeIN = $request->inTime;
-                    
+
                     // echo '<pre>';
                     // print_r($TimeCard);
                     // exit('Some Data');
@@ -422,141 +443,218 @@ class EmployeesController extends Controller
 
                         // bkstatus: 0,
                         // bknum: 0,
-                        
 
-                        return response()->json(['clockIn' => array('status' => 'IN', 'inTime' => $TimeCard->datetimeIN)], 200);
-                    }else{
-                        response()->json(['message' => 'Connection Problem...'], 400);
+                        return response()->json(
+                            [
+                                'clockIn' => array(
+                                    'status' => 'IN',
+                                    'inTime' => $TimeCard->datetimeIN
+                                )
+                            ],
+                            200
+                        );
+                    } else {
+                        response()->json(
+                            ['message' => 'Connection Problem...'],
+                            400
+                        );
                     }
-
                 }
-            }else{
-                return response()->json(['message' => 'Employee is not assigned to any client'], 400);
+            } else {
+                return response()->json(
+                    ['message' => 'Employee is not assigned to any client'],
+                    400
+                );
             }
-        }else{
-            return response()->json(['message' => 'Employee id is missing'], 400);
+        } else {
+            return response()->json(
+                ['message' => 'Employee id is missing'],
+                400
+            );
         }
     }
 
-
-    public function clock_out(Request $request) {
+    public function clock_out(Request $request)
+    {
         $request->validate([
             'outTime' => 'required',
-            'outDate' => 'required',
+            'outDate' => 'required'
         ]);
-
 
         $user = $request->user();
 
         $weeid = Employee::where('user_id', $user->id)->first();
         if ($weeid) {
-                $TimeStatus = TimeStatus::where('weeid', $weeid->weeid)->first();
-                if ($TimeStatus) {
-                    
-                    $save = TimeCard::where('maintimecode', $TimeStatus->timecode)->where('status', 'IN')->update(
-                        [
+            $TimeStatus = TimeStatus::where('weeid', $weeid->weeid)->first();
+            if ($TimeStatus) {
+                $save = TimeCard::where('maintimecode', $TimeStatus->timecode)
+                    ->where('status', 'IN')
+                    ->update([
                         'datetimeOUT' => $request->outTime,
                         'timeOUT' => $request->outTime,
                         'dateOUT' => $request->outDate
                     ]);
 
-
-                    if ($save) {
-                        TimeStatus::where('weeid', $weeid->weeid)->delete();
-                        return response()->json(['clockOut' => array('status' => null, 'inTime' => null )], 200);
-                    }else{
-                        response()->json(['message' => 'Connection Problem...'], 400);
-                    }
-                }else{
-                    return response()->json(['message' => 'Not Cloked In'], 400);
+                if ($save) {
+                    TimeStatus::where('weeid', $weeid->weeid)->delete();
+                    return response()->json(
+                        [
+                            'clockOut' => array(
+                                'status' => null,
+                                'inTime' => null
+                            )
+                        ],
+                        200
+                    );
+                } else {
+                    response()->json(
+                        ['message' => 'Connection Problem...'],
+                        400
+                    );
                 }
-        }else{
-            return response()->json(['message' => 'Employee id is missing'], 400);
+            } else {
+                return response()->json(['message' => 'Not Cloked In'], 400);
+            }
+        } else {
+            return response()->json(
+                ['message' => 'Employee id is missing'],
+                400
+            );
         }
     }
 
     //Break In User
-    public function break_in(Request $request) {
+    public function break_in(Request $request)
+    {
         $user = $request->user();
         $weeid = Employee::where('user_id', $user->id)->first();
         if ($weeid) {
             $weecode = Assign::where('weeid', $weeid->weeid)->first();
             if ($weecode) {
-                $TimeCard = TimeCard::whereRaw('DATE(datetimeIN) = ?', [date('Y-m-d')])->where('status', 'IN')->where('weecode', $weecode->weecode)->first();
-                
+                $TimeCard = TimeCard::whereRaw('DATE(datetimeIN) = ?', [
+                    date('Y-m-d')
+                ])
+                    ->where('status', 'IN')
+                    ->where('weecode', $weecode->weecode)
+                    ->first();
+
                 if ($TimeCard) {
-                    $save = TimeCard::where('ID', $TimeCard->ID)->update(['status' => 'BK']);
-                    
+                    $save = TimeCard::where('ID', $TimeCard->ID)->update([
+                        'status' => 'BK'
+                    ]);
+
                     if ($save) {
-                        return response()->json(['breakIn' => array('status' => 'BK', 'inTime' => $TimeCard->datetimeIN )], 200);
-                    }else{
-                        response()->json(['message' => 'Connection Problem...'], 400);
+                        return response()->json(
+                            [
+                                'breakIn' => array(
+                                    'status' => 'BK',
+                                    'inTime' => $TimeCard->datetimeIN
+                                )
+                            ],
+                            200
+                        );
+                    } else {
+                        response()->json(
+                            ['message' => 'Connection Problem...'],
+                            400
+                        );
                     }
-                }else{
-                    return response()->json(['message' => 'Not Clocked In'], 400);
+                } else {
+                    return response()->json(
+                        ['message' => 'Not Clocked In'],
+                        400
+                    );
                 }
-            }else{
-                return response()->json(['message' => 'Employee is not assigned to any client'], 400);
+            } else {
+                return response()->json(
+                    ['message' => 'Employee is not assigned to any client'],
+                    400
+                );
             }
-        }else{
-            return response()->json(['message' => 'Employee id is missing'], 400);
+        } else {
+            return response()->json(
+                ['message' => 'Employee id is missing'],
+                400
+            );
         }
     }
-    
-    public function break_out(Request $request) {
+
+    public function break_out(Request $request)
+    {
         $user = $request->user();
         $weeid = Employee::where('user_id', $user->id)->first();
         if ($weeid) {
-                $TimeStatus = TimeStatus::where('weeid', $weeid->weeid)->first();
-                $TimeCard = TimeCard::where('timecode', $TimeStatus->timecode)->where('status', 'IN')->first();
-                
-                if ($TimeCard) {
-                    $TC = new TimeCard();
-                    $TC->timecode = $TimeStatus->timecode.'BK'. $TimeStatus->bknum+1;
-                    $TC->maintimecode = $TimeCard->maintimecode;
-                    $TC->eeid = $TimeStatus->eeid; 
-                    $TC->eecode = $TimeStatus->eecode; 
-                    $TC->weeid = $TimeStatus->weeid; 
-                    $TC->weecode = $TimeStatus->weecode;
-                    $TC->bknum = $TimeStatus->bknum+1;
-                    $TC->shiftid = $TimeStatus->shiftid; 
-                    $TC->deptid = $TimeStatus->deptid; 
-                    $TC->datetimeOUT = date('Y-m-d H:i:s');
-                    $TC->dateOUT = date('Y-m-d H:i:s');
-                    $TC->timeOUT = date('Y-m-d H:i:s');
-                    
-                    $TC->save();
-                    if ($TC->ID) {
-                        $save = TimeStatus::where('timecode', $TimeStatus->timecode)->update(['bkstatus' => 1, 'bknum' => $TC->bknum]);
+            $TimeStatus = TimeStatus::where('weeid', $weeid->weeid)->first();
+            $TimeCard = TimeCard::where('timecode', $TimeStatus->timecode)
+                ->where('status', 'IN')
+                ->first();
 
-                        if ($save) {
-                            return response()->json(['breakOut' => array('status' => 'BK', 'inTime' => $TimeStatus->inDate )], 200);
-                        }else{
-                            response()->json(['message' => 'Connection Problem...'], 400);
-                        }
+            if ($TimeCard) {
+                $TC = new TimeCard();
+                $TC->timecode =
+                    $TimeStatus->timecode . 'BK' . $TimeStatus->bknum + 1;
+                $TC->maintimecode = $TimeCard->maintimecode;
+                $TC->eeid = $TimeStatus->eeid;
+                $TC->eecode = $TimeStatus->eecode;
+                $TC->weeid = $TimeStatus->weeid;
+                $TC->weecode = $TimeStatus->weecode;
+                $TC->bknum = $TimeStatus->bknum + 1;
+                $TC->shiftid = $TimeStatus->shiftid;
+                $TC->deptid = $TimeStatus->deptid;
+                $TC->datetimeOUT = date('Y-m-d H:i:s');
+                $TC->dateOUT = date('Y-m-d H:i:s');
+                $TC->timeOUT = date('Y-m-d H:i:s');
+
+                $TC->save();
+                if ($TC->ID) {
+                    $save = TimeStatus::where(
+                        'timecode',
+                        $TimeStatus->timecode
+                    )->update(['bkstatus' => 1, 'bknum' => $TC->bknum]);
+
+                    if ($save) {
+                        return response()->json(
+                            [
+                                'breakOut' => array(
+                                    'status' => 'BK',
+                                    'inTime' => $TimeStatus->inDate
+                                )
+                            ],
+                            200
+                        );
+                    } else {
+                        response()->json(
+                            ['message' => 'Connection Problem...'],
+                            400
+                        );
                     }
-                    
-                }else{
-                    return response()->json(['message' => 'Not Clocked In'], 400);
                 }
-         
-        }else{
-            return response()->json(['message' => 'Employee id is missing'], 400);
+            } else {
+                return response()->json(['message' => 'Not Clocked In'], 400);
+            }
+        } else {
+            return response()->json(
+                ['message' => 'Employee id is missing'],
+                400
+            );
         }
-
     }
-
 
     //assig Role
-    public function get_user_role(User $user) {
+    public function get_user_role(User $user)
+    {
         // return response()->json($user->roles,200);
-        $urole =  array_column($user->roles->toArray(), 'name');
+        $urole = array_column($user->roles->toArray(), 'name');
         $all = array_column(Role::all()->toArray(), 'name');
 
-        return response()->json(['user_roles'=> $urole, 'roles' => Role::all()], 200);
+        return response()->json(
+            ['user_roles' => $urole, 'roles' => Role::all()],
+            200
+        );
     }
 
-    public function assign_role(Request $request) {
+    public function assign_role(Request $request)
+    {
         $user = User::where('id', $request->id)->first();
         $user->syncRoles($request->roles);
         return response()->json(null, 200);

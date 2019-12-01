@@ -21,10 +21,7 @@ class Handler extends ExceptionHandler
      *
      * @var array
      */
-    protected $dontFlash = [
-        'password',
-        'password_confirmation',
-    ];
+    protected $dontFlash = ['password', 'password_confirmation'];
 
     /**
      * Report or log an exception.
@@ -51,14 +48,12 @@ class Handler extends ExceptionHandler
         return parent::render($request, $exception);
     }
 
-
     protected function whoopsHandler()
-{
-    try {
-        return app(\Whoops\Handler\HandlerInterface::class);
-    } catch (\Illuminate\Contracts\Container\BindingResolutionException $e) {
-        return parent::whoopsHandler();
+    {
+        try {
+            return app(\Whoops\Handler\HandlerInterface::class);
+        } catch (\Illuminate\Contracts\Container\BindingResolutionException $e) {
+            return parent::whoopsHandler();
+        }
     }
-}
-    
 }

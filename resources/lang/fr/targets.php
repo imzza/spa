@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Targets French Language Words
@@ -22,5 +21,5 @@ return [
     'day' => 'Journée',
     'closed' => 'Fermé',
     'booking' => 'Réservation',
-    'partialy_paid' => 'Partiellement payé',
+    'partialy_paid' => 'Partiellement payé'
 ];

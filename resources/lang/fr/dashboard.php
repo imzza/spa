@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | French Language Words
@@ -53,17 +52,16 @@ return [
     'required' => 'Champs obligatoires',
     'invalid_email' => 'Email invalide',
     'is' => 'est',
-    'are' => 'Sont',  
+    'are' => 'Sont',
     'step' => 'Étape',
     'no_record_found' => 'Aucun Enregistrement Trouvé',
     'pick_a_location' => 'Choisissez un lieu',
     'pick_date' => 'Choisis une date',
-    'pick_preffered_time' =>'Choisissez votre heure préférée',
-    'pay_confirm_order' =>'Payer et confirmer la commande',
+    'pick_preffered_time' => 'Choisissez votre heure préférée',
+    'pay_confirm_order' => 'Payer et confirmer la commande',
     'book_axe_throwing_today' => 'RÉSERVER LA HACHE EN LANCANT',
     'view_next_available_target' => "Voir la cible disponible aujourd'hui",
     'targets_to_choose_from' => "cibles à choisir",
     'site_configuration' => "Configuration",
-    'logout' => "Connectez - Out",
-
+    'logout' => "Connectez - Out"
 ];

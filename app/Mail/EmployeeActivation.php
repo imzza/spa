@@ -16,7 +16,7 @@ class EmployeeActivation extends Mailable
      *
      * @return void
      */
-    
+
     public $data;
 
     public function __construct($data)
@@ -30,10 +30,8 @@ class EmployeeActivation extends Mailable
      * @return $this
      */
     public function build()
-    {   
-
-        
-         return $this->from(env('MAIL_USERNAME'))
+    {
+        return $this->from(env('MAIL_USERNAME'))
             ->view('mails.employees.employee_registration')
             ->subject('Registration Email');
 

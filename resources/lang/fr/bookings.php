@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | French Language Words
@@ -17,8 +16,8 @@ return [
     'search' => 'Chercher',
     'targets' => 'Des cibles',
     'positions' => 'Positions',
-    'all'=>'Tout',
+    'all' => 'Tout',
     'location' => 'Emplacement',
     'prev' => 'Prev',
-    'next' => 'Suivant',
+    'next' => 'Suivant'
 ];

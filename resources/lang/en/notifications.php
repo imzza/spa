@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | French Language Words
@@ -13,10 +12,10 @@ return [
     |
     */
     // header variables
-  
-//Notifications
+
+    //Notifications
     'notifications' => 'Notifications',
     'subject' => 'Subject',
     'message' => 'Message',
-    'save' => 'Save',
+    'save' => 'Save'
 ];

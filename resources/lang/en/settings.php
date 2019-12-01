@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | French Language Words
@@ -14,32 +13,32 @@ return [
     */
     // header variables
     //Settings
-    'primary'=>'Primary',
-    'color'=>'Color',
-    'second'=>'Second',
-    'text'=>'Text',
-    'on'=>'on',
-    'background'=>'Background',
-    'font'=>'Font',
-    'language'=>'Language',
-    'logo'=>'Logo',
-    'browse'=>'Browse',
-    'reset'=>'Reset',
-    'preview'=>'Preview',
-    'add'=>'Add',
-    'a'=>'a',
-    'name'=>'Name',
-    'address'=>'Address',
-    'country'=>'Country',
-    'number'=>'Number',
-    'of'=>'of',
-    'price'=>'Price',
-    'the'=>'The',
-    'sales'=>'Sales',
-    'tax'=>'Tax',
-    'no'=>'No',
-    'dates'=>'Dates',
-    'hours'=>'Hours',
-    'operation'=>'Operation',
-    'update'=>'Update',
+    'primary' => 'Primary',
+    'color' => 'Color',
+    'second' => 'Second',
+    'text' => 'Text',
+    'on' => 'on',
+    'background' => 'Background',
+    'font' => 'Font',
+    'language' => 'Language',
+    'logo' => 'Logo',
+    'browse' => 'Browse',
+    'reset' => 'Reset',
+    'preview' => 'Preview',
+    'add' => 'Add',
+    'a' => 'a',
+    'name' => 'Name',
+    'address' => 'Address',
+    'country' => 'Country',
+    'number' => 'Number',
+    'of' => 'of',
+    'price' => 'Price',
+    'the' => 'The',
+    'sales' => 'Sales',
+    'tax' => 'Tax',
+    'no' => 'No',
+    'dates' => 'Dates',
+    'hours' => 'Hours',
+    'operation' => 'Operation',
+    'update' => 'Update'
 ];

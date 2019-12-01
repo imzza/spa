@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Targets Language Words
@@ -22,5 +21,5 @@ return [
     'day' => 'Day',
     'closed' => 'Closed',
     'booking' => 'Booking',
-    'partialy_paid' => 'Partially Paid',
+    'partialy_paid' => 'Partially Paid'
 ];

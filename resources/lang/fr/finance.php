@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | French Language Words
@@ -27,8 +26,8 @@ return [
     'amount' => 'Montant',
     'method' => 'Méthode',
     'details' => 'Détails',
-    'completed'=>'Terminé',
-    'no'=>'Non',
-    'record'=>'Record',
-    'found'=>'A trouvé',
+    'completed' => 'Terminé',
+    'no' => 'Non',
+    'record' => 'Record',
+    'found' => 'A trouvé'
 ];

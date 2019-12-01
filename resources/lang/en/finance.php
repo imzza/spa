@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | French Language Words
@@ -13,7 +12,7 @@ return [
     |
     */
     // header variables
-  
+
     //Finance
     'finance' => 'Finance',
     'total_expected_value' => 'TOTAL EXPECTED REVENUE',
@@ -28,8 +27,8 @@ return [
     'amount' => 'Amount',
     'method' => 'Method',
     'details' => 'Details',
-    'completed'=>'Completed',
-    'no'=>'No',
-    'record'=>'Record',
-    'found'=>'Found',
+    'completed' => 'Completed',
+    'no' => 'No',
+    'record' => 'Record',
+    'found' => 'Found'
 ];

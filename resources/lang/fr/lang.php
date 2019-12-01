@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | French Language Words
@@ -15,6 +14,5 @@ return [
     // header variables
 
     'dashboard' => 'Tableau de bord',
-    'settings' => 'Réglages',
-    
+    'settings' => 'Réglages'
 ];

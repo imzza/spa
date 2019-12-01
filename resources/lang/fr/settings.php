@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | French Language Words
@@ -14,32 +13,32 @@ return [
     */
     // header variables
     //Settings
-    'primary'=>'Primaire',
-    'color'=>'Couleur',
-    'second'=>'Seconde',
-    'text'=>'Texte',
-    'on'=>'sur',
-    'background'=>'Contexte',
-    'font'=>'Police de caractère',
-    'language'=>'La langue',
-    'logo'=>'Logo',
-    'browse'=>'Feuilleter',
-    'reset'=>'Réinitialiser',
-    'preview'=>'Aperçu',
-    'add'=>'Ajouter',
-    'a'=>'une',
-    'name'=>'prénom',
-    'address'=>'Adresse',
-    'country'=>'Pays',
-    'number'=>'Nombre',
-    'of'=>'de',
-    'price'=>'Prix',
-    'the'=>'le',
-    'sales'=>'Ventes',
-    'tax'=>'Impôt',
-    'no'=>'Non',
-    'dates'=>'Rendez-vous',
-    'hours'=>'Heures',
-    'operation'=>'Opération',
-    'update'=>'Mettre à jour',    
+    'primary' => 'Primaire',
+    'color' => 'Couleur',
+    'second' => 'Seconde',
+    'text' => 'Texte',
+    'on' => 'sur',
+    'background' => 'Contexte',
+    'font' => 'Police de caractère',
+    'language' => 'La langue',
+    'logo' => 'Logo',
+    'browse' => 'Feuilleter',
+    'reset' => 'Réinitialiser',
+    'preview' => 'Aperçu',
+    'add' => 'Ajouter',
+    'a' => 'une',
+    'name' => 'prénom',
+    'address' => 'Adresse',
+    'country' => 'Pays',
+    'number' => 'Nombre',
+    'of' => 'de',
+    'price' => 'Prix',
+    'the' => 'le',
+    'sales' => 'Ventes',
+    'tax' => 'Impôt',
+    'no' => 'Non',
+    'dates' => 'Rendez-vous',
+    'hours' => 'Heures',
+    'operation' => 'Opération',
+    'update' => 'Mettre à jour'
 ];

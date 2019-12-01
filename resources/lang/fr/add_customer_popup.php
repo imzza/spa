@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | French Language Words
@@ -14,36 +13,37 @@ return [
     */
     // header variables
     //Add Customer Popup
-    'add'=>'AJOUTER',
-    'customer'=>"LES CLIENTS",
-    'informations'=>'INFORMATIONS',
-    'personal'=>'Personnel',
-    'information'=>'Information',
-    'summary'=>'Résumé',
-    'card'=>'Carte',
-    'expiry'=>'Expiration',
-    'date'=>'Rendez-vous amoureux',
-    'security'=>'Sécurité',
-    'code'=>'Code',
-    'per'=>'Par',
-    'person'=>'La personne',
-    'deposit'=>'Dépôt',
-    'total'=>'Total',
-    'you_will'=>'Vous recevrez un email de confirmation une fois le rendez-vous pris',
-    'pay'=>'Payer',
-    'in'=>'dans',
-    'front'=>'De face',
-    'debit'=>'Débit',
-    'credit'=>'Crédit',
+    'add' => 'AJOUTER',
+    'customer' => "LES CLIENTS",
+    'informations' => 'INFORMATIONS',
+    'personal' => 'Personnel',
+    'information' => 'Information',
+    'summary' => 'Résumé',
+    'card' => 'Carte',
+    'expiry' => 'Expiration',
+    'date' => 'Rendez-vous amoureux',
+    'security' => 'Sécurité',
+    'code' => 'Code',
+    'per' => 'Par',
+    'person' => 'La personne',
+    'deposit' => 'Dépôt',
+    'total' => 'Total',
+    'you_will' =>
+        'Vous recevrez un email de confirmation une fois le rendez-vous pris',
+    'pay' => 'Payer',
+    'in' => 'dans',
+    'front' => 'De face',
+    'debit' => 'Débit',
+    'credit' => 'Crédit',
     ///////////////////////////
     //Invite Friends
-    'final_message'=>'Votre lancer de hache a été réservé',
-    'complete'=>'Achevée',
-    'send_invites'=>'Envoie des invitations',
-    'want_invite_friends'=>'Voulez-vous inviter vos amis maintenant?', 
-    'add_another_friend'=>'Ajouter un autre ami', 
-    'your_appointment_changed'=>'Votre rendez-vous a été annulé!', 
-    'pay_partial_payment'=>'Payer le paiement restant', 
-    'your_appointment_has_booked'=>'Votre rendez-vous a été réservé avec succès!', 
-    
+    'final_message' => 'Votre lancer de hache a été réservé',
+    'complete' => 'Achevée',
+    'send_invites' => 'Envoie des invitations',
+    'want_invite_friends' => 'Voulez-vous inviter vos amis maintenant?',
+    'add_another_friend' => 'Ajouter un autre ami',
+    'your_appointment_changed' => 'Votre rendez-vous a été annulé!',
+    'pay_partial_payment' => 'Payer le paiement restant',
+    'your_appointment_has_booked' =>
+        'Votre rendez-vous a été réservé avec succès!'
 ];
