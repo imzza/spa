@@ -22,7 +22,6 @@
                             </thead>
                             <tbody>
                                 <tr v-for="(role, ind) in roles" v-if="roles.length > 0" :key="role.id">
-
                                     <td>{{ role.id }}</td>
                                     <td>{{ role.name }}</td>
                                     <td>{{ role.rolename }}</td>

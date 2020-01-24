@@ -17,12 +17,14 @@
                                         {{ item.name }}
                                     </router-link>
                                 </li>
-                                <li v-if="item.child && has_permission(item.url)"
+                                <li
+                                    v-if="item.child && has_permission(item.url)"
                                     :title="item.name"
                                     :icon="item.icon"
                                     :class="{
-                                        'router-link-parent-active': subIsActive(item.child)
-                                    }">
+                                        'router-link-parent-active': subIsActive(item.child),
+                                    }"
+                                >
                                     <b-btn v-b-toggle="item.name" blockhref="#" variant="link">
                                         <i :class="item.icon" />
                                         {{ item.name }}
