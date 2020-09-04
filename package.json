@@ -67,7 +67,7 @@
         "vue": "^2.6.10",
         "vue-analytics": "^5.17.0",
         "vue-form": "^4.7.0",
-        "vue-moment": "^4.0.0",
+        "vue-moment": "^4.1.0",
         "vue-multiselect": "^2.1.6",
         "vue-router": "^3.1.1",
         "vue-template-compiler": "^2.6.10",
